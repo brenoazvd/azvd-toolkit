@@ -76,9 +76,31 @@ claude plugin install azvd-toolkit@azvd
 
 ### Antigravity (agy) — status
 
-Formato de plugin próprio (espera `plugin.json` na raiz do plugin e marketplace registrado
-via `agy plugin link`); `agy plugin import claude` não detectou o plugin do Claude Code nesta
-versão. Instalação agy: **WIP** — verificar formato nativo quando precisar.
+Instalação validada como **plugin** (formato nativo do agy):
+
+```bash
+# 1. Criar o plugin: ~/.gemini/config/plugins/azvd-toolkit/
+#    plugin.json  → {"name": "azvd-toolkit"}   (UTF-8 SEM BOM — BOM quebra o parser)
+#    skills/      → as 4 skills (pastas REAIS, não junction — o painel /skills não
+#                   atravessa junction; o validator atravessa, o painel não)
+# 2. Validar (opcional):
+agy plugin validate 'C:\Users\<user>\.gemini\config\plugins\azvd-toolkit'   # espera "skills: 4 processed"
+# 3. Habilitar (escreve em ~/.gemini/config/config.json: {"azvd-toolkit": {"enabled": true}})
+agy plugin enable azvd-toolkit
+```
+
+Descobertas do caminho (2026-08-10):
+- O painel `/skills` do agy lista skills de plugin no formato `plugin:skill` (ex. `science:quickgo-database`) e **escaneia pastas reais** — junction é visível pro `agy plugin validate` mas NÃO pro painel.
+- `~/.gemini/config/skills/` (junctions → `.agents/skills/<nome>`) é onde ficam as skills "avulsas" do agy; o `skills-lock.json` registra fontes github (hash `computedHash` não é sha256 do arquivo — algoritmo proprietário, não replicar à mão).
+- `npx skills add` instala no dir universal `~/.agents/skills/` (agentes `.agents/skills` = codex/cursor/antigravity-cli) — o agy NÃO lê de lá.
+
+### Hermes (este assistente)
+
+```bash
+# Cópia direta para o diretório de skills do Hermes (fica ativo na próxima sessão):
+cp -r .claude/skills/{orchestrator,prompt-forge,prompt-blocks,graph-engineering} \
+      ~/AppData/Local/hermes/skills/
+```
 
 ## Instalar localmente (sem GitHub — junction ou cópia)
 
