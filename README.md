@@ -54,6 +54,32 @@ agy plugin install azvd-toolkit@https://github.com/brenoazvd/azvd-toolkit
 #    ou ponte: agy plugin import claude   (importa plugins do Claude Code)
 ```
 
+### ⚠️ Bug conhecido: `claude plugin marketplace add` (v2.1.224–226)
+
+O comando está quebrado nesta versão — falha com `Invalid marketplace source format`
+mesmo para o marketplace oficial (`anthropics/claude-plugins-official`), em todas as
+formas (`owner/repo`, `https://...`, `./path`). Contorno **validado**:
+
+```bash
+# 1. Registrar o marketplace manualmente (com backup)
+cp ~/.claude/plugins/known_marketplaces.json ~/.claude/plugins/known_marketplaces.json.bak
+# adicionar no JSON (mesmo shape das entradas existentes):
+#   "azvd": {
+#     "source": {"source": "github", "repo": "brenoazvd/azvd-toolkit"},
+#     "installLocation": "C:\\Users\\<user>\\.claude\\plugins\\marketplaces\\azvd",
+#     "lastUpdated": "<ISO-8601>"
+#   }
+# 2. Clonar/validar + instalar
+claude plugin marketplace update azvd
+claude plugin install azvd-toolkit@azvd
+```
+
+### Antigravity (agy) — status
+
+Formato de plugin próprio (espera `plugin.json` na raiz do plugin e marketplace registrado
+via `agy plugin link`); `agy plugin import claude` não detectou o plugin do Claude Code nesta
+versão. Instalação agy: **WIP** — verificar formato nativo quando precisar.
+
 ## Instalar localmente (sem GitHub — junction ou cópia)
 
 ```bash
