@@ -76,23 +76,29 @@ claude plugin install azvd-toolkit@azvd
 
 ### Antigravity (agy) — status
 
-Instalação validada como **plugin** (formato nativo do agy):
+Instalação **validada funcionalmente** (as 4 skills aparecem no `agy -p` como carregadas):
 
 ```bash
-# 1. Criar o plugin: ~/.gemini/config/plugins/azvd-toolkit/
-#    plugin.json  → {"name": "azvd-toolkit"}   (UTF-8 SEM BOM — BOM quebra o parser)
-#    skills/      → as 4 skills (pastas REAIS, não junction — o painel /skills não
-#                   atravessa junction; o validator atravessa, o painel não)
-# 2. Validar (opcional):
-agy plugin validate 'C:\Users\<user>\.gemini\config\plugins\azvd-toolkit'   # espera "skills: 4 processed"
+# 1. Criar o plugin em ~/.gemini/config/plugins/azvd-toolkit/:
+#    plugin.json  → manifest COMPLETO (não só o name):
+#       {"name": "azvd-toolkit", "version": "0.1.0", "description": "...",
+#        "author": {"name": "..."}, "repository": "https://github.com/...", "license": "MIT"}
+#       (UTF-8 SEM BOM — BOM quebra o parser do agy)
+#    installed_version.json → {"version": "0.1.0"}
+#    skills/ → as 4 skills como PASTAS REAIS (não junction)
+# 2. SKILL.md das cópias: frontmatter SÓ com name + description (remover trigger: e
+#    campos extras — o agy rejeita/ignora skills com campos que não conhece)
 # 3. Habilitar (escreve em ~/.gemini/config/config.json: {"azvd-toolkit": {"enabled": true}})
 agy plugin enable azvd-toolkit
+# 4. Validar:
+agy plugin validate 'C:\Users\<user>\.gemini\config\plugins\azvd-toolkit'   # "skills: 4 processed"
 ```
 
 Descobertas do caminho (2026-08-10):
-- O painel `/skills` do agy lista skills de plugin no formato `plugin:skill` (ex. `science:quickgo-database`) e **escaneia pastas reais** — junction é visível pro `agy plugin validate` mas NÃO pro painel.
-- `~/.gemini/config/skills/` (junctions → `.agents/skills/<nome>`) é onde ficam as skills "avulsas" do agy; o `skills-lock.json` registra fontes github (hash `computedHash` não é sha256 do arquivo — algoritmo proprietário, não replicar à mão).
-- `npx skills add` instala no dir universal `~/.agents/skills/` (agentes `.agents/skills` = codex/cursor/antigravity-cli) — o agy NÃO lê de lá.
+- **Prova funcional**: `agy -p "List ALL skill names..."` lista as 4 skills carregadas. O painel interativo `/skills` mostra um subconjunto curado (não lista nem as skills do lock) — é quirk de UI, não de carregamento; a skill é utilizável normalmente.
+- Junction é visível pro `agy plugin validate` mas o carregamento real não a segue — usar pastas reais no plugin.
+- `~/.gemini/config/skills/` (junctions → `.agents/skills/<nome>`) é onde ficam skills "avulsas"; o `skills-lock.json` registra fontes github (hash `computedHash` é algoritmo proprietário — não replicar à mão).
+- `npx skills add` instala no dir universal `~/.agents/skills/` (codex/cursor/antigravity-cli) — o agy NÃO lê de lá.
 
 ### Hermes (este assistente)
 
