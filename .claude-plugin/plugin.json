@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "azvd-toolkit",
+  "version": "0.1.0",
+  "description": "Toolkit pessoal: orchestrator, prompt-forge, prompt-blocks, graph-engineering",
+  "author": {
+    "name": "brenoazvd",
+    "email": "***REMOVED***"
+  },
+  "skills": [
+    "./.claude/skills"
+  ]
+}

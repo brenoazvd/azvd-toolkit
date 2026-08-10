@@ -1,0 +1,13 @@
+{
+  "name": "azvd",
+  "owner": {
+    "name": "brenoazvd"
+  },
+  "plugins": [
+    {
+      "name": "azvd-toolkit",
+      "source": "github.com/brenoazvd/azvd-toolkit",
+      "version": "0.1.0"
+    }
+  ]
+}
