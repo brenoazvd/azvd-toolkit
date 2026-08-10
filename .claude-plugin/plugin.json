@@ -1,13 +1,23 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "azvd-toolkit",
-  "version": "0.1.0",
   "description": "Toolkit pessoal: orchestrator, prompt-forge, prompt-blocks, graph-engineering",
+  "version": "0.1.0",
   "author": {
     "name": "brenoazvd",
     "email": "***REMOVED***"
   },
+  "license": "MIT",
+  "keywords": [
+    "prompt-engineering",
+    "orchestration",
+    "graph-engineering",
+    "skills"
+  ],
   "skills": [
-    "./.claude/skills"
+    "./.claude/skills/orchestrator",
+    "./.claude/skills/prompt-forge",
+    "./.claude/skills/prompt-blocks",
+    "./.claude/skills/graph-engineering"
   ]
 }
