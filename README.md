@@ -35,7 +35,26 @@ flowchart LR
 
 Validado em produção no ecossistema SaaS OEP (2026-08): tickets autocontidos, padrão analyzer→reviewer→verify (agy analisa → claude opus revisa → orquestrador confere), contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é réplica do repo [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT), com a metade de task graphs vinda do trabalho DeepMind×MIT.
 
-## Instalar (deixar as skills vivas no Claude Code)
+## Instalar como plugin (o jeito "marketplace" — como os caras fazem)
+
+Este repo já é um **plugin + marketplace** válido para o Claude Code (manifests em
+`.claude-plugin/plugin.json` e `.claude-plugin/marketplace.json`, no mesmo formato dos
+marketplaces oficiais). Depois de publicado no GitHub:
+
+```bash
+# 1. No Claude Code — adicionar o marketplace e instalar
+claude plugin marketplace add azvd https://github.com/brenoazvd/azvd-toolkit
+claude plugin install azvd-toolkit@azvd
+
+# 2. Receber atualizações depois de mudanças no repo
+claude plugin marketplace update azvd
+
+# 3. Antigravity (agy) — instalar o plugin direto
+agy plugin install azvd-toolkit@https://github.com/brenoazvd/azvd-toolkit
+#    ou ponte: agy plugin import claude   (importa plugins do Claude Code)
+```
+
+## Instalar localmente (sem GitHub — junction ou cópia)
 
 ```bash
 # opção 1 — junction (fonte = este repo; edita aqui, vale no ~/.claude)
