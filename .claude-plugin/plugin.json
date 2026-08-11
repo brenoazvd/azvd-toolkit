@@ -18,6 +18,7 @@
     "./.claude/skills/orchestrator",
     "./.claude/skills/prompt-forge",
     "./.claude/skills/prompt-blocks",
-    "./.claude/skills/graph-engineering"
+    "./.claude/skills/graph-engineering",
+    "./.claude/skills/self-learning"
   ]
 }

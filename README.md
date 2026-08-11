@@ -7,9 +7,10 @@ Toolkit pessoal de skills para trabalhar com IA — a versão **versionada em re
 | Skill | Função | Trigger |
 |---|---|---|
 | `orchestrator` | Roteador: decide qual skill usar e encadeia | `/orchestrator` |
-| `prompt-forge` | Monta prompts por entrevista interativa (anatomia Tarefa/Método/Meta) | `/prompt-forge` |
+| `prompt-forge` | Monta prompts por entrevista interativa e ADAPTATIVA (anatomia Tarefa/Método/Meta + matriz por tipo de pedido) | `/prompt-forge` |
 | `prompt-blocks` | Biblioteca de blocos comprovados, cada um com a lição de incidente que o originou | `/prompt-blocks` |
 | `graph-engineering` | Task graphs (orquestração multi-agente) + knowledge graphs (pipeline de 9 etapas) | `/graph-engineering` |
+| `self-learning` | **A skill que se adapta**: colhe lições de sessão (golden paths) e as transforma em blocos/linhas/rotas novas nas outras skills | `/self-learning` |
 
 ## Como as skills se conversam
 
@@ -19,9 +20,13 @@ flowchart LR
   O --> PF[prompt-forge]
   O --> GE[graph-engineering]
   O --> PB[prompt-blocks]
+  O --> SL[self-learning]
   PF --> PB
   GE --> PF
   PB --> PF
+  SL --> PB
+  SL --> PF
+  SL --> O
 ```
 
 - `orchestrator` roteia e encadeia (primeira parada de qualquer pedido).
@@ -33,7 +38,7 @@ flowchart LR
 
 ## Origem
 
-Validado em produção no ecossistema SaaS OEP (2026-08): tickets autocontidos, padrão analyzer→reviewer→verify (agy analisa → claude opus revisa → orquestrador confere), contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é réplica do repo [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT), com a metade de task graphs vinda do trabalho DeepMind×MIT.
+Validado em produção no ecossistema SaaS OEP (2026-08): tickets autocontidos, padrão analyzer→reviewer→verify (agy analisa → claude opus revisa → orquestrador confere), contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é réplica do repo [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT), com a metade de task graphs vinda do trabalho DeepMind×MIT. `self-learning` é adaptação de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) — o loop "reconhecer → capturar → reutilizar" com a regra de promoção de 3 verificações, direcionado ao ecossistema deste toolkit (colheita vira bloco no prompt-blocks, linha na matriz do prompt-forge, rota no orchestrator). Pesquisados e não adotados na rodada: AgentHandover (observa e ensina), rudder (feedback → skills), vibecode-pro-max-kit (memória de contexto).
 
 ## Instalar como plugin (o jeito "marketplace" — como os caras fazem)
 

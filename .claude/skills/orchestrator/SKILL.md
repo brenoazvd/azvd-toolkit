@@ -17,6 +17,7 @@ Papel: receber o pedido do usuário e rotear para a skill certa (ou encadear). *
 | "estrutura esse código/docs/conhecimento em grafo" / "mapeia relações" | `graph-engineering` (pipeline KG) |
 | "orquestra N agentes/CLIs/tickets pra fazer X" / "planeja em fases" | `graph-engineering` → `references/task-graphs.md` (fan-out, diamond, human gate) + `prompt-forge` (UM prompt por ticket) |
 | "quero aprender graph engineering" | `graph-engineering` (modo ensino, diagramas por etapa) |
+| "aprendi algo novo" / "lembra disso" / lição da sessão | `self-learning` (colhe o golden path e atualiza as skills) |
 | pedido misto (ex.: prompt + orquestração) | encadear: `prompt-forge` → `graph-engineering` (ou vice-versa) |
 | intenção ambígua | **PERGUNTAR** — uma pergunta, formato A/B com recomendação |
 
@@ -32,6 +33,12 @@ Papel: receber o pedido do usuário e rotear para a skill certa (ou encadear). *
 - Pedido cabe em **UM prompt autocontido** → `prompt-forge`, pare aí.
 - Pedido precisa de **N prompts** (multi-repo, multi-fase) → NUNCA juntar tudo num prompt gigante ("buga a IA"): task graph primeiro, um prompt por ticket.
 - Dúvida de **intenção** → perguntar ao usuário. Dúvida de **conteúdo** → a entrevista da `prompt-forge` resolve.
+
+## Auto-atualização
+
+Descobriu um encaminhamento novo (pedido → skill) durante o uso? Adicione uma linha na matriz de
+roteamento acima (protocolo `self-learning`, regra de promoção de 3 verificações) — esta skill se
+adapta a quem usa.
 
 ## Skills relacionadas
 

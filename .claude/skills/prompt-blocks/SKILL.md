@@ -80,6 +80,13 @@ Pergunte UMA coisa por vez, com opções A/B/C e uma recomendada. Só avance qua
 2. Cole o bloco + preencha os `<placeholders>` com o domínio real.
 3. Registre no final do bloco usado a lição nova que você aprendeu — esta biblioteca cresce com outcome, não com teoria.
 
+## Auto-atualização
+
+Descobriu uma lição nova durante o uso (correção do usuário, incidente, padrão que se repetiu)?
+Ela vira um **bloco novo** aqui (B9, B10...) com: o texto pronto + quando usar + a lição que originou
+(protocolo `self-learning`, regra de promoção de 3 verificações — check que passou + padrão de falha
+nomeado + beco descartado). O prompt-forge passa a compor com o bloco automaticamente.
+
 ## Skills relacionadas
 
 - `prompt-forge` — entrevista que monta o prompt e compõe estes blocos.

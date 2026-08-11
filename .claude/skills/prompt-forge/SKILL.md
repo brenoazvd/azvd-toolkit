@@ -72,3 +72,9 @@ compare às cegas com a referência".
 - `prompt-blocks` — blocos comprovados (com lição de incidente) para compor as seções.
 - `orchestrator` — roteador do toolkit (quando usar esta skill).
 - `graph-engineering` — se o pedido virar orquestração multi-agente (task graph).
+
+## Auto-atualização
+
+A entrevista revelou uma pergunta, ferramenta ou tipo de pedido que faltava na matriz? Adicione uma
+linha nova (protocolo `self-learning`, regra de promoção de 3 verificações) — a entrevista se adapta
+aos pedidos que você realmente faz.
