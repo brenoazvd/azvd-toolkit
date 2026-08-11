@@ -1,3 +1,26 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B2 · PARE E REPORTE (stop & report)",
+  "description": "Bloco que corta improviso: condição de parada com reporte ao orquestrador.",
+  "tags": [
+    "prompt",
+    "escopo",
+    "seguranca"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "Incidente T15.2 (OEP)",
+    "agy T13 (plano != execucao)"
+  ]
+}
+---
+
 # B2 · PARE E REPORTE (stop & report)
 
 ```

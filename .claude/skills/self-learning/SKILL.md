@@ -46,6 +46,9 @@ Skill/regra é **autoritativa** — a próxima sessão confia sem re-derivar. S�
 Faltou qualquer uma → **não é regra ainda**: nota na memória (marcada `não-verificada`) ou pular.
 Isso mantém chutes confiantes fora do conjunto — a skill não vira lixo.
 
+Para **blocos do prompt-blocks** o filtro é mais fino — F1-F5 (recorrência, custo, evidência,
+especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de propor bloco novo.
+
 ## Procedimento de colheita
 
 1. **Aplicar a regra de promoção.** Faltou check/falha/beco → memória ou pular.

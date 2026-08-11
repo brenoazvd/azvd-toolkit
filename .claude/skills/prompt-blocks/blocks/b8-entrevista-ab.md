@@ -1,3 +1,24 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B8 · Entrevista A/B",
+  "description": "Bloco interativo: uma pergunta por vez com opções e recomendação.",
+  "tags": [
+    "prompt",
+    "interacao"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "Padrão de comunicação (OEP)"
+  ]
+}
+---
+
 # B8 · Entrevista A/B (interativa)
 
 ```

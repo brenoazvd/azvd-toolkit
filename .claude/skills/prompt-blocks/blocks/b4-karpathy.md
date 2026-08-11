@@ -1,3 +1,25 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B4 · Regras karpathy",
+  "description": "Bloco de execução cirúrgica: só os arquivos do ticket, validação no final, conflito → PARE.",
+  "tags": [
+    "prompt",
+    "escopo",
+    "execucao"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "Incidente T15.2 (OEP 2026-08-06)"
+  ]
+}
+---
+
 # B4 · Regras karpathy (execução cirúrgica)
 
 ```

@@ -1,3 +1,24 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B6 · Contrato de memória coletiva (OKF)",
+  "description": "Bloco que liga o agente à memória coletiva versionada (ler índice antes, logar depois).",
+  "tags": [
+    "prompt",
+    "memoria"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "Correção do usuário (OEP 2026-08-07)"
+  ]
+}
+---
+
 # B6 · Contrato de memória coletiva (OKF)
 
 ```

@@ -1,3 +1,24 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B7 · Resumo objetivo",
+  "description": "Bloco de formato de saída: relatório com evidências, não narrativa.",
+  "tags": [
+    "prompt",
+    "formato"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "Regra 'nunca confiar no resumo' (OEP)"
+  ]
+}
+---
+
 # B7 · Resumo objetivo (formato de saída)
 
 ```

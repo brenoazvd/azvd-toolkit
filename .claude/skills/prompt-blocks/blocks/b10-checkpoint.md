@@ -1,3 +1,25 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B10 · Checkpoint de retomada",
+  "description": "Bloco de resiliência: estado REAL em disco a cada fase para retomada.",
+  "tags": [
+    "prompt",
+    "resiliencia"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "vibecode-pro-max-kit (2026)",
+    "agy T13 (OEP)"
+  ]
+}
+---
+
 # B10 · Checkpoint de retomada (não perca o lugar)
 
 ```

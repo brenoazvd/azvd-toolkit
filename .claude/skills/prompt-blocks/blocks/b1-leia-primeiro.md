@@ -1,3 +1,24 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B1 · LEIA PRIMEIRO (read-first)",
+  "description": "Bloco que obriga o agente a ler arquivos de contexto antes de agir.",
+  "tags": [
+    "prompt",
+    "contexto"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "Padrão agy 2026-08 (OEP)"
+  ]
+}
+---
+
 # B1 · LEIA PRIMEIRO (read-first)
 
 ```

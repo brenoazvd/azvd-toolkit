@@ -1,3 +1,24 @@
+---
+{
+  "type": "PromptBlock",
+  "title": "B5 · Teste de decisão",
+  "description": "Bloco de autonomia: passo 1 com teste que decide o caminho sem voltar ao usuário.",
+  "tags": [
+    "prompt",
+    "autonomia"
+  ],
+  "status": "active",
+  "generated": {
+    "by": "brenoazvd",
+    "at": "2026-08-11"
+  },
+  "stale_after": "2027-01-01",
+  "sources": [
+    "ticket_etl_retry_agent (OEP 2026-08-10)"
+  ]
+}
+---
+
 # B5 · Teste de decisão (passo 1 autônomo)
 
 ```
