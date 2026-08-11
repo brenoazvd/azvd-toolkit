@@ -38,7 +38,19 @@ flowchart LR
 
 ## Origem
 
-Validado em produção no ecossistema SaaS OEP (2026-08): tickets autocontidos, padrão analyzer→reviewer→verify (agy analisa → claude opus revisa → orquestrador confere), contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é réplica do repo [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT), com a metade de task graphs vinda do trabalho DeepMind×MIT. `self-learning` é adaptação de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) — o loop "reconhecer → capturar → reutilizar" com a regra de promoção de 3 verificações, direcionado ao ecossistema deste toolkit (colheita vira bloco no prompt-blocks, linha na matriz do prompt-forge, rota no orchestrator). Pesquisados e não adotados na rodada: AgentHandover (observa e ensina), rudder (feedback → skills), vibecode-pro-max-kit (memória de contexto).
+Validado em produção no ecossistema SaaS OEP (2026-08): tickets autocontidos, padrão analyzer→reviewer→verify (agy analisa → claude opus revisa → orquestrador confere), contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é adaptação de [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT) traduzida para PT-BR, com a metade de task graphs vinda do trabalho DeepMind×MIT. `self-learning` é adaptação de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) — o loop "reconhecer → capturar → reutilizar" com a regra de promoção de 3 verificações, direcionado ao ecossistema deste toolkit (colheita vira bloco no prompt-blocks, linha na matriz do prompt-forge, rota no orchestrator). `prompt-blocks` B9/B10 (memória do projeto, checkpoint) adaptados de [withkynam/vibecode-pro-max-kit](https://github.com/withkynam/vibecode-pro-max-kit) — os 3 repos são vigiados pelo cron semanal de upstream. Padrões de prompt (few-shot, CoT, delimitadores...) vieram do dair-ai/Prompt-Engineering-Guide e f/prompts.chat. Pesquisados e não adotados na rodada: AgentHandover (observa e ensina), rudder (feedback → skills).
+
+## Manutenção (sync + vigilância de upstream)
+
+```bash
+bash sync.sh           # propaga repo → 4 IAs (Hermes, agy, claude, dir universal) em 1 comando
+bash sync.sh --push    # git add/commit/push + propaga
+```
+
+**Vigilância de upstream** (cron semanal `azvd-upstream-watch`): checa os 3 repos originais
+(codejunkie99/graph-engineering, Kulaxyz/self-learning-skills, withkynam/vibecode-pro-max-kit).
+Só alerta quando há commit novo — mostrando o que mudou — e você decide incorporar (preservando
+PT-BR e seções azvd). Silêncio = nada mudou (não relê tudo do zero).
 
 ## Instalar como plugin (o jeito "marketplace" — como os caras fazem)
 
