@@ -4,8 +4,7 @@
   "description": "Toolkit pessoal: orchestrator, prompt-forge, prompt-blocks, graph-engineering",
   "version": "0.1.0",
   "author": {
-    "name": "brenoazvd",
-    "email": "***REMOVED***"
+    "name": "brenoazvd"
   },
   "license": "MIT",
   "keywords": [
