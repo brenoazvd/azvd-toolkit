@@ -113,6 +113,25 @@ skip stages 3 (ontology) or 8 (fusion) — they are where real-world graphs fail
   extraction from rules to LLM prompting (lectures 4-7). Read during stages 4-7.
 - [references/fusion-and-llm.md](references/fusion-and-llm.md) — Knowledge fusion and
   KG × LLM integration (lectures 8-9). Read during stages 8-9.
+- [references/task-graphs.md](references/task-graphs.md) — The orchestration half: fake
+  edges, the diamond, the stop rule (DeepMind×MIT), the human gate, guardrails. Read when
+  orchestrating agents — the theoretical backing for the azvd-toolkit orchestration rules.
+- [references/workflows.md](references/workflows.md) — Nine paste-ready prompt blocks
+  (`/kg-tutor` → `/kg-rag`), each an exemplar of the Tarefa/Método/Meta anatomy. Read when
+  the user wants a ready-to-paste KG prompt or a model of how to structure one.
+
+## Task graphs na prática (azvd-toolkit)
+
+The task-graph rules are the theory behind the orchestration patterns this toolkit already
+uses (see `oep-orchestration` / the `orchestrator` skill matrix):
+
+| Regra (task-graphs.md) | Na prática do toolkit |
+|---|---|
+| **Fake edges** (delete dependencies nothing reads) | Fan-out primeiro: tickets sem dependência rodam em paralelo |
+| **Diamond** (split → workers → SEPARATE verifier → merge) | analyzer→reviewer→verify; revisor em contexto separado, nunca o próprio autor |
+| **Stop rule** (split work = teams; sequential = one agent) | "Trabalho sequencial com zero fan-out = main thread, não delegação" |
+| **Human gate** (where a mistake is expensive to undo) | Aprovação antes de tocar produção/legado; não em todo passo |
+| **Guardrails** (max rounds, one writer per file, hard caps) | `--max-turns`/`--print-timeout`; "3 agentes editando o mesmo arquivo = conflito" (incidente ModuloRetencao.tsx) |
 
 ## Related skills (azvd-toolkit)
 
@@ -128,3 +147,7 @@ Distilled and translated from 东南大学《知识图谱》研究生课程 (Sou
 course on Knowledge Graphs), Prof. Peng Wang — https://github.com/npubird/KnowledgeGraphCourse.
 All original lecture PDFs are in Chinese; this skill is an independent English distillation
 adapted for AI-agent workflows.
+
+This copy in azvd-toolkit is adapted from [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering)
+(MIT, built by @Av1dlive) — the task-graph half draws on Google DeepMind × MIT's "Towards a
+Science of Scaling Agent Systems" and Anthropic's published multi-agent engineering work.
