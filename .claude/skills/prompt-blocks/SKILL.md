@@ -108,8 +108,11 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 ## Como usar
 
 1. Identifique a seção do prompt que precisa (contexto / método / meta / saída).
-2. Abra o arquivo do bloco no catálogo, cole o texto + preencha os `<placeholders>` com o domínio real.
-3. Registre no final do bloco usado a lição nova que você aprendeu — a biblioteca cresce com outcome, não com teoria.
+2. Cheque os dois catálogos: **`blocks/`** (público, portável — o catálogo abaixo) e **`blocks/local/`** (pessoal do usuário, gitignored — o prompt-forge lê os dois).
+3. Abra o arquivo do bloco, cole o texto + preencha os `<placeholders>` com o domínio real.
+4. Registre no final do bloco usado a lição nova que você aprendeu — a biblioteca cresce com outcome, não com teoria.
+
+> **`blocks/local/`** contém blocos NOT versionados (pessoais do usuário: CLIs, modelos, preferências). O `sync.sh` e o GitHub NÃO propagam esse diretório — ele é local e per-user, evoluindo por usuário.
 
 ## Skills relacionadas
 

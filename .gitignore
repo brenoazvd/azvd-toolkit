@@ -1,3 +1,5 @@
+.claude/skills/prompt-blocks/blocks/local/
 sync.sh
 *.bak
 .thumbs/
+__pycache__/
