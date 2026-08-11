@@ -123,4 +123,4 @@ humano confere, memória coletiva / OKF, teste de decisão autônomo. Adaptaçõ
 ## Para quem mantém o repo
 
 Manutenção (sync nas IAs, vigilância de upstream, instalação manual do agy, bug do marketplace):
-ver **[MAINTENANCE.md](MAINTENANCE.md)**. Regras operacionais: `RULES.md`. Contexto: `CONTEXT.md`.
+documentação de mantenedor fica local (fora do versionamento público), junto do `sync.sh`.
