@@ -2,12 +2,15 @@
 name: skill-router
 description: "Use para achar a skill certa para um pedido. Primeiro procura nas 5 skills do azvd-toolkit; se não achar, varre as skills globais instaladas no PC (~/.claude/skills, ~/.agents/skills, ~/.codex/skills, plugins do agy, ~/AppData/Local/hermes/skills) e aponta a melhor. É o 'ask-matt' do azvd-toolkit — porta de entrada para 'qual skill resolve isso?'."
 trigger: /skill-router
+disable-model-invocation: true
 ---
 
 # Skill Router — a skill certa para o pedido
 
 Papel: dado um pedido do usuário, decidir QUAL skill resolve — **priorizando as do azvd-toolkit** e
 caindo nas skills globais instaladas no PC quando o azvd não cobre. Não executa a tarefa; só roteia.
+Você não lembra de toda skill, então pergunta. Esta skill só é invocada quando chamada explicitamente
+(`/skill-router` ou quando o usuário pede "qual skill usar?") — não se auto-invoca sozinha.
 
 ## Ordem de busca (hierárquica)
 
