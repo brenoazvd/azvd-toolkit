@@ -20,11 +20,20 @@ blocos de prompt validados em campo — um bloco = um arquivo `.md`, no **estilo
 Regra de decisão: **um bloco vai para `blocks/` se ajuda um dev que não conhece você; vai para
 `blocks/local/` se só faz sentido pra você.**
 
-- `blocks/` (B1-B10) **já vem preenchido** no repo — é a base padrão que todo mundo recebe.
-- `blocks/local/` **começa com o guia README** e é preenchido **pelo agente** (`self-learning`) ou
-  por você, um bloco por vez, ao longo do uso.
-- **Nunca crie sozinho** um bloco novo em `blocks/` sem a regra de promoção (F1-F5) E a permissão
-  do usuário. Em `local/` o agente pode colher lições com mais liberdade, mas avisa o usuário.
+**Quem cria cada bloco (política de criação):**
+
+| Pasta | Quem cria | Regra |
+|---|---|---|
+| `blocks/` | **Só o usuário desta skill** (ou o agente a PEDIDO dele) | o usuário decide o que vai pro GitHub pros outros |
+| `blocks/local/` | **qualquer usuário/agente**, com o ritual | o agente deve **avisar e pedir permissão** antes de criar um bloco novo aqui — em `local/` também |
+
+Regras:
+- **`blocks/`** é território de publicação do próprio usuário do toolkit. Novos blocos públicos
+  (B11...) são criados quando ELE decide — e adicionados por ele no GitHub pros outros.
+- **`blocks/local/`** é o território do usuário final. O agente pode colher lições pessoais, mas
+  **sempre avisa e pede permissão antes** de criar um `.md` novo — mesma regra dos blocos públicos.
+- **Nunca crie sozinho** (sem permissão) um bloco novo, nem em `blocks/` nem em `blocks/local/`.
+- Editar/conteúdo de bloco que já existe: automático (sem pedir).
 
 ## Filtro de utilidade (o que merece virar bloco)
 
