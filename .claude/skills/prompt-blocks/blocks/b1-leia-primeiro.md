@@ -14,7 +14,7 @@
   },
   "stale_after": "2027-01-01",
   "sources": [
-    "Padrão agy 2026-08 (OEP)"
+    "Agente que agiu sobre suposição e errou campo/join"
   ]
 }
 ---

@@ -19,7 +19,7 @@
   "sources": [
     "forrestchang/andrej-karpathy-skills (MIT)",
     "Observações de Andrej Karpathy sobre pitfalls de LLM",
-    "Incidente T15.2 (OEP 2026-08-06)"
+    "Builder que reescreveu arquivo inteiro mesmo com instrução explícita"
   ]
 }
 ---
@@ -80,4 +80,4 @@ Critérios fracos ("fazer funcionar") exigem esclarecimento constante.
 
 **Outcome:** diretrizes derivadas das observações de Andrej Karpathy sobre pitfalls de LLM
 ([fonte](https://x.com/karpathy/status/2015883857489522876)); a versão resumida (4 regras de
-execução) já reduziu a classe de violação de escopo no incidente T15.2 (OEP 2026-08-06).
+execução) já reduziu a classe de violação de escopo no incidente de builder que reescreveu arquivo inteiro mesmo com instrução explícita.

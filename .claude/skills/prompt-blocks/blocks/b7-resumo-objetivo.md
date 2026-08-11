@@ -14,7 +14,7 @@
   },
   "stale_after": "2027-01-01",
   "sources": [
-    "Regra 'nunca confiar no resumo' (OEP)"
+    "Usuário que cansou de corrigir resumos imprecisos de agentes"
   ]
 }
 ---

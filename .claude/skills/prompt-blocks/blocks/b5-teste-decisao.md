@@ -14,7 +14,7 @@
   },
   "stale_after": "2027-01-01",
   "sources": [
-    "ticket_etl_retry_agent (OEP 2026-08-10)"
+    "Agente autônomo que precisava decidir caminho sem voltar ao usuário"
   ]
 }
 ---
@@ -27,4 +27,4 @@ PASSO 1 — TESTE DE DECISÃO: rode <comando/teste>. Se <resultado X>, faça <ca
 
 **Quando:** agente externo/autônomo que não pode voltar ao usuário (o teste de decisão dá autonomia sem risco).
 
-**Outcome:** `ticket_etl_retry_agent.txt` (2026-08-10) — testar `DIM_EDU_ETP_TUR` com timeout 600s decide "re-disparar" vs "skip-list", sem depender do usuário.
+**Outcome:** Agente autônomo que, com timeout de 600s num teste de decisão, resolveu "re-disparar" vs "skip-list" sem depender do usuário.

@@ -14,7 +14,7 @@
   },
   "stale_after": "2027-01-01",
   "sources": [
-    "Padrão analyzer→reviewer (OEP 2026-08-10)"
+    "Agente leve analisando e agente forte revisando a mesma investigação"
   ]
 }
 ---
@@ -28,4 +28,4 @@ O QUE JÁ FOI VERIFICADO (não refaça isso):
 
 **Quando:** agente roda em cima de investigação/diagnóstico já feito (padrão analyzer→reviewer).
 
-**Outcome:** 2026-08-10 — revisor Opus 5 validou em cima da análise do agy sem redescobrir; sem a seção, trabalho duplicado e re-verificação de tudo.
+**Outcome:** 2026-08-10 — agente forte revisor validou em cima da análise do agente leve sem redescobrir; sem a seção, trabalho duplicado e re-verificação de tudo.

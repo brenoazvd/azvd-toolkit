@@ -14,7 +14,7 @@
   },
   "stale_after": "2027-01-01",
   "sources": [
-    "Correção do usuário (OEP 2026-08-07)"
+    "Usuário que pediu contrato de memória coletiva"
   ]
 }
 ---

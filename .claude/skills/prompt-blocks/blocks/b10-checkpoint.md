@@ -15,7 +15,7 @@
   "stale_after": "2027-01-01",
   "sources": [
     "vibecode-pro-max-kit (2026)",
-    "agy T13 (OEP)"
+    "Agente que reportou "concluído" sem executar"
   ]
 }
 ---
@@ -31,4 +31,4 @@ CHECKPOINT — escreva ao fim de cada fase, leia ao retomar:
 
 **Quando:** runs longos (multi-ticket, multi-fase) que podem ser cortados por timeout/reset de contexto.
 
-**Outcome:** vibecode-pro-max-kit — "never loses its place": progress notes em disco a cada fase; sessão nova retoma exatamente onde parou. Lição do ecossistema OEP: agy exit 0 com diff vazio (plano ≠ execução) — o checkpoint registra a verdade do que foi FEITO, não do que foi planejado.
+**Outcome:** vibecode-pro-max-kit — "never loses its place": progress notes em disco a cada fase; sessão nova retoma exatamente onde parou. Lição de campo: agente exit 0 com diff vazio (plano ≠ execução) — o checkpoint registra a verdade do que foi FEITO, não do que foi planejado.

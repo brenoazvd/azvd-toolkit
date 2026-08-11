@@ -14,7 +14,7 @@
   },
   "stale_after": "2027-01-01",
   "sources": [
-    "Padrão de comunicação (OEP)"
+    "Padrão de comunicação"
   ]
 }
 ---

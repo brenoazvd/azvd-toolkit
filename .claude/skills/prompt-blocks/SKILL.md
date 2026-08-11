@@ -36,9 +36,9 @@ Ao avaliar uma lição, confira se ela toca um destes padrões — **não dupliq
 | **Delimitadores** (separar contexto/instrução/saída) | prompt longo; evitar mistura de seções | — (novo) |
 | **Chain-of-thought** ("pense antes de responder") | análise/diagnóstico; raciocínio antes da resposta | B3/B7 parcial |
 | **Formato de saída explícito** (JSON/tabela/estrutura) | qualquer entrega | B7 (resumo objetivo) |
-| **Papel/persona** ("você é revisor sênior") | foco e critério de julgamento | padrão analyzer/reviewer OEP |
+| **Papel/persona** ("você é revisor sênior") | foco e critério de julgamento | padrão agente leve/agente forte |
 | **Prompt chaining** (encadear prompts) | tarefa complexa → dividir | task graph (um prompt por ticket) |
-| **Auto-crítica** (revisar o próprio output) | qualidade; revisor separado | reviewer gate OEP |
+| **Auto-crítica** (revisar o próprio output) | qualidade; revisor separado | reviewer gate |
 | **ReAct** (raciocinar + agir) | agentes com ferramentas | nativo nos agentes |
 
 ## Estilo do usuário (detecte ANTES de colher)

@@ -77,7 +77,7 @@ mas NUNCA pule as etapas 3 (ontologia) ou 8 (fusão) — é onde grafos do mundo
    precisão numa amostra de 50 itens antes de prosseguir — recall melhora com mais passadas;
    precisão ruim envenena o grafo permanentemente.
 8. **Fusão de conhecimento** — Mescle duplicatas dentro e entre fontes: mesma entidade real,
-   formas de superfície diferentes ("OEP" = "Grupo OEP" = "Organização Educacional"). Bloqueio +
+   formas de superfície diferentes ("Acme" = "Grupo Acme" = "Acme Corporation"). Bloqueio +
    matching + política de merge. Pular isto é a causa #1 de grafos inúteis.
    Estratégias de matching: [references/fusion-and-llm.md](references/fusion-and-llm.md)
 9. **Servir aos LLMs (KG × LLM)** — Torne o grafo útil aos agentes: recuperação GraphRAG
@@ -118,7 +118,7 @@ mas NUNCA pule as etapas 3 (ontologia) ou 8 (fusão) — é onde grafos do mundo
 ## Task graphs na prática (azvd-toolkit)
 
 As regras de task graph são a teoria por trás dos padrões de orquestração que este toolkit já usa
-(veja a matriz da skill `orchestrator` / `oep-orchestration`):
+(veja a matriz da skill `orchestrator` ):
 
 | Regra (task-graphs.md) | Na prática do toolkit |
 |---|---|
@@ -126,7 +126,7 @@ As regras de task graph são a teoria por trás dos padrões de orquestração q
 | **Diamond** (split → workers → verificador SEPARADO → merge) | analyzer→reviewer→verify; revisor em contexto separado, nunca o próprio autor |
 | **Stop rule** (trabalho divisível = times; sequencial = 1 agente) | "Trabalho sequencial com zero fan-out = main thread, não delegação" |
 | **Human gate** (onde errar é caro de desfazer) | Aprovação antes de tocar produção/legado; não em todo passo |
-| **Guardrails** (max de rodadas, 1 escritor por arquivo, caps) | `--max-turns`/`--print-timeout`; "3 agentes editando o mesmo arquivo = conflito" (incidente ModuloRetencao.tsx) |
+| **Guardrails** (max de rodadas, 1 escritor por arquivo, caps) | `--max-turns`/`--print-timeout`; "3 agentes editando o mesmo componente = conflito) |
 
 ## Skills relacionadas (azvd-toolkit)
 

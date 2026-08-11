@@ -1,6 +1,8 @@
 # azvd-toolkit
 
-Toolkit pessoal de skills para trabalhar com IA — a versão **versionada em repo** do que foi validado em campo (orquestração agêntica claude CLI + agy, graph engineering, padrões de prompt com lição de incidente).
+Toolkit open-source de skills para IA — 5 skills adaptativas para qualquer ecossistema multi-agente.
+
+Toolkit open-source de skills para IA para trabalhar com IA — a versão **versionada em repo** do que foi validado em campo (multi-agentes, graph engineering, padrões de prompt com lição de incidente).
 
 ## As 4 skills
 
@@ -38,7 +40,7 @@ flowchart LR
 
 ## Origem
 
-Validado em produção no ecossistema SaaS OEP (2026-08): tickets autocontidos, padrão analyzer→reviewer→verify (agy analisa → claude opus revisa → orquestrador confere), contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é adaptação de [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT) traduzida para PT-BR, com a metade de task graphs vinda do trabalho DeepMind×MIT. `self-learning` é adaptação de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) — o loop "reconhecer → capturar → reutilizar" com a regra de promoção de 3 verificações, direcionado ao ecossistema deste toolkit (colheita vira bloco no prompt-blocks, linha na matriz do prompt-forge, rota no orchestrator). `prompt-blocks` B9/B10 (memória do projeto, checkpoint) adaptados de [withkynam/vibecode-pro-max-kit](https://github.com/withkynam/vibecode-pro-max-kit) — os 3 repos são vigiados pelo cron semanal de upstream. Padrões de prompt (few-shot, CoT, delimitadores...) vieram do dair-ai/Prompt-Engineering-Guide e f/prompts.chat. Pesquisados e não adotados na rodada: AgentHandover (observa e ensina), rudder (feedback → skills).
+Validado em produção no campo (orquestração multi-agente) (2026-08): tickets autocontidos, padrão agente leve analisa → agente forte revisa → humano confere, contrato de memória OKF, teste de decisão autônomo. `graph-engineering` é adaptação de [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (MIT) traduzida para PT-BR, com a metade de task graphs vinda do trabalho DeepMind×MIT. `self-learning` é adaptação de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) — o loop "reconhecer → capturar → reutilizar" com a regra de promoção de 3 verificações, direcionado ao ecossistema deste toolkit (colheita vira bloco no prompt-blocks, linha na matriz do prompt-forge, rota no orchestrator). `prompt-blocks` B9/B10 (memória do projeto, checkpoint) adaptados de [withkynam/vibecode-pro-max-kit](https://github.com/withkynam/vibecode-pro-max-kit) — os 3 repos são vigiados pelo cron semanal de upstream. Padrões de prompt (few-shot, CoT, delimitadores...) vieram do dair-ai/Prompt-Engineering-Guide e f/prompts.chat. Pesquisados e não adotados na rodada: AgentHandover (observa e ensina), rudder (feedback → skills).
 
 ## Manutenção (sync + vigilância de upstream)
 

@@ -1,6 +1,6 @@
 ---
 name: prompt-forge
-description: "Use para criar/refinar prompts de IA por entrevista interativa (anatomia Tarefa/Método/Meta). O agente pergunta UMA coisa por vez; em dúvida, para e pergunta em vez de inventar. Entrega prompt final pronto para colar (claude CLI, agy, ChatGPT, subagente)."
+description: "Use para criar/refinar prompts de IA por entrevista interativa (anatomia Tarefa/Método/Meta). O agente pergunta UMA coisa por vez; em dúvida, para e pergunta em vez de inventar. Entrega prompt final pronto para colar (qualquer CLI de agente (claude, agy, codex, cursor...))."
 trigger: /prompt-forge
 ---
 
@@ -34,9 +34,9 @@ MÉTODO e da META — nunca entrevista genérica. Quando o usuário já traz uma
 | Tipo | Exemplos | O que o MÉTODO deve puxar | Ferramentas/verbos que o prompt ganha | META típica |
 |---|---|---|---|---|
 | **Criação/Design** | jogo FPS, site, demo, infográfico | Benchmark (o que é "perfeito" aqui? referência real?), stack (ThreeJS? web? nativo?), quem verifica o visual, critério comparativo | sub-agentes por item + `/loop` por item + verificador visual separado e RIGOROSO; "compare às cegas com a referência e diga qual é melhor" | "passa quando compara às cegas com X e ninguém distingue" |
-| **Código** | endpoint, componente, bugfix | repo/arquivos, agente alvo e modelo, gates (tsc/build/probes), escopo cirúrgico | `claude -p --model`, `--allowedTools`, PARE E REPORTE, regras karpathy (cirúrgico), testes | "build+tsc verdes, git diff só toca os arquivos X, probe confirma" |
+| **Código** | endpoint, componente, bugfix | repo/arquivos, agente alvo e modelo, gates (tsc/build/probes), escopo cirúrgico | `seu CLI de código (com as flags de modelo/tempo do agente)`, `--allowedTools`, PARE E REPORTE, regras karpathy (cirúrgico), testes | "build+tsc verdes, git diff só toca os arquivos X, probe confirma" |
 | **Orquestração** | dashboard multi-aba, ETL, N agentes | quantos agentes/CLIs, dependências, onde é o gate humano | task graph (fan-out/diamond/human gate), **um prompt por ticket** (prompt único buga), contrato entre agentes paralelos | "todos os tickets verdes + verificação do orquestrador" |
-| **Análise/Diagnóstico** | "por que o KPI erra?", review de diff | o que JÁ foi verificado (não refaça), fontes, hipóteses a testar | agy analisa → claude Opus revisa → orquestrador confere; probes; seção "O QUE JÁ FOI VERIFICADO" | "causa raiz com evidência (probe/print) + fix mínimo proposto" |
+| **Análise/Diagnóstico** | "por que o KPI erra?", review de diff | o que JÁ foi verificado (não refaça), fontes, hipóteses a testar | agente leve analisa → agente forte revisa → você confere; probes; seção "O QUE JÁ FOI VERIFICADO" | "causa raiz com evidência (probe/print) + fix mínimo proposto" |
 | **Texto/Conteúdo** | artigo, email, resumo, thread | tom, público, estrutura, tamanho, idioma | formato de saída explícito, seções, "sem AI-isms / voz humana" | "entrega no formato X com tom Y, pronto pra enviar" |
 
 Regra: cada linha vira **perguntas específicas** na entrevista e **seções concretas** no prompt final.
@@ -46,9 +46,10 @@ compare às cegas com a referência".
 
 ## Fluxo
 
-1. **Abertura (até 3 perguntas):**
+1. **Abertura (até 4 perguntas):**
    - O que você vai pedir? (1 frase)
-   - Para qual agente? (claude CLI / agy / ChatGPT / subagente / outro)
+   - Para qual agente? (claude CLI / agy / codex / cursor / outro)
+   - **Qual modelo você prefere?** (forte/leve/rápido — ou nome específico) — nunca assuma.
    - Nível de autonomia? (executa tudo / executa e reporta / só analisa)
 2. **A TAREFA** — objetivo verificável, contexto mínimo, entregáveis, o que está FORA do escopo.
 3. **O MÉTODO** — passos numerados, arquivos/ferramentas permitidos, formato de saída, idioma.

@@ -15,7 +15,7 @@
   "stale_after": "2027-01-01",
   "sources": [
     "vibecode-pro-max-kit (2026)",
-    "OKF OEP"
+    "OKF"
   ]
 }
 ---
@@ -31,4 +31,4 @@ MEMÓRIA DO PROJETO — leia no início da sessão, atualize ao final de cada en
 
 **Quando:** projetos com agentes recorrentes; o arquivo (MEMORY.md no repo, OKF `log.md`, ou CLAUDE.md/AGENTS.md) é lido no start e recebe append no fim.
 
-**Outcome:** vibecode-pro-max-kit (2026) — "self-improving project memory": docs nunca ficam stale, a próxima sessão começa sabendo o que a anterior aprendeu. Mesmo princípio do contrato OKF já validado no ecossistema OEP (2026-08-07).
+**Outcome:** vibecode-pro-max-kit (2026) — "self-improving project memory": docs nunca ficam stale, a próxima sessão começa sabendo o que a anterior aprendeu. Mesmo princípio do contrato OKF já validado em campo.
