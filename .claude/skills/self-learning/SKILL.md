@@ -30,7 +30,9 @@ mesmo loop, direcionado ao ecossistema azvd-toolkit (4 skills + 4 IAs).
 | Regra nova de prompt (lição de incidente) | **bloco novo no `prompt-blocks`** — com a lição que o originou |
 | Pergunta/ferramenta que a entrevista deveria puxar | **linha nova na matriz do `prompt-forge`** |
 | Encaminhamento novo (pedido → skill certa) | **linha nova na matriz do `orchestrator`** |
-| Fato único / correção de 1 linha (env var, path) | memória do ecossistema (OKF `log.md` / notas) — skill é overkill |
+| Fato único / correção de 1 linha (env var, path) | memória do projeto (MEMORY.md ou OKF `log.md`) — skill é overkill |
+| Fatos/decisões do projeto que mudam a "doc viva" | **atualizar a memória do projeto** após a entrega (bloco B9 do prompt-blocks) |
+| Run longo que pode ser cortado | **checkpoint de retomada** (bloco B10 — estado REAL, não intenção) |
 | Coisa genuinamente one-off, sem chance de recorrer | pular |
 
 ## Regra de promoção (não enshrinar chute)
