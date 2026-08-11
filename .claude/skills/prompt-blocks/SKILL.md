@@ -7,8 +7,24 @@ trigger: /prompt-blocks
 # Prompt Blocks — protocolo de colheita em blocos
 
 Esta skill **não vem cheia de blocos**: ela ensina o processo de **decidir, criar e manter**
-blocos de prompt validados em campo — um bloco = um arquivo `.md` em `blocks/`, no **estilo OKF**
+blocos de prompt validados em campo — um bloco = um arquivo `.md`, no **estilo OKF**
 (frontmatter v0.2), com a lição que o originou. O conteúdo útil para VOCÊ cresce aqui com o uso.
+
+## Onde cada bloco mora (público vs pessoal)
+
+| O bloco é... | Vai para | Exemplo |
+|---|---|---|
+| **Portável** — ajuda qualquer dev que não te conhece | `blocks/` (público, versionado, padrão) | B1-B10, um futuro B11 de routing |
+| **Só seu** — CLIs, modelo, preferências, tokens | `blocks/local/` (gitignored, não sobe) | seu `meus-clis.md`, config do roteador |
+
+Regra de decisão: **um bloco vai para `blocks/` se ajuda um dev que não conhece você; vai para
+`blocks/local/` se só faz sentido pra você.**
+
+- `blocks/` (B1-B10) **já vem preenchido** no repo — é a base padrão que todo mundo recebe.
+- `blocks/local/` **começa com o guia README** e é preenchido **pelo agente** (`self-learning`) ou
+  por você, um bloco por vez, ao longo do uso.
+- **Nunca crie sozinho** um bloco novo em `blocks/` sem a regra de promoção (F1-F5) E a permissão
+  do usuário. Em `local/` o agente pode colher lições com mais liberdade, mas avisa o usuário.
 
 ## Filtro de utilidade (o que merece virar bloco)
 
