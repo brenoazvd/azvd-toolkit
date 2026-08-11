@@ -19,6 +19,7 @@
     "./skills/prompt-forge",
     "./skills/prompt-blocks",
     "./skills/graph-engineering",
-    "./skills/self-learning"
+    "./skills/self-learning",
+    "./skills/skill-router"
   ]
 }

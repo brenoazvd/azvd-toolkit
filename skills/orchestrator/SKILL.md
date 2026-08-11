@@ -18,6 +18,8 @@ Papel: receber o pedido do usuário e rotear para a skill certa (ou encadear). *
 | "orquestra N agentes/CLIs/tickets pra fazer X" / "planeja em fases" | `graph-engineering` → `references/task-graphs.md` (fan-out, diamond, human gate) + `prompt-forge` (UM prompt por ticket) |
 | "quero aprender graph engineering" | `graph-engineering` (modo ensino, diagramas por etapa) |
 | "aprendi algo novo" / "lembra disso" / lição da sessão | `self-learning` (colhe o golden path e atualiza as skills) |
+| "qual skill resolve isso?" / "não sei qual skill usar" | `skill-router` (1º azvd, 2º skills globais do PC) |
+| "segurança/review de segurança/ache secrets/vulnerabilidade" | `skill-router` → `SecuritySkills` (global; instalar com `npx skills add UnitOneAI/SecuritySkills -g`) |
 | pedido misto (ex.: prompt + orquestração) | encadear: `prompt-forge` → `graph-engineering` (ou vice-versa) |
 | intenção ambígua | **PERGUNTAR** — uma pergunta, formato A/B com recomendação |
 

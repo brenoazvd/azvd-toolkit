@@ -1,22 +1,17 @@
 ---
-{
-  "type": "PromptBlock",
-  "title": "B1 · LEIA PRIMEIRO (read-first)",
-  "description": "Bloco que obriga o agente a ler arquivos de contexto antes de agir.",
-  "tags": [
-    "prompt",
-    "contexto"
-  ],
-  "status": "active",
-  "generated": {
-    "by": "brenoazvd",
-    "at": "2026-08-11"
-  },
-  "stale_after": "2027-01-01",
-  "sources": [
-    "Agente que agiu sobre suposição e errou campo/join"
-  ]
-}
+type: PromptBlock
+title: B1 · LEIA PRIMEIRO (read-first)
+description: Bloco que obriga o agente a ler arquivos de contexto antes de agir.
+tags:
+  - prompt
+  - contexto
+status: active
+generated:
+  by: brenoazvd
+  at: 2026-08-11
+stale_after: 2027-01-01
+sources:
+  - Agente que agiu sobre suposição e errou campo/join
 ---
 
 # B1 · LEIA PRIMEIRO (read-first)

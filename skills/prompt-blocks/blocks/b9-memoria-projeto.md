@@ -1,23 +1,18 @@
 ---
-{
-  "type": "PromptBlock",
-  "title": "B9 · Memória do projeto",
-  "description": "Bloco de memória viva: ler no início, atualizar ao final de cada entrega.",
-  "tags": [
-    "prompt",
-    "memoria"
-  ],
-  "status": "active",
-  "generated": {
-    "by": "brenoazvd",
-    "at": "2026-08-11"
-  },
-  "stale_after": "2027-01-01",
-  "sources": [
-    "vibecode-pro-max-kit (2026)",
-    "OKF"
-  ]
-}
+type: PromptBlock
+title: B9 · Memória do projeto
+description: "Bloco de memória viva: ler no início, atualizar ao final de cada entrega."
+tags:
+  - prompt
+  - memoria
+status: active
+generated:
+  by: brenoazvd
+  at: 2026-08-11
+stale_after: 2027-01-01
+sources:
+  - vibecode-pro-max-kit (2026)
+  - OKF
 ---
 
 # B9 · Memória do projeto (auto-atualizada)

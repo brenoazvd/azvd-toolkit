@@ -142,6 +142,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 
 ## Skills relacionadas
 
+- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é blocos/prompt.
 - `prompt-forge` — entrevista que monta o prompt e compõe estes blocos (lê o catálogo).
 - `orchestrator` — roteador do toolkit.
 - `self-learning` — protocolo de colheita que alimenta esta biblioteca (usa este filtro).

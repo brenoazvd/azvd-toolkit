@@ -130,6 +130,7 @@ As regras de task graph são a teoria por trás dos padrões de orquestração q
 
 ## Skills relacionadas (azvd-toolkit)
 
+- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é grafos/knowledge.
 - `orchestrator` — roteador: decide quando esta skill entra.
 - `prompt-forge` — gera os prompts/tickets quando um task graph vira execução (um prompt por
   ticket — nunca um prompt gigante).

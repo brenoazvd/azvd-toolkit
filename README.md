@@ -1,14 +1,15 @@
 # azvd-toolkit
 
-Toolkit open-source de skills para IA — 5 skills adaptativas para qualquer ecossistema multi-agente.
+Toolkit open-source de skills para IA — 6 skills adaptativas para qualquer ecossistema multi-agente
+(multi-agentes, graph engineering, prompt engineering, segurança). Versionado em repo a partir do
+que foi validado em campo.
 
-Toolkit open-source de skills para IA para trabalhar com IA — a versão **versionada em repo** do que foi validado em campo (multi-agentes, graph engineering, padrões de prompt com lição de incidente).
-
-## As 4 skills
+## As 6 skills
 
 | Skill | Função | Trigger |
 |---|---|---|
-| `orchestrator` | Roteador: decide qual skill usar e encadeia | `/orchestrator` |
+| `skill-router` | Porta de entrada: acha a skill certa (1º azvd, 2º skills globais do PC) — o "ask-matt" do toolkit | `/skill-router` |
+| `orchestrator` | Roteador: decide qual skill usar e encadeia (dentro do azvd) | `/orchestrator` |
 | `prompt-forge` | Monta prompts por entrevista interativa e ADAPTATIVA (anatomia Tarefa/Método/Meta + matriz por tipo de pedido) | `/prompt-forge` |
 | `prompt-blocks` | Biblioteca de blocos comprovados, cada um com a lição de incidente que o originou | `/prompt-blocks` |
 | `graph-engineering` | Task graphs (orquestração multi-agente) + knowledge graphs (pipeline de 9 etapas) | `/graph-engineering` |
@@ -18,7 +19,8 @@ Toolkit open-source de skills para IA para trabalhar com IA — a versão **vers
 
 ```mermaid
 flowchart LR
-  U[Usuário] --> O[orchestrator]
+  U[Usuário] --> SR[skill-router]
+  SR --> O[orchestrator]
   O --> PF[prompt-forge]
   O --> GE[graph-engineering]
   O --> PB[prompt-blocks]
@@ -31,12 +33,23 @@ flowchart LR
   SL --> O
 ```
 
-- `orchestrator` roteia e encadeia (primeira parada de qualquer pedido).
+- `skill-router` acha a skill (1º azvd, 2º globais); `orchestrator` roteia dentro do azvd.
 - `prompt-forge` monta o prompt e compõe com blocos de `prompt-blocks`.
 - `graph-engineering` planeja a orquestração (fan-out, diamond, human gate); cada ticket vira prompt no `prompt-forge`.
 - `prompt-blocks` guarda as lições (outcome) que alimentam todas.
 
 **Regra central:** prompt único gigante buga a IA — tarefa multi-etapa = task graph + um prompt por ticket.
+
+## Skills globais adicionais (não fazem parte do azvd, mas o skill-router vê)
+
+O `skill-router` varre skills globais instaladas no PC (`~/.claude/skills`, `~/.agents/skills`,
+`~/.codex/skills`, plugins do agy, Hermes). Para adicionar uma skill de domínio (ex.: segurança),
+instale globalmente via `npx skills`:
+
+```bash
+# SecuritySkills — framework de segurança (45 skills: AI-security, AppSec, Cloud, Compliance...)
+npx skills add UnitOneAI/SecuritySkills -g
+```
 
 ## Origem
 

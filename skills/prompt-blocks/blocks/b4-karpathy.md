@@ -1,27 +1,22 @@
 ---
-{
-  "type": "PromptBlock",
-  "title": "B4 · Regras karpathy (guidelines completas)",
-  "description": "Guidelines comportamentais completas para builders: pensar antes de codar, simplicidade, mudanças cirúrgicas e execução orientada a objetivo.",
-  "tags": [
-    "prompt",
-    "execucao",
-    "escopo",
-    "simplicidade",
-    "qualidade"
-  ],
-  "status": "active",
-  "generated": {
-    "by": "brenoazvd",
-    "at": "2026-08-11"
-  },
-  "stale_after": "2027-01-01",
-  "sources": [
-    "forrestchang/andrej-karpathy-skills (MIT)",
-    "Observações de Andrej Karpathy sobre pitfalls de LLM",
-    "Builder que reescreveu arquivo inteiro mesmo com instrução explícita"
-  ]
-}
+type: PromptBlock
+title: B4 · Regras karpathy (guidelines completas)
+description: "Guidelines comportamentais completas para builders: pensar antes de codar, simplicidade, mudanças cirúrgicas e execução orientada a objetivo."
+tags:
+  - prompt
+  - execucao
+  - escopo
+  - simplicidade
+  - qualidade
+status: active
+generated:
+  by: brenoazvd
+  at: 2026-08-11
+stale_after: 2027-01-01
+sources:
+  - forrestchang/andrej-karpathy-skills (MIT)
+  - Observações de Andrej Karpathy sobre pitfalls de LLM
+  - Builder que reescreveu arquivo inteiro mesmo com instrução explícita
 ---
 
 # B4 · Regras karpathy (guidelines completas)

@@ -25,6 +25,20 @@ Sem a META a IA define o próprio critério de parada (e erra). Sem o MÉTODO el
 5. **Não aceite "entendeu?".** Peça aplicação: "me dá um exemplo de entrada e a saída que você espera".
 6. **Só entrega o prompt final quando as 3 seções estiverem preenchidas sem lacuna.**
 
+### Modo headless / sem usuário (`-p`, script, subagente)
+
+Se NÃO houver usuário interativo para responder a entrevista (modo `-p`, automação, ou quando o
+agente é chamado por outro agente), a regra 2 muda:
+
+- **NÃO invente respostas em silêncio.** Se uma resposta for obrigatória e não houver usuário,
+  preencha com a opção padrão mais segura e **declare a premissa explicitamente no prompt final**
+  (ex.: "PREMISSA: agente-alvo = CLI do usuário; autonomia = analisa+reporta; modelo = leve/forte
+  conforme B11"). 
+- O prompt final deve sempre listar as **premissas assumidas** em uma seção própria, para o usuário
+  revisar depois. É a forma de "perguntar" quando não dá pra perguntar.
+- Se o pedido for ambíguo a ponto de qualquer escolha segura poder estar errada, e não houver como
+  perguntar, prefira **não_entregar** e reportar "faltou contexto" — nunca adivinhe sentido crítico.
+
 ## Entrevista adaptativa (matriz por tipo de pedido)
 
 Na abertura, **identifique o TIPO do pedido** e use a linha da matriz para guiar as perguntas do
@@ -49,7 +63,7 @@ compare às cegas com a referência".
 1. **Abertura (até 4 perguntas):**
    - O que você vai pedir? (1 frase)
    - Para qual agente? (claude CLI / agy / codex / cursor / outro)
-   - **Qual modelo você prefere?** — sugerir pelo TIPO de pedido (use o bloco `prompt-blocks/blocks/b11-roteamento-modelos.md`): análise/exploração → modelo "leve", execução/código → "forte", revisão → "mais forte". **Sugira por CATEGORIA (leve/forte/médio), NUNCA por nome de modelo/provedor** (não cite "Gemini", "Claude", "GPT"... — quem escolhe o nome é o usuário). Ofereça a categoria e pergunte qual ele prefere.
+   - **Qual modelo você prefere?** — sugerir pelo TIPO de pedido (use o bloco `skills/prompt-blocks/blocks/b11-roteamento-modelos.md`): análise/exploração → modelo "leve", execução/código → "forte", revisão → "mais forte". **Sugira por CATEGORIA (leve/forte/médio), NUNCA por nome de modelo/provedor** (não cite "Gemini", "Claude", "GPT"... — quem escolhe o nome é o usuário). Ofereça a categoria e pergunte qual ele prefere.
    - Nível de autonomia? (executa tudo / executa e reporta / só analisa)
 2. **A TAREFA** — objetivo verificável, contexto mínimo, entregáveis, o que está FORA do escopo.
 3. **O MÉTODO** — passos numerados, arquivos/ferramentas permitidos, formato de saída, idioma.
@@ -70,9 +84,17 @@ compare às cegas com a referência".
 
 ## Skills relacionadas
 
+- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é "montar prompt".
 - `prompt-blocks` — blocos comprovados (com lição de incidente) para compor as seções.
 - `orchestrator` — roteador do toolkit (quando usar esta skill).
 - `graph-engineering` — se o pedido virar orquestração multi-agente (task graph).
+
+### Como usar os blocos do prompt-blocks (obrigatório)
+
+Quando o fluxo disser "componha com blocos", **abra de verdade os arquivos** em
+`skills/prompt-blocks/blocks/` e **cole o texto do bloco real** (B1-B11) no prompt que está
+montando — não improvise a partir da memória. Leia o `skills/prompt-blocks/SKILL.md` (catálogo) e
+abra o(s) bloco(s) aplicável(eis) antes de preencher o placeholder.
 
 ## Auto-atualização
 

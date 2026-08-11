@@ -78,6 +78,7 @@ especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de 
 
 ## Skills relacionadas
 
+- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é aprendizado/lição.
 - `orchestrator` — roteia para esta skill quando o pedido é "aprendi algo novo".
 - `prompt-blocks` / `prompt-forge` — destinos principais da colheita.
 - `graph-engineering` — se a colheita virar um mapa de conhecimento, use o pipeline KG.

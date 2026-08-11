@@ -1,27 +1,22 @@
 ---
-{
-  "type": "PromptBlock",
-  "title": "B11 · Roteamento de modelos (heurísticas)",
-  "description": "Sugestão de qual modelo usar por tipo de tarefa (leve/forte/mais forte) com fallback — sem hardcode de modelos, sempre confirma com o usuário. Não entra no GitHub com preferência pessoal.",
-  "tags": [
-    "prompt",
-    "routing",
-    "modelos",
-    "custo",
-    "orquestracao"
-  ],
-  "status": "active",
-  "generated": {
-    "by": "brenoazvd",
-    "at": "2026-08-11"
-  },
-  "stale_after": "2027-01-01",
-  "sources": [
-    "RouterPatterns OEP (leve analisa → forte revisa → humano confere)",
-    "awesome-model-routing (RouteLLM, ClawRouter, Agent-as-a-Router)",
-    "Prompt-Engineering-Guide (técnicas p/ esforço)"
-  ]
-}
+type: PromptBlock
+title: B11 · Roteamento de modelos (heurísticas)
+description: Sugestão de qual modelo usar por tipo de tarefa (leve/forte/mais forte) com fallback — sem hardcode de modelos, sempre confirma com o usuário. Não entra no GitHub com preferência pessoal.
+tags:
+  - prompt
+  - routing
+  - modelos
+  - custo
+  - orquestracao
+status: active
+generated:
+  by: brenoazvd
+  at: 2026-08-11
+stale_after: 2027-01-01
+sources:
+  - RouterPatterns OEP (leve analisa → forte revisa → humano confere)
+  - awesome-model-routing (RouteLLM, ClawRouter, Agent-as-a-Router)
+  - Prompt-Engineering-Guide (técnicas p/ esforço)
 ---
 
 # B11 · Roteamento de modelos (heurísticas)
