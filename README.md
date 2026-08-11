@@ -2,8 +2,9 @@
 
 Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas que funcionam em qualquer
 ecossistema multi-agente, dos comerciais (Claude Code, Codex, Cursor) aos open source (Kiro,
-OpenClaw, Antigravity/agy, Hermes). Elas cobrem **orquestração**, **prompt engineering**, **graph
-engineering** e **auto-aprendizado**, e foram validadas em campo (não são teoria).
+OpenClaw, Antigravity/agy, Hermes), entre outros. Elas cobrem **orquestração**, **prompt
+engineering**, **graph engineering** e **auto-aprendizado**, e foram validadas em campo (não são
+teoria).
 
 > Cada skill é pequena, adaptável e composável. Funciona com qualquer modelo. Faça delas as suas.
 
