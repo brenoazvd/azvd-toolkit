@@ -49,7 +49,7 @@ compare às cegas com a referência".
 1. **Abertura (até 4 perguntas):**
    - O que você vai pedir? (1 frase)
    - Para qual agente? (claude CLI / agy / codex / cursor / outro)
-   - **Qual modelo você prefere?** — sugerir pelo TIPO de pedido (use o bloco `prompt-blocks/blocks/b11-roteamento-modelos.md`): para análise/exploração sugira modelo leve, para execução/código forte, para revisão mais forte. Nunca assuma — ofereça a sugestão e pergunte.
+   - **Qual modelo você prefere?** — sugerir pelo TIPO de pedido (use o bloco `prompt-blocks/blocks/b11-roteamento-modelos.md`): análise/exploração → modelo "leve", execução/código → "forte", revisão → "mais forte". **Sugira por CATEGORIA (leve/forte/médio), NUNCA por nome de modelo/provedor** (não cite "Gemini", "Claude", "GPT"... — quem escolhe o nome é o usuário). Ofereça a categoria e pergunte qual ele prefere.
    - Nível de autonomia? (executa tudo / executa e reporta / só analisa)
 2. **A TAREFA** — objetivo verificável, contexto mínimo, entregáveis, o que está FORA do escopo.
 3. **O MÉTODO** — passos numerados, arquivos/ferramentas permitidos, formato de saída, idioma.

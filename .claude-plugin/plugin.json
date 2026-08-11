@@ -15,10 +15,10 @@
     "skills"
   ],
   "skills": [
-    "./.claude/skills/orchestrator",
-    "./.claude/skills/prompt-forge",
-    "./.claude/skills/prompt-blocks",
-    "./.claude/skills/graph-engineering",
-    "./.claude/skills/self-learning"
+    "./skills/orchestrator",
+    "./skills/prompt-forge",
+    "./skills/prompt-blocks",
+    "./skills/graph-engineering",
+    "./skills/self-learning"
   ]
 }

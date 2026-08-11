@@ -123,7 +123,7 @@ Descobertas do caminho (2026-08-10):
 
 ```bash
 # Cópia direta para o diretório de skills do Hermes (fica ativo na próxima sessão):
-cp -r .claude/skills/{orchestrator,prompt-forge,prompt-blocks,graph-engineering} \
+cp -r skills/{orchestrator,prompt-forge,prompt-blocks,graph-engineering} \
       ~/AppData/Local/hermes/skills/
 ```
 
@@ -132,11 +132,11 @@ cp -r .claude/skills/{orchestrator,prompt-forge,prompt-blocks,graph-engineering}
 ```bash
 # opção 1 — junction (fonte = este repo; edita aqui, vale no ~/.claude)
 # cmd (Windows), uma por skill:
-mklink /J "%USERPROFILE%\.claude\skills\orchestrator"       "%~dp0.claude\skills\orchestrator"
-mklink /J "%USERPROFILE%\.claude\skills\prompt-forge"       "%~dp0.claude\skills\prompt-forge"
-mklink /J "%USERPROFILE%\.claude\skills\prompt-blocks"      "%~dp0.claude\skills\prompt-blocks"
-mklink /J "%USERPROFILE%\.claude\skills\graph-engineering"  "%~dp0.claude\skills\graph-engineering"
+mklink /J "%USERPROFILE%\.claude\skills\orchestrator"       "%~dp0skills\orchestrator"
+mklink /J "%USERPROFILE%\.claude\skills\prompt-forge"       "%~dp0skills\prompt-forge"
+mklink /J "%USERPROFILE%\.claude\skills\prompt-blocks"      "%~dp0skills\prompt-blocks"
+mklink /J "%USERPROFILE%\.claude\skills\graph-engineering"  "%~dp0skills\graph-engineering"
 
 # opção 2 — cópia (simples, mas dessincroniza):
-cp -r .claude/skills/* ~/.claude/skills/
+cp -r skills/* ~/.claude/skills/
 ```
