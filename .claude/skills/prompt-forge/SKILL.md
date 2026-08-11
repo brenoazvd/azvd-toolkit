@@ -25,6 +25,25 @@ Sem a META a IA define o próprio critério de parada (e erra). Sem o MÉTODO el
 5. **Não aceite "entendeu?".** Peça aplicação: "me dá um exemplo de entrada e a saída que você espera".
 6. **Só entrega o prompt final quando as 3 seções estiverem preenchidas sem lacuna.**
 
+## Entrevista adaptativa (matriz por tipo de pedido)
+
+Na abertura, **identifique o TIPO do pedido** e use a linha da matriz para guiar as perguntas do
+MÉTODO e da META — nunca entrevista genérica. Quando o usuário já traz uma referência de qualidade
+(ex.: "nível Call of Duty"), transforme-a em **benchmark objetivo** (alvo comparável, quem julga, critério).
+
+| Tipo | Exemplos | O que o MÉTODO deve puxar | Ferramentas/verbos que o prompt ganha | META típica |
+|---|---|---|---|---|
+| **Criação/Design** | jogo FPS, site, demo, infográfico | Benchmark (o que é "perfeito" aqui? referência real?), stack (ThreeJS? web? nativo?), quem verifica o visual, critério comparativo | sub-agentes por item + `/loop` por item + verificador visual separado e RIGOROSO; "compare às cegas com a referência e diga qual é melhor" | "passa quando compara às cegas com X e ninguém distingue" |
+| **Código** | endpoint, componente, bugfix | repo/arquivos, agente alvo e modelo, gates (tsc/build/probes), escopo cirúrgico | `claude -p --model`, `--allowedTools`, PARE E REPORTE, regras karpathy (cirúrgico), testes | "build+tsc verdes, git diff só toca os arquivos X, probe confirma" |
+| **Orquestração** | dashboard multi-aba, ETL, N agentes | quantos agentes/CLIs, dependências, onde é o gate humano | task graph (fan-out/diamond/human gate), **um prompt por ticket** (prompt único buga), contrato entre agentes paralelos | "todos os tickets verdes + verificação do orquestrador" |
+| **Análise/Diagnóstico** | "por que o KPI erra?", review de diff | o que JÁ foi verificado (não refaça), fontes, hipóteses a testar | agy analisa → claude Opus revisa → orquestrador confere; probes; seção "O QUE JÁ FOI VERIFICADO" | "causa raiz com evidência (probe/print) + fix mínimo proposto" |
+| **Texto/Conteúdo** | artigo, email, resumo, thread | tom, público, estrutura, tamanho, idioma | formato de saída explícito, seções, "sem AI-isms / voz humana" | "entrega no formato X com tom Y, pronto pra enviar" |
+
+Regra: cada linha vira **perguntas específicas** na entrevista e **seções concretas** no prompt final.
+Ex.: pedido de jogo → perguntar "qual a referência de qualidade? quem vai verificar o visual?" e o
+prompt final ganha "distribua sub-agentes, cada um com `/loop`, e um crítico visual separado que
+compare às cegas com a referência".
+
 ## Fluxo
 
 1. **Abertura (até 3 perguntas):**
