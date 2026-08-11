@@ -21,7 +21,8 @@ Este é um repositório **público**. Qualquer pessoa ou IA que editar aqui deve
 6. **Skills relacionadas:** aponte para skills que EXISTEM neste toolkit. Não referencie skills
    externas como se fossem parte dele.
 7. **Um bloco = um arquivo em `blocks/`.** SKILL.md é só catálogo — nunca cresce com conteúdo
-   de bloco novo.
+   de bloco novo. `blocks/local/` é espaço PESSOAL do usuário (gitignored, não versionado):
+   quem clona o repo cria o próprio `local/` vazio e o evolve com o uso; nunca propagar no sync.
 8. **Traduções:** todo conteúdo público em PT-BR. Referências acadêmicas originais podem ficar
    no idioma fonte (com nota).
 
