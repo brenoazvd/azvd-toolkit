@@ -128,6 +128,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 | B8 · Entrevista A/B | `blocks/b8-entrevista-ab.md` | skills interativas |
 | B9 · Memória do projeto | `blocks/b9-memoria-projeto.md` | agentes recorrentes (docs nunca stale) |
 | B10 · Checkpoint | `blocks/b10-checkpoint.md` | runs longos com retomada |
+| B11 · Roteamento de modelos | `blocks/b11-roteamento-modelos.md` | escolher "qual modelo" por tipo de tarefa (leve/forte/mais forte) |
 | KG: blocos `/kg-*` (tutor, scope, schema, extract, relations, events, fuse, eval, rag) | `graph-engineering/references/workflows.md` | prompts prontos para colar do domínio de knowledge graph |
 
 ## Como usar
