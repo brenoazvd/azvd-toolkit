@@ -6,13 +6,12 @@ ecossistema multi-agente (Claude Code, Codex, Cursor, Antigravity/agy, Hermes). 
 validados em campo (não são teoria).
 
 > Cada skill é pequena, adaptável e composável. Funciona com qualquer modelo. Faça delas as suas.
-> — inspirado na filosofia das skills do [Matt Pocock](https://github.com/mattpocock/skills)
 
 ## As 6 skills
 
 | Skill | O que faz | Trigger |
 |---|---|---|
-| `skill-router` | **Porta de entrada**: acha a skill certa (1º no azvd, 2º nas skills globais do seu PC) — o "ask-matt" do toolkit | `/skill-router` |
+| `skill-router` | **Porta de entrada**: acha a skill certa (1º no azvd, 2º nas skills globais do seu PC) | `/skill-router` |
 | `orchestrator` | **Roteador**: decide qual skill do azvd usar e encadeia elas | `/orchestrator` |
 | `prompt-forge` | **Monta prompts** por entrevista interativa e adaptativa (anatomia Tarefa/Método/Meta + matriz por tipo de pedido) | `/prompt-forge` |
 | `prompt-blocks` | **Biblioteca de blocos** de prompt comprovados, cada um com a lição de incidente que o originou | `/prompt-blocks` |
@@ -112,11 +111,14 @@ Depois disso, `/skill-router "review de segurança"` encontra a skill certa auto
 
 Validado em campo (2026): tickets autocontidos, padrão agente leve analisa → agente forte revisa →
 humano confere, memória coletiva / OKF, teste de decisão autônomo. Adaptações (MIT):
-- `graph-engineering` ← [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (PT-BR; task graphs baseados no DeepMind×MIT).
+
+- `graph-engineering` ← [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering) (PT-BR; task graphs baseados no [DeepMind×MIT](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/)).
 - `self-learning` ← [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills).
 - `prompt-blocks` B9/B10 ← [withkynam/vibecode-pro-max-kit](https://github.com/withkynam/vibecode-pro-max-kit).
-- Padrões de prompt (few-shot, CoT, delimitadores) ← dair-ai/Prompt-Engineering-Guide e f/prompts.chat.
-- `skill-router` filosofia ← mattpocock/ask-matt.
+- `prompt-blocks` B4(karpathy) ← [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) (baseado nas observações de [Andrej Karpathy](https://x.com/karpathy/status/2015883857489522876)).
+- Padrões de prompt (few-shot, CoT, delimitadores) ← [dair-ai/Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) e [f/prompts.chat](https://github.com/f/prompts.chat).
+- `skill-router` (filosofia) ← [mattpocock/ask-matt](https://github.com/mattpocock/skills).
+- Arquitetura geral do repo e filosofia "make them your own" ← [mattpocock/skills](https://github.com/mattpocock/skills).
 
 ## Para quem mantém o repo
 
