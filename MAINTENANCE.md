@@ -37,6 +37,21 @@ Falha com `Invalid marketplace source format` no v2.1.224-226 (mesmo com repo of
 editar `~/.claude/plugins/known_marketplaces.json` + `claude plugin marketplace update azvd`. Ver
 `RULES.md`/histórico.
 
+## Claude: ler skills/blocos de plugin em modo `-p` (headless)
+
+Em modo `-p` (não interativo), o claude NÃO lê arquivos fora do working dir (ex.: as skills dos
+blocos ficam em `~/.claude/plugins/cache/azvd/...`), e como não há como aprovar interativamente,
+o run trava pedindo permissão. **Fix persistente**: adicionar permissão de leitura no
+`~/.claude/settings.json`:
+
+```json
+{ "permissions": { "allow": ["Read(~/.claude/plugins/cache/azvd/**)"] } }
+```
+
+O `**` cobre qualquer versão do cache. Alternativas: `--add-dir <path>` (só por run) ou
+`--dangerously-skip-permissions` (inseguro). Prova validada: após o fix, `claude -p` leu o bloco
+B2 do cache do plugin sem `--add-dir`.
+
 ## Notas do agy (instalação manual)
 
 - Plugin em `~/.gemini/config/plugins/azvd-toolkit/` — manifest completo + pastas REAIS (não junction) + frontmatter SEM trigger, porque o agy rejeita campos que não conhece.
