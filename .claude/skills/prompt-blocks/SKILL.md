@@ -41,7 +41,26 @@ Ao avaliar uma lição, confira se ela toca um destes padrões — **não dupliq
 | **Auto-crítica** (revisar o próprio output) | qualidade; revisor separado | reviewer gate OEP |
 | **ReAct** (raciocinar + agir) | agentes com ferramentas | nativo nos agentes |
 
-## Criação no estilo OKF (como as pessoas armazenam)
+## Estilo do usuário (detecte ANTES de colher)
+
+Cada usuário armazena conhecimento do seu jeito. **No primeiro uso (ou quando for criar algo),
+descubra o estilo** — pergunte ou detecte pelos arquivos existentes:
+
+| Estilo | Sinais | Onde guardar fatos de 1 linha / lições negativas |
+|---|---|---|
+| **OKF** (bundle com índice) | `index.md` + `log.md` + `okf_check.py` | `log.md` do bundle, concepts com frontmatter v0.2 |
+| **MEMORY.md** / notas no repo | `MEMORY.md` no repo | `MEMORY.md` (append) |
+| **Instruções permanentes** | `CLAUDE.md` / `AGENTS.md` | bloco novo no arquivo de instruções |
+| **Auto-memory do agente** | `~/.claude/projects/.../memory/` | memória automática do agente |
+| **Nenhum** | nada encontrado | proponha o mais simples (MEMORY.md) |
+
+Regras:
+- **Blocos novos sempre em `blocks/` desta skill** (são portáveis entre agentes e estilos) — o
+  frontmatter usa o estilo do usuário; **default: OKF v0.2** (mostrado abaixo).
+- Fatos de 1 linha e recusas do filtro vão para o local do estilo detectado — **nunca assuma OKF
+  sem confirmar**.
+
+## Criação no estilo do usuário (default: OKF)
 
 Cada bloco = **1 arquivo** em `blocks/` com frontmatter OKF v0.2:
 

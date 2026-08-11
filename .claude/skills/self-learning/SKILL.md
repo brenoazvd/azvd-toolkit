@@ -12,6 +12,13 @@ Meta-skill: não faz o trabalho — captura **COMO** o trabalho foi feito, inclu
 Adaptada de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) —
 mesmo loop, direcionado ao ecossistema azvd-toolkit (4 skills + 4 IAs).
 
+## Estilo do usuário (detecte ANTES de colher)
+
+Cada usuário armazena conhecimento do seu jeito — **nunca assuma OKF**. Detecte ou pergunte:
+OKF (`index.md`+`log.md`), `MEMORY.md` no repo, `CLAUDE.md`/`AGENTS.md`, auto-memory do agente,
+ou nenhum (proponha o mais simples). Fatos de 1 linha e lições negativas vão para o local do
+estilo detectado; blocos novos sempre para `blocks/` do prompt-blocks (portáveis).
+
 ## O loop (igual em qualquer IA)
 
 1. **Reconhecer o momento** — qualquer sinal destes é gatilho:
