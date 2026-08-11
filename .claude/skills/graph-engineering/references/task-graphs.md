@@ -1,35 +1,35 @@
-# Task Graphs: Orchestrating Agents
-*(The execution half of graph engineering — how agents work, as opposed to what they remember)*
+# Task Graphs: Orquestrando Agentes
+*(A metade de execução do graph engineering — como agentes trabalham, em vez do que eles lembram)*
 
-## Contents
-- [What a task graph is](#what-a-task-graph-is)
+## Conteúdo
+- [O que é um task graph](#o-que-é-um-task-graph)
 - [Fake edges](#fake-edges)
-- [The diamond pattern](#the-diamond-pattern)
-- [The stop rule](#the-stop-rule)
-- [The human gate](#the-human-gate)
+- [O padrão diamond](#o-padrão-diamond)
+- [A stop rule](#a-stop-rule)
+- [O gate humano](#o-gate-humano)
 - [Guardrails](#guardrails)
 
-## What a task graph is
+## O que é um task graph
 
-Nodes are jobs — each one something you would hand to a single assistant (research one
-competitor, write one draft, check one claim). Draw an arrow only when a job needs another
-job's *result* before it can start. The drawing is the plan; agents flow through it.
-A small state object (what was found, what was decided, what remains) travels with the work.
+Nós são trabalhos — cada um algo que você entregaria a um único assistente (pesquisar um
+concorrente, escrever um rascunho, checar uma afirmação). Desenhe uma seta SÓ quando um trabalho
+precisa do *resultado* de outro antes de começar. O desenho é o plano; os agentes fluem por ele.
+Um pequeno objeto de estado (o que foi achado, o que foi decidido, o que falta) viaja com o trabalho.
 
-This is a DAG — the pattern that has run data infrastructure for decades (Airflow, Prefect,
-Temporal) now applied to agents (LangGraph, CrewAI, AutoGen). The age of the pattern is a
-feature: trust your business to machinery with decades of production history.
+Isto é um DAG — o padrão que roda a infraestrutura de dados há décadas (Airflow, Prefect,
+Temporal) agora aplicado a agentes (LangGraph, CrewAI, AutoGen). A idade do padrão é uma
+característica: confie seu negócio a maquinário com décadas de história em produção.
 
 ## Fake edges
 
-The first optimization costs nothing: for every "and then" in an existing pipeline, ask
-whether the next job actually reads the previous job's output. "Summarize this file and then
-check my calendar" — the calendar step never uses the summary; the edge is fake. Delete fake
-edges and those jobs run in parallel. Most hand-built pipelines contain two or three.
+A primeira otimização custa nada: para cada "e depois" num pipeline existente, pergunte se o
+próximo trabalho realmente LÊ a saída do anterior. "Resuma este arquivo e depois cheque minha
+agenda" — o passo da agenda nunca usa o resumo; a aresta é falsa. Delete fake edges e esses
+trabalhos rodam em paralelo. A maioria dos pipelines feitos à mão contém duas ou três.
 
-## The diamond pattern
+## O padrão diamond
 
-The shape serious systems converge to:
+A forma para onde sistemas sérios convergem:
 
 ```
         ┌─ worker 1 ─┐
@@ -37,39 +37,39 @@ plan ───┼─ worker 2 ─┼─→ verify ─→ merge ─→ result
         └─ worker 3 ─┘
 ```
 
-Split the task into independent angles, run workers in parallel, **verify in a separate
-context**, merge survivors. The verification node is non-negotiable: a model grading its own
-work in its own context misses most of its own mistakes. Give each verifier a different
-question (is it correct? is it current? is the source real?) — diverse skeptics catch what
-identical ones cannot.
+Divida a tarefa em ângulos independentes, rode os workers em paralelo, **verifique em um contexto
+separado**, mescle os sobreviventes. O nó de verificação é inegociável: um modelo avaliando o
+próprio trabalho no próprio contexto perde a maioria dos próprios erros. Dê a cada verificador uma
+pergunta diferente (está correto? está atual? a fonte é real?) — céticos diversos pegam o que
+idênticos não pegam.
 
-## The stop rule
+## A stop rule
 
-From the Google DeepMind × MIT study "Towards a Science of Scaling Agent Systems"
-(180 controlled configurations): coordinated teams beat a single agent by ~80% on work that
-splits into independent pieces — and **every** multi-agent configuration lost on sequential
-work where each step needs the full picture (degrading 39-70%). Uncoordinated agents
-amplified each other's errors 17.2×; a single coordinator owning the merge cut it to 4.4×.
+Do estudo Google DeepMind × MIT "Towards a Science of Scaling Agent Systems"
+(180 configurações controladas): times coordenados vencem um agente único em ~80% dos trabalhos
+que se dividem em peças independentes — e **toda** configuração multi-agente perdeu em trabalho
+sequencial onde cada passo precisa da visão completa (degradando 39-70%). Agentes não coordenados
+amplificaram os erros uns dos outros em 17,2×; um único coordenador dono do merge cortou para 4,4×.
 
-The decision procedure:
-1. Ask: *where does my work split into pieces that never read each other's results?*
-2. Split only that. Everything sequential stays with one agent.
-3. Never let findings merge without one owner of the merge.
+O procedimento de decisão:
+1. Pergunte: *onde meu trabalho se divide em peças que nunca leem os resultados umas das outras?*
+2. Divida só isso. Tudo que é sequencial fica com um agente.
+3. Nunca deixe achados se fundirem sem um dono do merge.
 
-More agents is not a strategy. The shape of the work decides.
+Mais agentes não é estratégia. O formato do trabalho decide.
 
-## The human gate
+## O gate humano
 
-The human is a node. Route every irreversible edge — send, publish, refund, delete, deploy —
-through explicit approval. Placement rule: **put the gate where a mistake is expensive to
-undo, not on every step.** A gate on everything makes the human the bottleneck; a gate on
-nothing means nobody is watching. Judge the system on numbers that cannot argue back (tests
-that ran, money that landed), never on its own self-reports.
+O humano é um nó. Roteie toda aresta irreversível — enviar, publicar, reembolsar, deletar, dar
+deploy — por aprovação explícita. Regra de colocação: **ponha o gate onde um erro é caro de
+desfazer, não em todo passo.** Gate em tudo faz do humano o gargalo; gate em nada significa que
+ninguém está vigiando. Julgue o sistema por números que não podem argumentar de volta (testes que
+rodaram, dinheiro que caiu), nunca pelos auto-relatos dele.
 
 ## Guardrails
 
-Four caps that keep a graph from becoming an expensive accident:
-1. Every loop gets a maximum number of rounds.
-2. One writer per file — no two jobs mutate the same artifact.
-3. The routing lives in written steps; the model fills the jobs, not the plan.
-4. A hard cap on how many agents can spawn.
+Quatro caps que impedem um grafo de virar um acidente caro:
+1. Todo loop tem um número máximo de rodadas.
+2. Um escritor por arquivo — dois trabalhos nunca mutam o mesmo artefato.
+3. O roteamento vive em passos escritos; o modelo preenche os trabalhos, não o plano.
+4. Um cap duro de quantos agentes podem nascer.

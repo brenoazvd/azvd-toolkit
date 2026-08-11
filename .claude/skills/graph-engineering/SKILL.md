@@ -1,153 +1,148 @@
 ---
 name: graph-engineering
-description: Teaches an agent graph engineering — both halves. Knowledge graphs (ontology design, entity/relation/event extraction, fusion, GraphRAG/memory serving; distilled and translated from Southeast University's graduate Knowledge Graph course, npubird/KnowledgeGraphCourse, 4.4K stars) and task graphs (agent orchestration — parallel fan-out, verifier separation, the stop rule, human gates). Use when asked to build a knowledge graph, extract entities/relations from text, design an ontology, dedupe/merge entities, add graph memory or GraphRAG to an agent, orchestrate multi-agent workflows as a graph, or LEARN graph engineering — in teaching mode the agent explains each stage with worked examples and generates visual diagram artifacts.
+description: "Ensina graph engineering nas duas metades. Knowledge graphs (ontologia, extração de entidades/relações/eventos, fusão, GraphRAG/memória; destilado e traduzido do curso de pós-graduação de Knowledge Graph da Southeast University, npubird/KnowledgeGraphCourse, 4.4K estrelas) e task graphs (orquestração de agentes — fan-out paralelo, verificador separado, stop rule, gates humanos). Use quando pedirem para construir um knowledge graph, extrair entidades/relações de texto, desenhar ontologia, deduplicar/mesclar entidades, dar memória de grafo ou GraphRAG a um agente, orquestrar fluxos multi-agente como grafo, ou APRENDER graph engineering — no modo ensino o agente explica cada etapa com exemplos do SEU domínio e gera diagramas."
 trigger: /graph-engineering
 ---
 
 # Graph Engineering
 
-Graph engineering is the discipline of designing the structures agents work through — not the
-prompts. It has two halves:
+Graph engineering é a disciplina de desenhar as **estruturas** com que os agentes trabalham —
+não os prompts. Tem duas metades:
 
-1. **Knowledge graphs** — what agents remember. Nodes are entities and facts, edges are
-   relationships with time and provenance. This file's 9-stage pipeline covers it, distilled
-   from Southeast University's graduate KG course
-   (https://github.com/npubird/KnowledgeGraphCourse, Prof. Peng Wang), translated to English
-   and adapted for LLM-era agents.
-2. **Task graphs** — how agents work. Nodes are jobs, edges are execution dependencies:
-   parallel fan-out, separate verifier contexts, the stop rule, the human gate.
-   Read [references/task-graphs.md](references/task-graphs.md) when the request is about
-   orchestrating agents rather than building memory.
+1. **Knowledge graphs** — o que os agentes *lembram*. Nós são entidades e fatos; arestas são
+   relações com tempo e proveniência. O pipeline de 9 etapas deste arquivo cobre isso, destilado
+   do curso de pós-graduação de KG da Southeast University
+   (https://github.com/npubird/KnowledgeGraphCourse, Prof. Peng Wang), traduzido para o português
+   e adaptado para agentes da era LLM.
+2. **Task graphs** — como os agentes *trabalham*. Nós são trabalhos; arestas são dependências de
+   execução: fan-out paralelo, verificadores em contexto separado, a stop rule, o gate humano.
+   Leia [references/task-graphs.md](references/task-graphs.md) quando o pedido for orquestrar
+   agentes em vez de construir memória.
 
-Core mental model: a knowledge graph is a **product with a schema**, not a pile of triples.
-Quality comes from the pipeline order — model the domain BEFORE extracting, fuse BEFORE storing,
-evaluate at every stage.
+Modelo mental central: um knowledge graph é um **produto com schema**, não uma pilha de triplas.
+A qualidade vem da ORDEM do pipeline — modele o domínio ANTES de extrair, funda ANTES de
+armazenar, avalie em cada etapa.
 
-## Teaching Mode
+## Modo Ensino
 
-When the user wants to LEARN graph engineering (rather than build something), teach it — do
-not just execute. Rules:
+Quando o usuário quiser APRENDER graph engineering (em vez de construir algo), ensine — não
+apenas execute. Regras:
 
-1. Anchor every stage in the user's own domain: ask for one real project or dataset, then use
-   it as the running example through all stages.
-2. **Generate visual artifacts as you teach.** Concepts in this discipline are shapes; show
-   them. For each major concept, produce a small diagram the user can keep — mermaid diagrams
-   (flowchart for the pipeline and task graphs, `graph LR` for example ontologies and
-   subgraphs) or a single self-contained HTML page when interactivity helps. At minimum:
-   the 9-stage pipeline, a 3-type ontology drawn from the user's domain, one extracted
-   subgraph (5-10 nodes) from a real sample, and the diamond pattern with the user's own jobs
-   as nodes.
-3. Teach in the pipeline's order, one stage per exchange, each ending with a small exercise
-   ("write 3 competency questions for your project") before moving on.
-4. Close by assembling what was built during the lesson into a starter `ontology.yaml` and a
-   drawn task graph for the user's first real build.
+1. Ancore cada etapa no domínio do usuário: peça UM projeto ou conjunto de dados real e use-o
+   como exemplo corrente em todas as etapas.
+2. **Gere artefatos visuais enquanto ensina.** Conceitos desta disciplina são formas; mostre-os.
+   Para cada conceito principal, produza um diagrama pequeno que o usuário possa guardar —
+   mermaid (flowchart para o pipeline e task graphs, `graph LR` para ontologias e subgrafos de
+   exemplo) ou uma página HTML autossuficiente quando interatividade ajudar. No mínimo: o
+   pipeline de 9 etapas, uma ontologia de 3 tipos desenhada do domínio do usuário, um subgrafo
+   extraído (5-10 nós) de uma amostra real, e o padrão diamond com os trabalhos do usuário como nós.
+3. Ensine na ordem do pipeline, uma etapa por troca, cada uma terminando com um exercício pequeno
+   ("escreva 3 competency questions para o seu projeto") antes de avançar.
+4. Feche montando o que foi construído na lição em uma `ontology.yaml` inicial e um task graph
+   desenhado para o primeiro build real do usuário.
 
-## The 9-Stage Pipeline
+## O Pipeline de 9 Etapas
 
-Run stages in order. For small projects stages 4-6 collapse into one extraction pass, but never
-skip stages 3 (ontology) or 8 (fusion) — they are where real-world graphs fail.
+Rode as etapas em ordem. Para projetos pequenos as etapas 4-6 colapsam em uma passada de extração,
+mas NUNCA pule as etapas 3 (ontologia) ou 8 (fusão) — é onde grafos do mundo real falham.
 
-1. **Scope & value test** — Confirm a graph beats a simpler structure. A graph pays off when
-   queries are multi-hop ("who worked with X on projects using Y"), when entities recur across
-   documents, or when relationships ARE the data. If lookups are single-hop, use a table and stop.
-
-2. **Knowledge representation choice** — Pick how facts are encoded: property graph
-   (Neo4j-style, pragmatic default), RDF triples (interop/standards), or plain typed edges in
-   JSON/SQLite (small scale). Decide now how time and provenance attach to every fact.
-
-3. **Ontology modeling** — Define entity types, relation types (with domain/range), and
-   attributes BEFORE extraction. Start minimal: 5-15 entity types, 10-30 relation types.
-   Two rules from the course: every relation gets a precise verb name (`ACQUIRED`, not
-   `RELATED_TO`), and if two types are always queried together, merge them.
-   Details and worked examples: [references/modeling.md](references/modeling.md)
-
-4. **Entity extraction (NER)** — Extract typed entities from sources. Method ladder: exact
-   rules/dictionaries for closed vocabularies → LLM extraction with the ontology in the prompt
-   for open text. Always extract with span + source pointer for provenance.
-
-5. **Relation extraction** — Extract typed edges between recognized entities. Constrain the
-   LLM to the ontology's relation list with domain/range checks; reject edges whose endpoints
-   have incompatible types. This one validation step removes most hallucinated structure.
-
-6. **Event extraction** — For dynamic domains (news, logs, transactions), extract events as
-   first-class nodes (trigger + typed arguments + time), not just static edges.
-   Extraction methods, prompt patterns, and failure modes for stages 4-6:
+1. **Escopo e teste de valor** — Confirme que um grafo vence uma estrutura mais simples. Grafo
+   compensa quando as consultas são multi-hop ("quem trabalhou com X em projetos que usam Y?"),
+   quando entidades recorrem entre documentos, ou quando as RELAÇÕES são o dado. Se a consulta é
+   de 1 salto, use uma tabela e pare.
+2. **Escolha de representação do conhecimento** — Como os fatos são codificados: property graph
+   (estilo Neo4j, default pragmático), triplas RDF (interoperabilidade/padrões), ou arestas
+   tipadas em JSON/SQLite (escala pequena). Decida agora como tempo e proveniência se ligam a
+   cada fato.
+3. **Modelagem da ontologia** — Defina tipos de entidade, tipos de relação (com domínio/range) e
+   atributos ANTES da extração. Comece mínimo: 5-15 tipos de entidade, 10-30 tipos de relação.
+   Duas regras do curso: toda relação ganha um verbo preciso (`ADQUIRIU`, não `RELACIONADO_COM`),
+   e se dois tipos são sempre consultados juntos, mescle-os.
+   Detalhes e exemplos: [references/modeling.md](references/modeling.md)
+4. **Extração de entidades (NER)** — Extraia entidades tipadas das fontes. Escada de métodos:
+   regras/dicionários exatos para vocabulários fechados → extração por LLM com a ontologia no
+   prompt para texto aberto. Extraia SEMPRE com span + ponteiro de fonte (proveniência).
+5. **Extração de relações** — Extraia arestas tipadas entre entidades reconhecidas. Restrinja o
+   LLM à lista de relações da ontologia com checagem de domínio/range; rejeite arestas cujos
+   extremos tenham tipos incompatíveis. Essa única validação remove a maioria da estrutura
+   alucinada.
+6. **Extração de eventos** — Para domínios dinâmicos (notícias, logs, transações), extraia
+   eventos como nós de primeira classe (gatilho + argumentos tipados + tempo), não só arestas
+   estáticas.
+   Métodos de extração, padrões de prompt e modos de falha das etapas 4-6:
    [references/extraction.md](references/extraction.md)
-
-7. **Quality gate** — Before fusion, sample and score: entity precision (are extracted
-   entities real and correctly typed?), relation precision (does the source sentence actually
-   assert the edge?). Fix the prompt/rules, not the output, then re-run. Target ≥90% precision
-   on a 50-item sample before proceeding — recall improves with more passes; bad precision
-   poisons the graph permanently.
-
-8. **Knowledge fusion** — Merge duplicates within and across sources: same real-world entity,
-   different surface forms ("SEU" = "Southeast University" = "东南大学"). Blocking + matching +
-   merge policy. Skipping this is the #1 cause of useless graphs.
-   Matching strategies: [references/fusion-and-llm.md](references/fusion-and-llm.md)
-
-9. **Serve to LLMs (KG × LLM)** — Make the graph useful to agents: GraphRAG retrieval
-   (subgraph → context), graph-as-memory (agent writes facts back through stages 4-8), and
-   LLM-as-reasoner over paths. Patterns and pitfalls:
+7. **Gate de qualidade** — Antes da fusão, amostre e pontue: precisão de entidade (as entidades
+   extraídas são reais e corretamente tipadas?), precisão de relação (a sentença da fonte
+   realmente afirma a aresta?). Corrija o prompt/regras, não a saída, e re-rode. Meta ≥90% de
+   precisão numa amostra de 50 itens antes de prosseguir — recall melhora com mais passadas;
+   precisão ruim envenena o grafo permanentemente.
+8. **Fusão de conhecimento** — Mescle duplicatas dentro e entre fontes: mesma entidade real,
+   formas de superfície diferentes ("OEP" = "Grupo OEP" = "Organização Educacional"). Bloqueio +
+   matching + política de merge. Pular isto é a causa #1 de grafos inúteis.
+   Estratégias de matching: [references/fusion-and-llm.md](references/fusion-and-llm.md)
+9. **Servir aos LLMs (KG × LLM)** — Torne o grafo útil aos agentes: recuperação GraphRAG
+   (subgrafo → contexto), grafo-como-memória (o agente escreve fatos de volta pelas etapas 4-8),
+   e LLM-como-raciocinador sobre caminhos. Padrões e armadilhas:
    [references/fusion-and-llm.md](references/fusion-and-llm.md)
 
-## Working Rules
+## Regras de Trabalho
 
-- **Schema first, always.** Extraction without an ontology produces a "graph" that is really a
-  word cloud with arrows. If the user resists schema design, build the minimal 5-type ontology
-  from 3 sample documents and show it for approval.
-- **Provenance on every fact.** Each node/edge stores `source`, `extracted_at`, and confidence.
-  Non-negotiable — fusion (stage 8) and trust both depend on it.
-- **Incremental over big-bang.** Process a 10-document pilot through all 9 stages before
-  scaling. The pilot exposes ontology gaps at 1% of the cost.
-- **LLM extraction is stage machinery, not the pipeline.** The LLM slots into stages 4-6;
-  the surrounding schema, validation, and fusion are what make the output a knowledge graph.
+- **Schema primeiro, sempre.** Extração sem ontologia produz um "grafo" que é na verdade uma nuvem
+  de palavras com setas. Se o usuário resistir ao design de schema, construa a ontologia mínima
+  de 5 tipos a partir de 3 documentos de amostra e mostre para aprovação.
+- **Proveniência em todo fato.** Cada nó/aresta guarda `source`, `extracted_at` e confiança.
+  Inegociável — a fusão (etapa 8) e a confiança dependem disso.
+- **Incremental em vez de big-bang.** Processe um piloto de 10 documentos pelas 9 etapas antes de
+  escalar. O piloto expõe buracos na ontologia a 1% do custo.
+- **Extração por LLM é maquinário de etapa, não o pipeline.** O LLM entra nas etapas 4-6; o
+  schema ao redor, a validação e a fusão são o que fazem a saída ser um knowledge graph.
 
-## Reference Files
+## Arquivos de Referência
 
-- [references/curriculum.md](references/curriculum.md) — Full translated curriculum of the
-  source course with per-lecture summaries and links to the original Chinese slide decks.
-  Read when the user wants theory depth, the academic grounding, or the original materials.
-- [references/modeling.md](references/modeling.md) — Knowledge representation & ontology
-  engineering (course lectures 2-3). Read during stages 2-3.
-- [references/extraction.md](references/extraction.md) — Entity, relation, and event
-  extraction from rules to LLM prompting (lectures 4-7). Read during stages 4-7.
-- [references/fusion-and-llm.md](references/fusion-and-llm.md) — Knowledge fusion and
-  KG × LLM integration (lectures 8-9). Read during stages 8-9.
-- [references/task-graphs.md](references/task-graphs.md) — The orchestration half: fake
-  edges, the diamond, the stop rule (DeepMind×MIT), the human gate, guardrails. Read when
-  orchestrating agents — the theoretical backing for the azvd-toolkit orchestration rules.
-- [references/workflows.md](references/workflows.md) — Nine paste-ready prompt blocks
-  (`/kg-tutor` → `/kg-rag`), each an exemplar of the Tarefa/Método/Meta anatomy. Read when
-  the user wants a ready-to-paste KG prompt or a model of how to structure one.
+- [references/curriculum.md](references/curriculum.md) — Currículo completo traduzido do curso
+  fonte, com resumos por aula e links para os decks originais em chinês. Leia quando o usuário
+  quiser profundidade teórica ou os materiais originais. (Conteúdo acadêmico: inglês.)
+- [references/modeling.md](references/modeling.md) — Representação do conhecimento e engenharia
+  de ontologia (aulas 2-3). Leia nas etapas 2-3. (Inglês.)
+- [references/extraction.md](references/extraction.md) — Extração de entidade, relação e evento,
+  de regras a prompting de LLM (aulas 4-7). Leia nas etapas 4-7. (Inglês.)
+- [references/fusion-and-llm.md](references/fusion-and-llm.md) — Fusão de conhecimento e
+  integração KG × LLM (aulas 8-9). Leia nas etapas 8-9. (Inglês.)
+- [references/task-graphs.md](references/task-graphs.md) — A metade de orquestração: fake edges,
+  o diamond, a stop rule (DeepMind×MIT), o gate humano, guardrails. Leia ao orquestrar agentes —
+  é o embasamento teórico das regras de orquestração do azvd-toolkit. (PT-BR.)
+- [references/workflows.md](references/workflows.md) — Nove blocos de prompt prontos para colar
+  (`/kg-tutor` → `/kg-rag`), cada um um exemplar da anatomia Tarefa/Método/Meta. Leia quando o
+  usuário quiser um prompt KG pronto ou um modelo de como estruturar um. (PT-BR.)
 
 ## Task graphs na prática (azvd-toolkit)
 
-The task-graph rules are the theory behind the orchestration patterns this toolkit already
-uses (see `oep-orchestration` / the `orchestrator` skill matrix):
+As regras de task graph são a teoria por trás dos padrões de orquestração que este toolkit já usa
+(veja a matriz da skill `orchestrator` / `oep-orchestration`):
 
 | Regra (task-graphs.md) | Na prática do toolkit |
 |---|---|
-| **Fake edges** (delete dependencies nothing reads) | Fan-out primeiro: tickets sem dependência rodam em paralelo |
-| **Diamond** (split → workers → SEPARATE verifier → merge) | analyzer→reviewer→verify; revisor em contexto separado, nunca o próprio autor |
-| **Stop rule** (split work = teams; sequential = one agent) | "Trabalho sequencial com zero fan-out = main thread, não delegação" |
-| **Human gate** (where a mistake is expensive to undo) | Aprovação antes de tocar produção/legado; não em todo passo |
-| **Guardrails** (max rounds, one writer per file, hard caps) | `--max-turns`/`--print-timeout`; "3 agentes editando o mesmo arquivo = conflito" (incidente ModuloRetencao.tsx) |
+| **Fake edges** (apague dependência que nada lê) | Fan-out primeiro: tickets sem dependência rodam em paralelo |
+| **Diamond** (split → workers → verificador SEPARADO → merge) | analyzer→reviewer→verify; revisor em contexto separado, nunca o próprio autor |
+| **Stop rule** (trabalho divisível = times; sequencial = 1 agente) | "Trabalho sequencial com zero fan-out = main thread, não delegação" |
+| **Human gate** (onde errar é caro de desfazer) | Aprovação antes de tocar produção/legado; não em todo passo |
+| **Guardrails** (max de rodadas, 1 escritor por arquivo, caps) | `--max-turns`/`--print-timeout`; "3 agentes editando o mesmo arquivo = conflito" (incidente ModuloRetencao.tsx) |
 
-## Related skills (azvd-toolkit)
+## Skills relacionadas (azvd-toolkit)
 
-- `orchestrator` — router: decides when this skill is the route.
-- `prompt-forge` — generates the prompts/tickets once a task graph becomes execution
-  (one prompt per ticket — never one giant prompt).
-- `prompt-blocks` — proven prompt blocks (PARE E REPORTE, decision test, OKF memory
-  contract) used to write those tickets.
+- `orchestrator` — roteador: decide quando esta skill entra.
+- `prompt-forge` — gera os prompts/tickets quando um task graph vira execução (um prompt por
+  ticket — nunca um prompt gigante).
+- `prompt-blocks` — blocos de prompt comprovados (PARE E REPORTE, teste de decisão, contrato de
+  memória) usados para escrever esses tickets.
 
-## Credits
+## Créditos
 
-Distilled and translated from 东南大学《知识图谱》研究生课程 (Southeast University graduate
-course on Knowledge Graphs), Prof. Peng Wang — https://github.com/npubird/KnowledgeGraphCourse.
-All original lecture PDFs are in Chinese; this skill is an independent English distillation
-adapted for AI-agent workflows.
+Destilado e traduzido de 东南大学《知识图谱》研究生课程 (curso de pós-graduação de Knowledge Graphs
+da Southeast University), Prof. Peng Wang — https://github.com/npubird/KnowledgeGraphCourse.
+Todos os PDFs originais das aulas são em chinês; esta skill é uma destilação independente em
+português adaptada para workflows de agentes de IA.
 
-This copy in azvd-toolkit is adapted from [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering)
-(MIT, built by @Av1dlive) — the task-graph half draws on Google DeepMind × MIT's "Towards a
-Science of Scaling Agent Systems" and Anthropic's published multi-agent engineering work.
+Esta cópia no azvd-toolkit é adaptada de [codejunkie99/graph-engineering](https://github.com/codejunkie99/graph-engineering)
+(MIT, feito por @Av1dlive) — a metade de task graphs usa o trabalho "Towards a Science of Scaling
+Agent Systems" (Google DeepMind × MIT) e o material publicado de multi-agente da Anthropic.
