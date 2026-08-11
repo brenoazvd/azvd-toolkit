@@ -96,7 +96,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 | B1 · LEIA PRIMEIRO | `blocks/b1-leia-primeiro.md` | contexto obrigatório antes de agir |
 | B2 · PARE E REPORTE | `blocks/b2-pare-e-reporte.md` | risco de escopo, dado/token ausente |
 | B3 · O QUE JÁ FOI VERIFICADO | `blocks/b3-ja-verificado.md` | rodar em cima de investigação feita |
-| B4 · Regras karpathy | `blocks/b4-karpathy.md` | execução cirúrgica de builders |
+| B4 · Regras karpathy | `blocks/b4-karpathy.md` | guidelines completas p/ builders (pensar, simplificar, cirúrgico, objetivo) |
 | B5 · Teste de decisão | `blocks/b5-teste-decisao.md` | agente autônomo sem volta ao usuário |
 | B6 · Contrato de memória (OKF) | `blocks/b6-contrato-okf.md` | repo com memória coletiva |
 | B7 · Resumo objetivo | `blocks/b7-resumo-objetivo.md` | relatório de retorno |
