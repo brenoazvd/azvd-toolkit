@@ -14,7 +14,7 @@ teoria).
 |---|---|---|
 | `skill-router` | **Porta de entrada**: acha a skill certa (1º no azvd, 2º nas skills globais do seu PC) | `/skill-router` |
 | `orchestrator` | **Roteador**: decide qual skill do azvd usar e encadeia elas | `/orchestrator` |
-| `prompt-forge` | **Monta prompts** por entrevista interativa e adaptativa (anatomia Tarefa/Método/Meta + matriz por tipo de pedido) | `/prompt-forge` |
+| `prompt-forge` | **Forja prompts** por entrevista interativa: cada tipo de pedido (Criação, Código, Análise, Orquestração, Texto) tem um **Modo** que gera o prompt pronto para colar — crítica separada + critério objetivo de parada (filosofia Gauntlet Loop) | `/prompt-forge` |
 | `prompt-blocks` | **Biblioteca de blocos** de prompt comprovados, cada um com a lição de incidente que o originou | `/prompt-blocks` |
 | `graph-engineering` | **Knowledge graphs** (pipeline de 9 etapas) + **task graphs** (orquestração multi-agente: fan-out, diamond, gate humano) | `/graph-engineering` |
 | `self-learning` | **A skill que se adapta**: colhe lições da sessão e as transforma em blocos/linhas/rotas novas nas outras skills | `/self-learning` |
