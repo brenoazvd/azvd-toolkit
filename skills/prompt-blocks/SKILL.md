@@ -29,7 +29,7 @@ Regra de decisão: **um bloco vai para `blocks/` se ajuda um dev que não conhec
 
 Regras:
 - **`blocks/`** é território de publicação do próprio usuário do toolkit. Novos blocos públicos
-  (B11...) são criados quando ELE decide — e adicionados por ele no GitHub pros outros.
+  (B11, B12...) são criados quando ELE decide — e adicionados por ele no GitHub pros outros.
 - **`blocks/local/`** é o território do usuário final. O agente pode colher lições pessoais, mas
   **sempre avisa e pede permissão antes** de criar um `.md` novo — mesma regra dos blocos públicos.
 - **Nunca crie sozinho** (sem permissão) um bloco novo, nem em `blocks/` nem em `blocks/local/`.
@@ -129,6 +129,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 | B9 · Memória do projeto | `blocks/b9-memoria-projeto.md` | agentes recorrentes (docs nunca stale) |
 | B10 · Checkpoint | `blocks/b10-checkpoint.md` | runs longos com retomada |
 | B11 · Roteamento de modelos | `blocks/b11-roteamento-modelos.md` | escolher "qual modelo" por tipo de tarefa (leve/forte/mais forte) |
+| B12 · Gauntlet Loop | `blocks/b12-gauntlet-loop.md` | criação/design de alta fidelidade contra referência NOMEADA (prompt final do tipo Criação/Design: fan-out + crítico harsh + blind A/B + humano é o brake) |
 | KG: blocos `/kg-*` (tutor, scope, schema, extract, relations, events, fuse, eval, rag) | `graph-engineering/references/workflows.md` | prompts prontos para colar do domínio de knowledge graph |
 
 ## Como usar

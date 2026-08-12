@@ -13,6 +13,8 @@ Papel: receber o pedido do usuário e rotear para a skill certa (ou encadear). *
 | Se o usuário pedir... | Rota |
 |---|---|
 | "monta um prompt pra IA" / "como peço X pra IA" / "refina meu prompt" | `prompt-forge` (entrevista interativa) |
+| "cria/desenha um site/landing/dashboard/UI" | `prompt-forge` (modo Criação/Design → gera prompt Gauntlet Loop, configurando `impeccable` como o crítico de UI na fase de construção/revisão) |
+| "melhora/redesenha/audita essa interface" / "esse design tá sem graça" | `impeccable` (skill global — critique/audit/polish, padrão de design premiado) |
 | "usa os blocos prontos" / "o que já sabemos que funciona em prompt" | `prompt-blocks` |
 | "estrutura esse código/docs/conhecimento em grafo" / "mapeia relações" | `graph-engineering` (pipeline KG) |
 | "orquestra N agentes/CLIs/tickets pra fazer X" / "planeja em fases" | `graph-engineering` → `references/task-graphs.md` (fan-out, diamond, human gate) + `prompt-forge` (UM prompt por ticket) |
@@ -45,4 +47,5 @@ adapta a quem usa.
 ## Skills relacionadas
 
 - `prompt-forge`, `prompt-blocks`, `graph-engineering` — as 3 skills que este roteador orquestra.
-- `ask-matt` (global `~/.claude/skills`) — router mais amplo de skills; este é o router do azvd-toolkit.
+- `impeccable` (skill global) — crítica/iteração de design profissional; o "crítico harsh" do Gauntlet Loop quando a criação é UI/web.
+- `ask-matt` (skill global do ambiente) — router mais amplo de skills; este é o router do azvd-toolkit.

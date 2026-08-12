@@ -47,16 +47,55 @@ MÉTODO e da META — nunca entrevista genérica. Quando o usuário já traz uma
 
 | Tipo | Exemplos | O que o MÉTODO deve puxar | Ferramentas/verbos que o prompt ganha | META típica |
 |---|---|---|---|---|
-| **Criação/Design** | jogo FPS, site, demo, infográfico | Benchmark (o que é "perfeito" aqui? referência real?), stack (ThreeJS? web? nativo?), quem verifica o visual, critério comparativo | sub-agentes por item + `/loop` por item + verificador visual separado e RIGOROSO; "compare às cegas com a referência e diga qual é melhor" | "passa quando compara às cegas com X e ninguém distingue" |
+| **Criação/Design** | jogo FPS, site, landing, dashboard, demo, infográfico | **Modo Gauntlet Loop** (ver sub-seção abaixo): o que + **referência real NOMEADA** + stack + tier + 2 áreas. Para **UI/web**, o crítico de design é a skill `impeccable` | **Gera automaticamente o prompt estilo Gauntlet Loop** (bloco B12): fan-out por item + `[LOOP_VERB]` + crítico separado e HARSH + blind A/B vs referência real + META invertida (humano é o brake). Você **não escreve** o prompt — a entrevista monta | "o crítico separado, comparando às cegas com [REFERENCE], fica impressionado — e o humano para o loop (sem parada automática)" |
 | **Código** | endpoint, componente, bugfix | repo/arquivos, agente alvo e modelo, gates (tsc/build/probes), escopo cirúrgico | `seu CLI de código (com as flags de modelo/tempo do agente)`, `--allowedTools`, PARE E REPORTE, regras karpathy (cirúrgico), testes | "build+tsc verdes, git diff só toca os arquivos X, probe confirma" |
 | **Orquestração** | dashboard multi-aba, ETL, N agentes | quantos agentes/CLIs, dependências, onde é o gate humano | task graph (fan-out/diamond/human gate), **um prompt por ticket** (prompt único buga), contrato entre agentes paralelos | "todos os tickets verdes + verificação do orquestrador" |
 | **Análise/Diagnóstico** | "por que o KPI erra?", review de diff | o que JÁ foi verificado (não refaça), fontes, hipóteses a testar | agente leve analisa → agente forte revisa → você confere; probes; seção "O QUE JÁ FOI VERIFICADO" | "causa raiz com evidência (probe/print) + fix mínimo proposto" |
 | **Texto/Conteúdo** | artigo, email, resumo, thread | tom, público, estrutura, tamanho, idioma | formato de saída explícito, seções, "sem AI-isms / voz humana" | "entrega no formato X com tom Y, pronto pra enviar" |
 
 Regra: cada linha vira **perguntas específicas** na entrevista e **seções concretas** no prompt final.
-Ex.: pedido de jogo → perguntar "qual a referência de qualidade? quem vai verificar o visual?" e o
-prompt final ganha "distribua sub-agentes, cada um com `/loop`, e um crítico visual separado que
-compare às cegas com a referência".
+
+### Modo Criação/Design (Gauntlet Loop)
+
+Para pedidos na linha **Criação/Design**, o prompt **não é montado a mão** — é gerado pela
+sub-entrevista. Mas primeiro **descubra se há referência**:
+
+1. **Extraia do pedido inicial** o máximo de slots (`[THING]`, `[REFERENCE]`, `[STACK]`, `[TIER]`,
+   `[AREA_1]`/`[AREA_2]`) que já vieram na mensagem do usuário. Pergunte **apenas o que faltar**,
+   uma pergunta por vez — nunca re-pergunte o que já foi informado.
+2. **Com referência real nomeada** (ex.: "nível Call of Duty", "como a Linear") → ative o **Modo
+   Gauntlet Loop** (abaixo): pergunte os slots que faltam e **entregue o prompt B12 pronto**.
+3. **Sem referência nomeada** (ou o usuário recusa dar uma) → siga o fluxo Tarefa/Método/Meta
+   padrão para criação simples (sem o loop). Não force o Gauntlet Loop sem referência.
+
+Perguntas do Modo Gauntlet Loop (só para os slots ainda em aberto):
+
+1. **O que você quer criar?** → `[THING]` (jogo FPS, landing, dashboard, demo...).
+2. **Contra qual referência real?** → `[REFERENCE]` (Call of Duty, linear.app, Hades, Brotato...).
+   Sem isso o loop não roda — pergunte direto.
+3. **Em qual stack?** → `[STACK]` (ThreeJS, Next.js+Tailwind, Godot...).
+4. **Quão alta a barra?** (default: **AAA**) → `[TIER]`. Raramente faz sentido abaixar.
+5. **Quais 2 áreas mais importam?** → `[AREA_1]`/`[AREA_2]`.
+
+Defaults automáticos (não pergunte, preencha sozinho):
+- `[LOOK]` → derivado do tom da referência (ex.: `belo e fluido` para web/UI, `estilo AAA` para jogos).
+- `[CHECK]` → **UI/web:** `visualmente via skill impeccable (ou render)`; **jogo/demo:** `visualmente (frame no jogo vs referência)`.
+- `[LOOP_VERB]` → verbo do CLI escolhido na abertura (ex.: `/loop`, `/goal`);
+  `[CLOSING_TAIL]` → fecho do host se existir, senão vazio.
+
+Depois, preencha o esqueleto do bloco
+`skills/prompt-blocks/blocks/b12-gauntlet-loop.md` com esses valores e **entregue o prompt final
+pronto**.
+
+**UI/web:** se a criação for site/landing/dashboard/UI, além de gerar o prompt Gauntlet Loop,
+aponte que a **crítica e a iteração de design** são feitas pela skill `impeccable` (critique/audit/
+polish) — ela é o "crítico harsh" especializado em design, com benchmark próprio. Ela entra na fase
+de construção/revisão da UI, não na geração do prompt.
+
+Observação de escopo: o Gauntlet Loop (blind A/B contra referência visual) é o método certo para
+**Criação** (algo novo com referência comparável). Ele **não substitui** o método de Código
+(cirúrgico, gates), Análise (leve→forte→confere) nem Texto (tom/formato) — esses continuam com a
+anatomia Tarefa/Método/Meta.
 
 ## Fluxo
 
@@ -79,7 +118,7 @@ compare às cegas com a referência".
 ## Regras do prompt resultante (contrato com o agente)
 
 - **Autocontido**: o agente não conhece a conversa — embuta os fatos do contexto. Não referencie caminhos fora do repo sem `--add-dir`.
-- **Componha seções com blocos da skill `prompt-blocks`** quando houver bloco aplicável (PARE E REPORTE, karpathy, teste de decisão…).
+- **Componha seções com blocos da skill `prompt-blocks`** quando houver bloco aplicável (PARE E REPORTE, karpathy, teste de decisão…). Para o tipo **Criação/Design com referência nomeada**, o prompt final **é** o bloco `b12-gauntlet-loop.md` — use-o pronto em vez de montar um prompt de criação genérico. Sem referência nomeada, monte o fluxo flexível de criação.
 - **Prompt único gigante = NÃO.** Se o pedido for multi-etapa ou multi-agente, sugira `graph-engineering` (task graph) e um prompt por ticket — juntar tudo num prompt buga a IA.
 
 ## Skills relacionadas
@@ -92,9 +131,11 @@ compare às cegas com a referência".
 ### Como usar os blocos do prompt-blocks (obrigatório)
 
 Quando o fluxo disser "componha com blocos", **abra de verdade os arquivos** em
-`skills/prompt-blocks/blocks/` e **cole o texto do bloco real** (B1-B11) no prompt que está
+`skills/prompt-blocks/blocks/` e **cole o texto do bloco real** (B1-B12) no prompt que está
 montando — não improvise a partir da memória. Leia o `skills/prompt-blocks/SKILL.md` (catálogo) e
-abra o(s) bloco(s) aplicável(eis) antes de preencher o placeholder.
+abra o(s) bloco(s) aplicável(eis) antes de preencher o placeholder. B12 (Gauntlet Loop) é o bloco
+do tipo **Criação/Design com referência nomeada** — use-o como esqueleto do prompt final nesse caso
+(ver matriz).
 
 ## Auto-atualização
 
