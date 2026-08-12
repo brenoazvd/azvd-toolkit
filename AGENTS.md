@@ -11,8 +11,8 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 | Skill | Função |
 |---|---|
 | `skills/orchestrator` | Roteia pedidos → skill certa; encadeia as outras |
-| `skills/prompt-forge` | Monta prompts por entrevista adaptativa (anatomia Tarefa/Método/Meta) |
-| `skills/prompt-blocks` | Protocolo de colheita de blocos de prompt (filtro F1-F5, OKF) + biblioteca B1-B11 |
+| `skills/prompt-forge` | Forja prompts por entrevista: cada tipo (Criação/Código/Análise/Orquestração/Texto) tem um Modo que gera o prompt pronto (filosofia Gauntlet Loop) |
+| `skills/prompt-blocks` | Protocolo de colheita de blocos de prompt (filtro F1-F5, OKF) + biblioteca B1-B12 |
 | `skills/graph-engineering` | Knowledge graphs + task graphs (orquestração multi-agente), PT-BR |
 | `skills/self-learning` | Colhe lições de sessão e atualiza as skills (com gate de permissão) |
 
