@@ -113,7 +113,8 @@ Defaults automáticos (não pergunte, preencha sozinho):
 
 Depois, preencha o esqueleto do bloco
 `skills/prompt-blocks/blocks/b12-gauntlet-loop.md` com esses valores e **entregue o prompt final
-pronto**.
+pronto**. (O esqueleto fica no próprio arquivo B12 — diferente dos outros modos, que compõem
+blocos inline, porque o B12 é um bloco único pronto para colar, não uma composição.)
 
 **UI/web:** se a criação for site/landing/dashboard/UI, além de gerar o prompt Gauntlet Loop,
 aponte que a **crítica e a iteração de design** são feitas pela skill `impeccable` (critique/audit/
