@@ -1,7 +1,7 @@
 ---
 type: PromptBlock
 title: B12 · Gauntlet Loop (Criação de alta fidelidade)
-description: Prompt final comprovado para criação/design de alta qualidade contra uma referência NOMEADA (COD, Hades, Linear...). Fan-out de sub-agentes, um por item, crítico separado e HARSH, blind A/B lado a lado contra a referência real, META invertida (barra inatingível, o humano é o brake). Cole e preencha [THING]/[REFERENCE]/[STACK].
+description: Prompt final comprovado para criação/design de alta qualidade contra uma referência NOMEADA (COD, Hades, Linear...). Paralelismo entre itens (sub-agentes se o host suportar, senão sequencial), crítico separado e HARSH, blind A/B lado a lado contra a referência real, META invertida (barra inatingível, o humano é o brake). Cole e preencha [THING]/[REFERENCE]/[STACK].
 tags:
   - prompt
   - criacao
@@ -31,15 +31,17 @@ de execução:
 Construa [THING] no nível de [REFERENCE]. Deve ser absolutamente perfeito, [LOOK], com cada
 coisa feita em qualidade [TIER], de [AREA_1] a [AREA_2] a qualquer coisa que você puder imaginar.
 
-Espalhe sub-agentes e faça cada sub-agente atacar um item individualmente para que o
-[THING] fique absolutamente perfeito. Use [LOOP_VERB] em cada item e tenha um sub-agente
-SEPARADO verificando [CHECK] para garantir que esteja em [TIER]. Esse sub-agente separado deve
-ser um crítico REALMENTE rígido, e se não estiver em [TIER], ele deve continuar.
+Se o seu ambiente suportar múltiplas instâncias/sub-agentes em paralelo, distribua-os e faça
+cada um atacar um item individualmente; se não suportar, processe item por item, sequencialmente,
+sem pular nenhum. De qualquer forma, o [THING] deve ficar absolutamente perfeito. Use [LOOP_VERB]
+em cada item e tenha uma instância SEPARADA verificando [CHECK] para garantir que esteja em
+[TIER]. Essa instância separada deve ser um crítico REALMENTE rígido, e se não estiver em [TIER],
+ele deve continuar.
 
-Não pare até que cada sub-agente fique absolutamente impressionado com a qualidade ao comparar
-com [REFERENCE]. Ele deve literalmente comparar lado a lado às cegas e dizer qual das duas
-fica melhor. Faça isso em [STACK]. [LOOP_VERB] até ficar absolutamente perfeito, espalhando
-sub-agentes em cada ciclo[CLOSING_TAIL].
+Não pare até que o crítico fique absolutamente impressionado com a qualidade ao comparar com
+[REFERENCE]. Ele deve literalmente comparar lado a lado às cegas e dizer qual das duas fica
+melhor. Faça isso em [STACK]. [LOOP_VERB] até ficar absolutamente perfeito, repetindo o ciclo
+(em paralelo se possível, senão sequencial)[CLOSING_TAIL].
 ```
 
 ### Placeholders (nouns)
@@ -53,7 +55,7 @@ sub-agentes em cada ciclo[CLOSING_TAIL].
 | `[AREA_1]` / `[AREA_2]` | duas frentes de trabalho | `texturas`/`física`, `combate`/`iluminação`, `tipografia`/`movimento` |
 | `[CHECK]` | como o crítico verifica | `visualmente` (frame no jogo vs referência) |
 | `[STACK]` | stack/ferramenta de execução | ThreeJS, Godot, Next.js + Tailwind... |
-| `[LOOP_VERB]` | **verbo do CLI escolhido pelo usuário** para iterar (agente usado) | `/loop`, `/goal` — depende do host; deixe vazio se não houver |
+| `[LOOP_VERB]` | **verbo do CLI escolhido pelo usuário** para iterar (agente usado) | pergunte ao usuário; ex.: `/loop` no Claude Code — nomes variam por host, nunca assuma que existe; use "repita o ciclo manualmente" se o host não tiver um |
 | `[CLOSING_TAIL]` | **fecho opcional do host** (verbo de "modo intenso", se existir) | espaço + verbo de intensidade (ex.: ` e <modo-intenso>`), ou vazio por padrão |
 
 ### A META invertida (difere das outras linhas)

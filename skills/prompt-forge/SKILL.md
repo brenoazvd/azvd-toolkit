@@ -107,8 +107,8 @@ Perguntas do Modo Gauntlet Loop (só para os slots ainda em aberto):
 
 Defaults automáticos (não pergunte, preencha sozinho):
 - `[LOOK]` → derivado do tom da referência (ex.: `belo e fluido` para web/UI, `estilo AAA` para jogos).
-- `[CHECK]` → **UI/web:** `visualmente via skill impeccable (ou render)`; **jogo/demo:** `visualmente (frame no jogo vs referência)`.
-- `[LOOP_VERB]` → verbo do CLI escolhido na abertura (ex.: `/loop`, `/goal`);
+- `[CHECK]` → **UI/web:** `visualmente, via crítico de design disponível no host (ex.: skill impeccable no Claude Code) ou blind A/B manual se o host não tiver um`; **jogo/demo:** `visualmente (frame no jogo vs referência)`.
+- `[LOOP_VERB]` → **pergunte ao usuário** qual verbo/comando de iteração o CLI dele tem (ex.: `/loop` no Claude Code); se o host não tiver um comando nativo, use "repita o ciclo manualmente" — nunca assuma que `/loop` existe em todo lugar.
   `[CLOSING_TAIL]` → fecho do host se existir, senão vazio.
 
 Depois, preencha o esqueleto do bloco
@@ -116,10 +116,10 @@ Depois, preencha o esqueleto do bloco
 pronto**. (O esqueleto fica no próprio arquivo B12 — diferente dos outros modos, que compõem
 blocos inline, porque o B12 é um bloco único pronto para colar, não uma composição.)
 
-**UI/web:** se a criação for site/landing/dashboard/UI, além de gerar o prompt Gauntlet Loop,
-aponte que a **crítica e a iteração de design** são feitas pela skill `impeccable` (critique/audit/
-polish) — ela é o "crítico harsh" especializado em design, com benchmark próprio. Ela entra na fase
-de construção/revisão da UI, não na geração do prompt.
+**UI/web:** se a criação for site/landing/dashboard/UI, o "crítico harsh" de design deve ser: a
+skill `impeccable` **se o host for Claude Code**; caso contrário, qualquer revisor de design que o
+host tiver, ou — na ausência de um — o próprio usuário fazendo blind A/B manual contra a
+`[REFERENCE]`. Nunca assuma `impeccable` disponível fora do Claude Code.
 
 ### Modo Código
 
@@ -224,7 +224,8 @@ Perguntas (uma por vez, extraia antes):
 
 Defaults automáticos:
 - Crítica separada → releitura: a voz é humana, sem marcas de IA, pronto pra enviar.
-- Se o usuário quiser "humanizar" um texto já escrito, aponte a skill `humanizer`.
+- Se o usuário quiser "humanizar" um texto já escrito, aponte a skill `humanizer` **se o host for
+  Claude Code**; noutro host, aplique a releitura manualmente (sem marcas de IA, tom humano).
 
 Esqueleto de montagem (nesta ordem):
 `[TAREFA: o que escrever + tom/público] + [estrutura/seções] + B7 (resumo objetivo, se for
@@ -250,8 +251,9 @@ Critério de parada: **"entrega no formato X com tom Y, sem AI-isms, pronto pra 
 2. **Siga o Modo** da matriz correspondente ao TIPO identificado (Criação/Código/Análise/
    Orquestração/Texto). Só caia no fallback Tarefa/Método/Meta se nenhum Modo encaixar.
 3. **Monte o prompt** com os blocos do Modo (abra os arquivos reais — não improvise da memória).
-4. **Entrega** — prompt final em bloco de código, pronto para colar, com sugestão de comando
-   (ex.: `claude -p "$(cat prompt.txt)"`).
+4. **Entrega** — prompt final em bloco de código, pronto para colar no CLI escolhido na abertura
+   (ex.: `claude -p "$(cat prompt.txt)"` no Claude Code; `agy`/`codex`/`cursor` colam o mesmo texto
+   na sua própria interface — o prompt é o artefato portável, não o comando de invocação).
 
 ## Seções extras (opcionais, só se fizerem sentido)
 
@@ -277,8 +279,11 @@ Critério de parada: **"entrega no formato X com tom Y, sem AI-isms, pronto pra 
 - `prompt-blocks` — blocos comprovados (com lição de incidente) que os Modos compõem.
 - `orchestrator` — roteador do toolkit (quando usar esta skill).
 - `graph-engineering` — se o pedido virar orquestração multi-agente (task graph).
-- `impeccable` (global) — crítico/iteração de design; o "crítico harsh" do Modo Criação quando é UI.
-- `humanizer` (global) — tirar AI-isms de texto (Modo Texto).
+- `impeccable` (global, **disponível apenas no Claude Code**) — crítico/iteração de design; o
+  "crítico harsh" do Modo Criação quando é UI. Noutro host, use o revisor de design disponível ali
+  ou blind A/B manual.
+- `humanizer` (global, **disponível apenas no Claude Code**) — tirar AI-isms de texto (Modo Texto).
+  Noutro host, aplique a releitura manualmente.
 
 ### Como usar os blocos do prompt-blocks (obrigatório)
 

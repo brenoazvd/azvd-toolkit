@@ -126,7 +126,7 @@ As regras de task graph são a teoria por trás dos padrões de orquestração q
 | **Diamond** (split → workers → verificador SEPARADO → merge) | analyzer→reviewer→verify; revisor em contexto separado, nunca o próprio autor |
 | **Stop rule** (trabalho divisível = times; sequencial = 1 agente) | "Trabalho sequencial com zero fan-out = main thread, não delegação" |
 | **Human gate** (onde errar é caro de desfazer) | Aprovação antes de tocar produção/legado; não em todo passo |
-| **Guardrails** (max de rodadas, 1 escritor por arquivo, caps) | `--max-turns`/`--print-timeout`; "3 agentes editando o mesmo componente = conflito) |
+| **Guardrails** (max de rodadas, 1 escritor por arquivo, caps) | flag equivalente no seu CLI (ex.: `--max-turns`/`--print-timeout` no Claude Code); "3 agentes editando o mesmo componente = conflito) |
 
 ## Skills relacionadas (azvd-toolkit)
 

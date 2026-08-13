@@ -21,7 +21,7 @@ sources:
 
 # B4 · Regras karpathy (guidelines completas)
 
-Texto pronto (cole no prompt do builder — claude/agy/subagente):
+Texto pronto (cole no prompt do builder/instância de execução, em qualquer CLI de agente):
 
 ```
 REGRAS DE COMPORTAMENTO (karpathy-guidelines) — enviesam para cautela sobre velocidade;
