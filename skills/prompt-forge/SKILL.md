@@ -12,8 +12,8 @@ técnica comprovada do domínio.
 
 ## A filosofia (herdada do Gauntlet Loop)
 
-Quatro princípios atravessam todos os modos. São a "alma" da técnica que gera jogo nível AAA de um
-prompt, adaptada por domínio:
+Cinco princípios atravessam todos os modos. São a "alma" da técnica que gera jogo nível AAA de um
+prompt, adaptada por domínio — **universais em todo Modo**, não só em Criação/Design:
 
 1. **A entrevista gera o prompt pronto.** O usuário responde slots; a skill monta. Ele nunca escreve
    o prompt na mão.
@@ -23,10 +23,15 @@ prompt, adaptada por domínio:
    verde, probe, print, blind A/B).
 4. **Não pare sem evidência.** Sem "bom o suficiente" auto-declarado; o agente só para quando o
    check objetivo passa (ou o humano para).
+5. **Paralelismo + loop quando o pedido decompõe.** Se o trabalho quebra em itens independentes
+   (arquivos, hipóteses, tickets), distribua em sub-agentes/instâncias paralelas; se o host tiver
+   verbo de iteração (`[LOOP_VERB]`, ex.: `/loop`), use-o para repetir o ciclo até o critério do
+   Modo bater. Cada Modo abaixo já embute essa mecânica no seu esqueleto de montagem.
 
-> O que **não** é transferível fica só em Criação/Design: blind A/B contra **referência visual**
-> e "humano é o brake" (barra inatingível). Para código/análise o critério de parada é objetivo
-> (teste passa), não estético — forçar referência visual ali é o que quebra.
+> O que **não** é transferível fica só em Criação/Design: blind A/B contra **referência visual
+> nomeada** e "humano é o brake" (barra inatingível por construção). Fora de Criação, o critério de
+> parada é sempre objetivo do domínio (build verde, causa raiz com evidência, tickets verdes) — nunca
+> estético; forçar referência visual ali é o que quebra.
 
 ## Anatomia de fallback (Tarefa/Método/Meta)
 
@@ -140,6 +145,9 @@ Defaults automáticos (preencha sozinho):
 - Crítica separada → um segundo agente/modelo **mais forte** revisa o diff (a própria IA que codou
   não julga o próprio trabalho).
 - Autonomia → da abertura (não re-perguntar).
+- Paralelismo → se o bug/feature quebra em arquivos/módulos independentes, distribua um sub-agente
+  por arquivo (mesmo escopo cirúrgico cada um). Loop → repita ciclo (corrige → roda gates → repassa
+  pro crítico) via `[LOOP_VERB]` do host até todos os gates ficarem verdes.
 
 Esqueleto de montagem (nesta ordem):
 `[TAREFA/contexto do bug] + B4 (karpathy) + B2 (PARE E REPORTE) + B5 (teste de decisão, se agir
@@ -171,6 +179,8 @@ Defaults automáticos:
   valida o próprio achado).
 - Modelo → **leve** para exploração, **mais forte** para a revisão (bloco `b11` — usado pela
   entrevista para configurar o pipeline, NÃO colado no corpo do prompt do analista).
+- Paralelismo → se houver 2-3 hipóteses independentes, um sub-agente por hipótese, todos correndo
+  antes da revisão. Loop → `[LOOP_VERB]` até a causa raiz ter evidência real (não "acho que é isso").
 
 Esqueleto de montagem (nesta ordem):
 `[TAREFA/pergunta] + B3 (O QUE JÁ FOI VERIFICADO) + [fonte + hipóteses] + B7 (resumo objetivo) +
@@ -226,6 +236,8 @@ Defaults automáticos:
 - Crítica separada → releitura: a voz é humana, sem marcas de IA, pronto pra enviar.
 - Se o usuário quiser "humanizar" um texto já escrito, aponte a skill `humanizer` **se o host for
   Claude Code**; noutro host, aplique a releitura manualmente (sem marcas de IA, tom humano).
+- Paralelismo → raro aqui (texto é sequencial); se for uma thread/série com N peças independentes,
+  um sub-agente por peça. Loop → `[LOOP_VERB]` na releitura até sair sem marca de IA.
 
 Esqueleto de montagem (nesta ordem):
 `[TAREFA: o que escrever + tom/público] + [estrutura/seções] + B7 (resumo objetivo, se for
@@ -239,6 +251,12 @@ Critério de parada: **"entrega no formato X com tom Y, sem AI-isms, pronto pra 
 
 ## Fluxo
 
+0. **Revisão de contexto (sempre, antes de perguntar ou montar).** Releia a mensagem do usuário e
+   abra de verdade qualquer arquivo/path/skill/repo que ele citar — não assuma pela memória de
+   sessões anteriores nem pelo nome do arquivo. Se algo citado mudou, sumiu, ou o pedido depende de
+   um estado que você não conferiu ainda (schema, contrato de API, versão de skill), confira antes
+   de seguir. É aqui que se evita errar em coisas básicas por montar o prompt em cima de suposição
+   estale.
 1. **Abertura (até 4 perguntas):**
    - O que você vai pedir? (1 frase) → já **identifica o TIPO/Modo** aqui.
    - Para qual agente? (claude CLI / agy / codex / cursor / outro)
