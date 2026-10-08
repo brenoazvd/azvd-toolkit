@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: "Use quando uma tarefa precisa de MAIS DE UMA peça: encadear skills do azvd-toolkit (prompt-forge, graph-engineering, prompt-blocks, self-learning) ou montar um time de sub-agentes (construtor, crítico, juiz, conferidores) com custo controlado. Para um prompt único use prompt-forge; para 'qual skill uso?' use skill-router. Em dúvida de intenção, pergunta em vez de chutar."
+description: "Use quando uma tarefa precisa de MAIS DE UMA peça: encadear skills do azvd-toolkit (prompt-forge, graph-engineering, prompt-blocks, self-learning) ou montar um time de sub-agentes (construtor, crítico, juiz, conferidores) com custo controlado. Para um prompt único use prompt-forge; para 'qual skill uso?' o usuário chama /skill-router (manual). Em dúvida de intenção, pergunta em vez de chutar."
 trigger: /orchestrator
 ---
 
@@ -71,6 +71,6 @@ Encaminhamento novo descoberto (pedido → skill/agente)? Adicione na tabela da 
 
 ## Skills relacionadas
 
-- `skill-router` — "qual skill resolve isso?" (só aponta).
+- `skill-router` — "qual skill resolve isso?" (só aponta; manual, o usuário chama /skill-router).
 - `prompt-forge`, `graph-engineering`, `prompt-blocks`, `self-learning` — as peças que este encadeia.
 - `impeccable` (global, só Claude Code) — crítico de UI quando a construção é interface.

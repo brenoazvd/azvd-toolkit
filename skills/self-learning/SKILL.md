@@ -80,7 +80,7 @@ especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de 
      por quê). Só cria com OK. O usuário é o gate (preferência explícita).
    - **Editar EXISTENTE** (atualizar texto, adicionar lição, ajustar linha da matriz): automático.
    - Toolkit → edita no repo `azvd-toolkit` (bloco/linha nova com a lição) + commit. Projeto → skill local no dir certo.
-6. **Propagar** (se mexeu no toolkit): se houver um `sync.sh` local (ele sabe os diretórios de skills de cada agente da máquina), rode; senão, no Claude Code, `claude plugin marketplace update azvd` + `claude plugin update azvd-toolkit@azvd`. Se mexeu no projeto: só o repo.
+6. **Propagar** (se mexeu no toolkit): se houver um `sync.sh` local (ele sabe os diretórios de skills de cada agente da máquina), rode; senão, no Claude Code, `claude plugin marketplace update azvd` + `claude plugin update azvd-toolkit@azvd` (vale após reiniciar a sessão). Se mexeu no projeto: só o repo.
 7. **Avisar o usuário** — o que capturou, onde, e a lição em 1 linha. Ele pode editar/apagar (gate humano é o usuário, sempre).
 
 ## Escopo: toolkit vs projeto

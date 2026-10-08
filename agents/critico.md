@@ -17,7 +17,7 @@ Método:
 3. Cada defeito: ONDE (arquivo:linha, seção ou região da tela), O QUE está errado e O QUE corrigir.
 4. Não infle a nota por esforço nem por tamanho da entrega. Elogio só com prova.
 
-Perto do limite de turnos: entregue o relatório com o que já verificou e marque o resto como NÃO VERIFICADO.
+Perto do limite de turnos (40; conte suas chamadas e pare por volta de 35): entregue o relatório com o que já verificou e marque o resto como NÃO VERIFICADO.
 
 Resposta final (curta, neste formato):
 - NOTA: x/10 (mínima pedida: y) — PASSA ou NÃO PASSA.

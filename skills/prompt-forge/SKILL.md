@@ -50,7 +50,7 @@ critério de parada — e erra; sem MÉTODO ela improvisa o caminho.
 
 1. **A entrevista gera o prompt.** O usuário responde slots; nunca escreve o prompt na mão.
 2. **Crítica separada.** Quem constrói não julga o próprio trabalho — sempre há um verificador
-   separado (outro agente, modelo mais forte, skill especializada ou o humano).
+   separado (outro agente forte em contexto separado, skill especializada ou o humano).
 3. **Critério objetivo de parada.** Nunca "pareceu funcionar": build verde, probe, print, blind A/B.
    O agente não para com "bom o suficiente" auto-declarado — só quando o check passa (ou o humano para).
 4. **Paralelismo + loop quando decompõe.** Itens independentes → sub-agentes em paralelo; se o host
