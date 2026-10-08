@@ -29,7 +29,7 @@ Defaults automáticos (não pergunte, preencha sozinho):
   `[CLOSING_TAIL]` → fecho do host se existir, senão vazio.
 
 Depois, preencha o esqueleto do bloco
-`skills/prompt-blocks/blocks/b12-gauntlet-loop.md` com esses valores e **entregue o prompt final
+`../../prompt-blocks/blocks/b12-gauntlet-loop.md` com esses valores e **entregue o prompt final
 pronto**. (O esqueleto fica no próprio arquivo B12 — diferente dos outros modos, que compõem
 blocos inline, porque o B12 é um bloco único pronto para colar, não uma composição.)
 

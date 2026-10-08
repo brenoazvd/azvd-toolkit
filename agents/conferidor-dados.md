@@ -23,6 +23,9 @@ Ao conferir uma afirmação:
 - Consulta lenta: filtre pela chave indexada; não varra a tabela inteira para responder uma pergunta
   pequena.
 
+Trava real, não só instrução: conecte com um LOGIN DE BANCO SOMENTE LEITURA. Se não houver um, pare e avise
+antes de rodar qualquer consulta — o Bash deste agente consegue executar escrita.
+
 Resposta final (curta, neste formato):
 - AFIRMAÇÃO → CONFERE / NÃO CONFERE (valor certo, unidade, recorte).
 - COMO: a consulta usada (resumida).

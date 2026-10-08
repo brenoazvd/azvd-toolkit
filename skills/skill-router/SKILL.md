@@ -1,6 +1,6 @@
 ---
 name: skill-router
-description: "Use quando o usuário pergunta QUAL skill resolve um pedido ('qual skill uso pra isso?', 'tem skill pra X?'). Procura primeiro nas skills e agentes do azvd-toolkit e depois nas skills instaladas no ambiente, e aponta a melhor — não executa a tarefa."
+description: "Chamada só via /skill-router, quando o usuário pergunta QUAL skill resolve um pedido ('qual skill uso pra isso?', 'tem skill pra X?'). Procura primeiro nas skills e agentes do azvd-toolkit e depois nas skills instaladas no ambiente, e aponta a melhor — não executa a tarefa."
 trigger: /skill-router
 disable-model-invocation: true
 ---

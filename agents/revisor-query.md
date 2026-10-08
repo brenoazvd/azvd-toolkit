@@ -18,6 +18,9 @@ Para cada query alterada:
    e compare contagem e soma. Diferença tem que ser exatamente a pretendida pela mudança.
 4. **Tempo:** meça as duas, sabendo que a primeira execução pode estar fria (cache).
 
+Trava real, não só instrução: conecte com um LOGIN DE BANCO SOMENTE LEITURA. Se não houver um, pare e avise
+antes de rodar qualquer consulta — o Bash deste agente consegue executar escrita.
+
 Resposta final (curta, neste formato):
 - VEREDITO: APROVA / REPROVA.
 - PLANO: antes → depois (acesso, índice, linhas).

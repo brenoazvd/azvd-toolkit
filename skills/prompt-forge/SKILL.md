@@ -92,4 +92,4 @@ Modo (protocolo `self-learning`, regra das 3 verificações).
 - `prompt-blocks` — blocos comprovados que os Modos compõem.
 - `orchestrator` — encadeia skills e agentes do toolkit em tarefas multi-etapa.
 - `graph-engineering` — desenha o task graph do Modo Orquestração.
-- `skill-router` — porta de entrada quando o usuário não sabe qual skill usar.
+- `skill-router` — só aponta a skill certa quando o usuário não sabe qual usar (chamado manualmente).

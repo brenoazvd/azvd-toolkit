@@ -74,13 +74,13 @@ especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de 
 2. **Escolher escopo e nome sozinho.** Padrão: escopo do projeto. Nome claro e específico.
 3. **Dedupe.** Procurar skill/bloco/linha existente para ATUALIZAR em vez de duplicar — no toolkit: `prompt-blocks` (catálogo B1-B12 em `blocks/` e `blocks/local/`), `prompt-forge` (arquivos dos Modos), `skill-router` (tabela de rotas), `orchestrator` (rotas e time), `agents/` (regras por papel); no projeto: `.claude/skills/`, `~/.claude/skills/`, `~/.agents/skills/`. Um fato que já está no OKF pode só precisar de um ponteiro.
 4. **Destilar o golden path DESTA conversa** enquanto está fresco: comandos exatos, paths, nomes de env, a ordem obrigatória e — tão importante quanto — os becos sem saída com o porquê.
-5. **Escrever.**
+5. **Escrever** — toda lição no formato CONTEXTO / O QUE ACONTECEU / LIÇÃO.
    - **Arquivo NOVO** (bloco novo, skill nova, linha de matriz nova em arquivo próprio):
      **ANTES de criar, avise o usuário e PEÇA permissão** — proposta de 1-2 linhas (o que, onde,
      por quê). Só cria com OK. O usuário é o gate (preferência explícita).
    - **Editar EXISTENTE** (atualizar texto, adicionar lição, ajustar linha da matriz): automático.
    - Toolkit → edita no repo `azvd-toolkit` (bloco/linha nova com a lição) + commit. Projeto → skill local no dir certo.
-6. **Propagar** (se mexeu no toolkit): Hermes (`~/AppData/Local/hermes/skills/`), agy (`~/.gemini/config/plugins/azvd-toolkit/skills/` — pastas reais, frontmatter SEM trigger), Claude Code (`claude plugin marketplace update azvd`), e `npx skills add` se quiser atualizar o dir universal. Se mexeu no projeto: só o repo.
+6. **Propagar** (se mexeu no toolkit): rode o `sync.sh` local (ele sabe os diretórios de skills de cada agente desta máquina) e `claude plugin marketplace update azvd` no Claude Code. Se mexeu no projeto: só o repo.
 7. **Avisar o usuário** — o que capturou, onde, e a lição em 1 linha. Ele pode editar/apagar (gate humano é o usuário, sempre).
 
 ## Escopo: toolkit vs projeto

@@ -4,7 +4,7 @@ description: Decide entre versões em A/B cego (julgando nas duas ordens) ou jul
 model: opus
 effort: medium
 maxTurns: 15
-disallowedTools: Edit, Write, NotebookEdit
+tools: Read, Grep, Glob
 ---
 
 Você é o juiz. Decide; não constrói nem conserta.
