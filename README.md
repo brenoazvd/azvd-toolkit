@@ -1,6 +1,6 @@
 # azvd-toolkit
 
-Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas que funcionam em qualquer
+Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 6 agentes que funcionam em qualquer
 ecossistema multi-agente, dos comerciais (Claude Code, Codex, Cursor) aos open source (Kiro,
 OpenClaw, Antigravity/agy, Hermes), entre outros. Elas cobrem **orquestração**, **prompt
 engineering**, **graph engineering** e **auto-aprendizado**, e foram validadas em campo (não são
@@ -12,12 +12,30 @@ teoria).
 
 | Skill | O que faz | Trigger |
 |---|---|---|
-| `skill-router` | **Porta de entrada**: acha a skill certa (1º no azvd, 2º nas skills globais do seu PC) | `/skill-router` |
-| `orchestrator` | **Roteador**: decide qual skill do azvd usar e encadeia elas | `/orchestrator` |
+| `skill-router` | **Qual skill resolve isso?** Aponta a skill ou agente certo (1º no azvd, 2º nas instaladas). Só quando chamado | `/skill-router` |
+| `orchestrator` | **Encadeia** skills e monta o **time de agentes** quando a tarefa precisa de mais de uma peça, com custo controlado | `/orchestrator` |
 | `prompt-forge` | **Forja prompts** por entrevista interativa: cada tipo de pedido (Criação, Código, Análise, Orquestração, Texto) tem um **Modo** que gera o prompt pronto para colar — crítica separada + critério objetivo de parada (filosofia Gauntlet Loop) | `/prompt-forge` |
 | `prompt-blocks` | **Biblioteca de blocos** de prompt comprovados, cada um com a lição de incidente que o originou | `/prompt-blocks` |
 | `graph-engineering` | **Knowledge graphs** (pipeline de 9 etapas) + **task graphs** (orquestração multi-agente: fan-out, diamond, gate humano) | `/graph-engineering` |
 | `self-learning` | **A skill que se adapta**: colhe lições da sessão e as transforma em blocos/linhas/rotas novas nas outras skills | `/self-learning` |
+
+## Os 6 agentes (Claude Code)
+
+Sub-agentes em `agents/`, cada um com papel, modelo, esforço e teto de turnos definidos — nenhum herda
+o modelo da sessão por omissão (é isso que faz o custo disparar em times de agentes).
+
+| Agente | Faz | Modelo · esforço |
+|---|---|---|
+| `construtor` | implementa um item com escopo fechado; nunca julga o próprio trabalho | forte · high |
+| `critico` | nota com régua fixa + defeitos acionáveis; não conserta | forte · max |
+| `juiz` | A/B cego (julga nas duas ordens) ou o conjunto inteiro; usado com pouca frequência | mais forte · medium |
+| `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | forte · high |
+| `conferidor-tela` | confere numa tela de sistema web, só olhando | forte · medium |
+| `revisor-query` | plano, índice e resultado antes × depois de uma query | forte · high |
+
+No Claude Code eles aparecem como `azvd-toolkit:<nome>`. **Quer outro modelo ou esforço?** Copie o
+arquivo para `~/.claude/agents/<nome>.md` e edite o frontmatter — a cópia local tem precedência sobre o
+plugin e não é sobrescrita por atualização.
 
 ## Como as skills se conversam
 
@@ -37,7 +55,7 @@ flowchart LR
   SL --> O
 ```
 
-- `skill-router` acha a skill (1º azvd, 2º globais); `orchestrator` roteia dentro do azvd.
+- `skill-router` só aponta a skill/agente; `orchestrator` encadeia peças e monta o time de agentes.
 - `prompt-forge` monta o prompt e compõe com blocos de `prompt-blocks`.
 - `graph-engineering` planeja a orquestração (fan-out, diamond, human gate); cada ticket vira prompt no `prompt-forge`.
 - `prompt-blocks` guarda as lições (outcome) que alimentam todas.
@@ -88,6 +106,8 @@ Depois, em qualquer agente, chame `/skill-router` e diga o que quer fazer. Simpl
 | Montar/refinar um **prompt** para agentes | `/prompt-forge` |
 | Usar **blocos prontos** de prompt (PARE E REPORTE, teste de decisão...) | `/prompt-blocks` |
 | **Orquestrar** N agentes/CLIs/tickets (fan-out, gates) | `/orchestrator` ou `/graph-engineering` |
+| **Construir com qualidade verificada** (construtor + crítico + juiz) | `/orchestrator` |
+| **Conferir** um número, uma tela ou uma query antes de afirmar | agentes `conferidor-*` / `revisor-query` |
 | **Mapear** código/docs/conhecimento em um grafo, ou fazer task graph | `/graph-engineering` |
 | **Ensinar o toolkit**: colher uma lição nova e atualizar as skills | `/self-learning` |
 

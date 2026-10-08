@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Toolkit pessoal: orquestração de prompts, blocos comprovados e graph engineering",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "azvd-toolkit",
       "source": "./",
-      "description": "orchestrator, prompt-forge, prompt-blocks, graph-engineering",
-      "version": "0.2.0",
+      "description": "6 skills (orchestrator, prompt-forge, prompt-blocks, graph-engineering, self-learning, skill-router) + 6 agentes",
+      "version": "0.3.0",
       "author": {
         "name": "brenoazvd"
       },

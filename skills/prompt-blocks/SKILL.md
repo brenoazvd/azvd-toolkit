@@ -14,7 +14,7 @@ blocos de prompt validados em campo — um bloco = um arquivo `.md`, no **estilo
 
 | O bloco é... | Vai para | Exemplo |
 |---|---|---|
-| **Portável** — ajuda qualquer dev que não te conhece | `blocks/` (público, versionado, padrão) | B1-B10, um futuro B11 de routing |
+| **Portável** — ajuda qualquer dev que não te conhece | `blocks/` (público, versionado, padrão) | B1-B12 |
 | **Só seu** — CLIs, modelo, preferências, tokens | `blocks/local/` (gitignored, não sobe) | seu `meus-clis.md`, config do roteador |
 
 Regra de decisão: **um bloco vai para `blocks/` se ajuda um dev que não conhece você; vai para
@@ -143,8 +143,8 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 
 ## Skills relacionadas
 
-- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é blocos/prompt.
+- `skill-router` — aponta esta skill quando o usuário pergunta "qual skill uso?".
 - `prompt-forge` — entrevista que monta o prompt e compõe estes blocos (lê o catálogo).
-- `orchestrator` — roteador do toolkit.
+- `orchestrator` — encadeia skills e agentes; consulta os blocos ao montar prompts de tickets.
 - `self-learning` — protocolo de colheita que alimenta esta biblioteca (usa este filtro).
 - `graph-engineering` — tickets de task graph usam os blocos B2-B7.

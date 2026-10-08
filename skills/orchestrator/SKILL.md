@@ -1,51 +1,75 @@
 ---
 name: orchestrator
-description: "Roteador do toolkit: decide qual skill usar e encadeia (prompt-forge, prompt-blocks, graph-engineering). Primeira parada de QUALQUER pedido de prompt/orquestração. Em dúvida, pergunta ao usuário — nunca roteia no chute."
+description: "Use quando uma tarefa precisa de MAIS DE UMA peça: encadear skills do azvd-toolkit (prompt-forge, graph-engineering, prompt-blocks, self-learning) ou montar um time de sub-agentes (construtor, crítico, juiz, conferidores) com custo controlado. Para um prompt único use prompt-forge; para 'qual skill uso?' use skill-router. Em dúvida de intenção, pergunta em vez de chutar."
 trigger: /orchestrator
 ---
 
-# Orchestrator — roteador do toolkit
+# Orchestrator — encadeia skills e monta o time de agentes
 
-Papel: receber o pedido do usuário e rotear para a skill certa (ou encadear). **NÃO executa a tarefa em si** — apenas direciona. As skills se conversam: a saída de uma é entrada da outra.
+Papel: planejar **como** a tarefa é dividida e **quem** faz cada parte. Não executa a tarefa em si.
 
-## Matriz de roteamento
+## 1. Escolha a rota
 
-| Se o usuário pedir... | Rota |
+| A tarefa é… | Rota |
 |---|---|
-| "monta um prompt pra IA" / "como peço X pra IA" / "refina meu prompt" | `prompt-forge` (entrevista interativa) |
-| "cria/desenha um site/landing/dashboard/UI" | `prompt-forge` (modo Criação/Design → gera prompt Gauntlet Loop; crítico de UI é `impeccable` no Claude Code, ou o revisor de design do host/manual noutro CLI) |
-| "melhora/redesenha/audita essa interface" / "esse design tá sem graça" | `impeccable` (Claude Code) — noutro host, use o crítico de design equivalente ou revisão manual |
-| "usa os blocos prontos" / "o que já sabemos que funciona em prompt" | `prompt-blocks` |
-| "estrutura esse código/docs/conhecimento em grafo" / "mapeia relações" | `graph-engineering` (pipeline KG) |
-| "orquestra N agentes/CLIs/tickets pra fazer X" / "planeja em fases" | `graph-engineering` → `references/task-graphs.md` (fan-out, diamond, human gate) + `prompt-forge` (UM prompt por ticket) |
-| "quero aprender graph engineering" | `graph-engineering` (modo ensino, diagramas por etapa) |
-| "aprendi algo novo" / "lembra disso" / lição da sessão | `self-learning` (colhe o golden path e atualiza as skills) |
-| "qual skill resolve isso?" / "não sei qual skill usar" | `skill-router` (1º azvd, 2º skills globais do PC) |
-| "segurança/review de segurança/ache secrets/vulnerabilidade" | `skill-router` → `SecuritySkills` (global; instalar com `npx skills add UnitOneAI/SecuritySkills -g`) |
-| pedido misto (ex.: prompt + orquestração) | encadear: `prompt-forge` → `graph-engineering` (ou vice-versa) |
-| intenção ambígua | **PERGUNTAR** — uma pergunta, formato A/B com recomendação |
+| um prompt autocontido para outra IA | `prompt-forge` — e pare aí |
+| multi-etapa, multi-repo ou N frentes | `graph-engineering` (task graph) → `prompt-forge` (um prompt por ticket) |
+| construir algo com qualidade verificada | time: `construtor` + `critico` (+ `juiz` se houver versões a comparar) |
+| conferir números, telas ou queries antes de afirmar algo | `conferidor-dados` / `conferidor-tela` / `revisor-query` |
+| registrar uma lição da sessão | `self-learning` |
+| intenção ambígua | **pergunte** — uma pergunta, A/B com recomendação |
 
-## Regras de encadeamento (as skills se conversam)
+Saída de uma peça é entrada da próxima. Nunca refaça o que a anterior já entregou.
 
-1. `prompt-forge` **consome** `prompt-blocks` — compõe as seções do prompt com os blocos B1-B7 (não reescreve o que já está provado).
-2. `graph-engineering` (task graphs) **gera** tickets; cada ticket vira prompt via `prompt-forge`.
-3. `prompt-blocks` é a **memória de lições** — qualquer skill que monte prompt deve consultá-la.
-4. Saída de uma skill = entrada da próxima. Nunca refazer o que a skill anterior já entregou.
+## 2. Dimensione antes de disparar (custo)
 
-## Regras de parada
+Multi-agente custa muito mais que um agente só — use quando o valor justifica.
 
-- Pedido cabe em **UM prompt autocontido** → `prompt-forge`, pare aí.
-- Pedido precisa de **N prompts** (multi-repo, multi-fase) → NUNCA juntar tudo num prompt gigante ("buga a IA"): task graph primeiro, um prompt por ticket.
-- Dúvida de **intenção** → perguntar ao usuário. Dúvida de **conteúdo** → a entrevista da `prompt-forge` resolve.
+| Complexidade | Time |
+|---|---|
+| busca ou conferência simples | **1 agente**, poucas chamadas |
+| comparar 2-4 opções, ou 2-4 itens independentes | **2-4 agentes** em paralelo |
+| construção grande (vários itens + crítica) | construtores em paralelo **com teto** (ex.: 3) + 1 crítico por item + juiz periódico |
+
+Regras de custo:
+- **Todo agente tem modelo e esforço definidos** — nunca deixe herdar o modelo da sessão por omissão.
+  Os agentes do toolkit já trazem isso no frontmatter; ajuste localmente se precisar (ver README).
+- **Leitura e busca** → modelo leve. **Construir** → forte. **Julgar o todo** → o mais forte, com menos
+  frequência (ex.: a cada N rodadas, não a cada item).
+- **Saída curta** pedida a cada agente (formato fixo, sem colar arquivos inteiros de volta).
+- **Teto de rodadas** em todo loop (ex.: 5). Bateu o teto sem passar → pare e reporte.
+- Reaproveite: retome o agente que já tem o contexto em vez de abrir outro do zero.
+- Cota perto do fim: **não troque modelo no meio da execução**; salve um ponto de retomada (bloco B10)
+  e deixe parar limpo.
+
+## 3. O time de agentes (`agents/` do toolkit)
+
+| Agente | Faz | Nunca faz |
+|---|---|---|
+| `construtor` | implementa um item com escopo fechado | julgar o próprio trabalho; mexer fora do escopo |
+| `critico` | nota com régua fixa + defeitos acionáveis | consertar; elogiar sem prova |
+| `juiz` | compara versões em A/B cego (ordem trocada) ou julga o conjunto | decidir com uma ordem só |
+| `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | escrever na fonte; arredondar a conclusão |
+| `conferidor-tela` | confere na tela do sistema, só olhando | clicar em ação que altera dado; abrir abas em paralelo |
+| `revisor-query` | plano de execução, índice e resultado antes × depois | aprovar sem medir |
+
+Loop padrão de qualidade: **construtor → crítico → (corrige) → crítico … até passar ou bater o teto**;
+o `juiz` entra quando há duas versões ou a cada N itens para ver o conjunto.
+
+## 4. Regras de parada
+
+- Cabe em **um prompt** → `prompt-forge`. Precisa de **N prompts** → task graph primeiro.
+- Dúvida de **intenção** → pergunte ao usuário. Dúvida de **conteúdo** → a entrevista do
+  `prompt-forge` resolve.
+- Afirmação que vai para fora (cliente, fornecedor, relatório) → passa por um conferidor antes.
 
 ## Auto-atualização
 
-Descobriu um encaminhamento novo (pedido → skill) durante o uso? Adicione uma linha na matriz de
-roteamento acima (protocolo `self-learning`, regra de promoção de 3 verificações) — esta skill se
-adapta a quem usa.
+Encaminhamento novo descoberto (pedido → skill/agente)? Adicione na tabela da seção 1 (protocolo
+`self-learning`, regra das 3 verificações).
 
 ## Skills relacionadas
 
-- `prompt-forge`, `prompt-blocks`, `graph-engineering` — as 3 skills que este roteador orquestra.
-- `impeccable` (skill global, **apenas Claude Code**) — crítica/iteração de design profissional; o "crítico harsh" do Gauntlet Loop quando a criação é UI/web. Noutro host, use o crítico de design equivalente ou blind A/B manual.
-- `ask-matt` (skill global do ambiente) — router mais amplo de skills; este é o router do azvd-toolkit.
+- `skill-router` — "qual skill resolve isso?" (só aponta).
+- `prompt-forge`, `graph-engineering`, `prompt-blocks`, `self-learning` — as peças que este encadeia.
+- `impeccable` (global, só Claude Code) — crítico de UI quando a construção é interface.

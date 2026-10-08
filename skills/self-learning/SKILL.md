@@ -10,7 +10,7 @@ Meta-skill: não faz o trabalho — captura **COMO** o trabalho foi feito, inclu
 (pular um beco sem saída conhecido na próxima sessão vale mais que a própria vitória).
 
 Adaptada de [Kulaxyz/self-learning-skills](https://github.com/Kulaxyz/self-learning-skills) (MIT) —
-mesmo loop, direcionado ao ecossistema azvd-toolkit (4 skills + 4 IAs).
+mesmo loop, direcionado ao ecossistema azvd-toolkit (skills, agentes e as IAs onde o toolkit roda).
 
 ## Estilo do usuário (detecte ANTES de colher)
 
@@ -35,12 +35,24 @@ estilo detectado; blocos novos sempre para `blocks/` do prompt-blocks (portávei
 |---|---|
 | Procedimento multi-passo reutilizável | skill nova (ou atualizar existente) |
 | Regra nova de prompt (lição de incidente) | **bloco novo no `prompt-blocks`** — com a lição que o originou |
-| Pergunta/ferramenta que a entrevista deveria puxar | **linha nova na matriz do `prompt-forge`** |
-| Encaminhamento novo (pedido → skill certa) | **linha nova na matriz do `orchestrator`** |
+| Pergunta/ferramenta que a entrevista deveria puxar | **linha nova no arquivo do Modo** (`prompt-forge/references/modo-*.md`) |
+| Encaminhamento novo (pedido → skill certa) | **linha nova na tabela do `skill-router`** (ou da rota no `orchestrator`) |
+| Regra que vale sempre para um PAPEL (construir, criticar, conferir tela/dados/query) | **regra no arquivo do agente** em `agents/` |
 | Fato único / correção de 1 linha (env var, path) | memória do projeto (MEMORY.md ou OKF `log.md`) — skill é overkill |
 | Fatos/decisões do projeto que mudam a "doc viva" | **atualizar a memória do projeto** após a entrega (bloco B9 do prompt-blocks) |
 | Run longo que pode ser cortado | **checkpoint de retomada** (bloco B10 — estado REAL, não intenção) |
 | Coisa genuinamente one-off, sem chance de recorrer | pular |
+
+## Formato da lição (curto, sempre igual)
+
+```
+CONTEXTO: onde aconteceu (tarefa, ferramenta, sistema) — sem dado de cliente
+O QUE ACONTECEU: o erro ou a correção, com o check que provou
+LIÇÃO: a regra acionável (bom: "use período de 2+ dias no filtro"; ruim: "tenha cuidado")
+```
+
+Curadoria vale mais que captura: antes de gravar, procure a lição parecida e **atualize** em vez de
+duplicar; lição que nunca foi reaplicada vira candidata a remoção na próxima revisão.
 
 ## Regra de promoção (não enshrinar chute)
 
@@ -60,7 +72,7 @@ especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de 
 
 1. **Aplicar a regra de promoção.** Faltou check/falha/beco → memória ou pular.
 2. **Escolher escopo e nome sozinho.** Padrão: escopo do projeto. Nome claro e específico.
-3. **Dedupe.** Procurar skill/bloco/linha existente para ATUALIZAR em vez de duplicar — no toolkit: `prompt-blocks` (catálogo B1-B10 em `blocks/`), `prompt-forge` (matriz de tipos), `orchestrator` (matriz de roteamento); no projeto: `.claude/skills/`, `~/.claude/skills/`, `~/.agents/skills/`. Um fato que já está no OKF pode só precisar de um ponteiro.
+3. **Dedupe.** Procurar skill/bloco/linha existente para ATUALIZAR em vez de duplicar — no toolkit: `prompt-blocks` (catálogo B1-B12 em `blocks/` e `blocks/local/`), `prompt-forge` (arquivos dos Modos), `skill-router` (tabela de rotas), `orchestrator` (rotas e time), `agents/` (regras por papel); no projeto: `.claude/skills/`, `~/.claude/skills/`, `~/.agents/skills/`. Um fato que já está no OKF pode só precisar de um ponteiro.
 4. **Destilar o golden path DESTA conversa** enquanto está fresco: comandos exatos, paths, nomes de env, a ordem obrigatória e — tão importante quanto — os becos sem saída com o porquê.
 5. **Escrever.**
    - **Arquivo NOVO** (bloco novo, skill nova, linha de matriz nova em arquivo próprio):
@@ -78,7 +90,7 @@ especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de 
 
 ## Skills relacionadas
 
-- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é aprendizado/lição.
-- `orchestrator` — roteia para esta skill quando o pedido é "aprendi algo novo".
+- `skill-router` — aponta esta skill quando o usuário pergunta "qual skill uso?".
+- `orchestrator` — encaminha para esta skill quando a tarefa termina com lição a registrar.
 - `prompt-blocks` / `prompt-forge` — destinos principais da colheita.
 - `graph-engineering` — se a colheita virar um mapa de conhecimento, use o pipeline KG.

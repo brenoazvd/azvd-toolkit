@@ -118,7 +118,7 @@ mas NUNCA pule as etapas 3 (ontologia) ou 8 (fusão) — é onde grafos do mundo
 ## Task graphs na prática (azvd-toolkit)
 
 As regras de task graph são a teoria por trás dos padrões de orquestração que este toolkit já usa
-(veja a matriz da skill `orchestrator` ):
+(veja a seção de rotas e o time de agentes da skill `orchestrator`):
 
 | Regra (task-graphs.md) | Na prática do toolkit |
 |---|---|
@@ -130,8 +130,8 @@ As regras de task graph são a teoria por trás dos padrões de orquestração q
 
 ## Skills relacionadas (azvd-toolkit)
 
-- `skill-router` — porta de entrada: encaminha para esta skill quando o pedido é grafos/knowledge.
-- `orchestrator` — roteador: decide quando esta skill entra.
+- `skill-router` — aponta esta skill quando o usuário pergunta "qual skill uso?".
+- `orchestrator` — encadeia esta skill com as outras (task graph → um prompt por ticket).
 - `prompt-forge` — gera os prompts/tickets quando um task graph vira execução (um prompt por
   ticket — nunca um prompt gigante).
 - `prompt-blocks` — blocos de prompt comprovados (PARE E REPORTE, teste de decisão, contrato de
