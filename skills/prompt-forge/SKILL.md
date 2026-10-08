@@ -20,7 +20,8 @@ slots curtos; a skill identifica o **Modo** do pedido, abre o roteiro dele e ent
    Abertura (pergunte **só o que faltar**):
    - agente-alvo (qual CLI/host vai rodar o prompt);
    - categoria de modelo — sugira pela tarefa (bloco B11): leve para explorar, forte para executar,
-     mais forte para revisar. **Nunca cite nome de modelo/provedor**; o usuário escolhe o nome;
+     mais forte para revisar — e pergunte qual ele prefere. **Nunca cite nome de modelo/provedor**; o
+     usuário escolhe o nome;
    - autonomia (executa tudo / executa e reporta / só analisa).
 3. **Siga o roteiro do Modo**, uma pergunta por vez.
 4. **Monte o prompt com os blocos reais.** Os blocos citados nos Modos (B1-B12) ficam em
@@ -43,7 +44,7 @@ slots curtos; a skill identifica o **Modo** do pedido, abre o roteiro dele e ent
 Nenhum Modo encaixa → **anatomia de fallback**: todo prompt tem **TAREFA** (o que fazer: objetivo,
 contexto mínimo, entregáveis), **MÉTODO** (como: passos, ferramentas, restrições, formato) e **META**
 (quando pode parar: critério de aceite objetivo + o que não fazer). Sem META a IA define o próprio
-critério de parada — e erra.
+critério de parada — e erra; sem MÉTODO ela improvisa o caminho.
 
 ## Princípios (valem em todo Modo)
 
@@ -63,7 +64,7 @@ critério é objetivo do domínio — forçar referência visual ali é o que qu
 
 ## Regras da entrevista
 
-1. **Uma pergunta por vez**, de preferência A/B com uma opção recomendada.
+1. **Uma pergunta por vez**, de preferência A/B ou 2-3 opções objetivas, com uma recomendada.
 2. **Nunca re-pergunte** o que já veio. **Dúvida = pergunte**, não suponha em silêncio.
 3. **Exemplo no domínio do usuário**, nunca genérico. Peça "um exemplo de entrada e a saída que você
    espera" em vez de aceitar "entendeu?".

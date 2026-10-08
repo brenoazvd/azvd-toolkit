@@ -126,7 +126,7 @@ O `skill-router` também varre skills globais instaladas no seu PC. Para adicion
 npx skills add UnitOneAI/SecuritySkills -g
 ```
 
-Depois disso, `/skill-router "review de segurança"` encontra a skill certa automaticamente.
+Depois disso, `/skill-router "review de segurança"` acha a skill no passo 2 (skills instaladas, pela `description`).
 
 ## Origem e créditos
 

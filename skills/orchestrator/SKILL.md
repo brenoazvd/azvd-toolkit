@@ -34,8 +34,9 @@ Multi-agente custa muito mais que um agente só — use quando o valor justifica
 Regras de custo:
 - **Todo agente tem modelo e esforço definidos** — nunca deixe herdar o modelo da sessão por omissão.
   Os agentes do toolkit já trazem isso no frontmatter; ajuste localmente se precisar (ver README).
-- **Leitura e busca** → modelo leve. **Construir** → forte. **Julgar o todo** → o mais forte, com menos
-  frequência (ex.: a cada N rodadas, não a cada item).
+- **Busca e exploração ampla** → modelo leve. **Construir** e **conferir** (conferidores, `revisor-query`,
+  `critico`) → forte: conferência errada custa mais que o modelo. **Julgar o todo** → o mais forte, com
+  menos frequência (ex.: a cada N rodadas, não a cada item).
 - **Saída curta** pedida a cada agente (formato fixo, sem colar arquivos inteiros de volta).
 - **Teto de rodadas** em todo loop (ex.: 5). Bateu o teto sem passar → pare e reporte.
 - Reaproveite: retome o agente que já tem o contexto em vez de abrir outro do zero.
