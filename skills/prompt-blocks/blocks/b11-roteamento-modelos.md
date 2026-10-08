@@ -30,7 +30,8 @@ ROTEAMENTO DE MODELOS (heurísticas — SUGESTÃO, confirme com o usuário):
 ├─────────────────────┼──────────────────────────────────────┼─────────────────────┤
 │ Análise/exploração  │ modelo leve/barato                  │ modelo médio        │
 │ Execução/código     │ modelo forte                        │ médio + thinking    │
-│ Revisão/verificação │ mais forte (contexto separado)      │ forte               │
+│ Revisão/conferência │ modelo forte (contexto separado)    │ médio + thinking    │
+│ Julgar o conjunto   │ mais forte (pouca frequência)       │ forte               │
 │ Planejamento        │ modelo médio                        │ forte               │
 │ Criação/design      │ modelo forte                        │ forte + thinking    │
 └─────────────────────┴──────────────────────────────────────┴─────────────────────┘

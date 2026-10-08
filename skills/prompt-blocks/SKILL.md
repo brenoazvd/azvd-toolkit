@@ -143,7 +143,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 
 ## Skills relacionadas
 
-- `skill-router` — aponta esta skill quando o usuário pergunta "qual skill uso?".
+- `skill-router` — aponta esta skill quando chamado via `/skill-router`.
 - `prompt-forge` — entrevista que monta o prompt e compõe estes blocos (lê o catálogo).
 - `orchestrator` — encadeia skills e agentes; consulta os blocos ao montar prompts de tickets.
 - `self-learning` — protocolo de colheita que alimenta esta biblioteca (usa este filtro).

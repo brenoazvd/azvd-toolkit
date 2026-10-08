@@ -24,7 +24,9 @@ Ao conferir uma afirmação:
   pequena.
 
 Trava real, não só instrução: conecte com um LOGIN DE BANCO SOMENTE LEITURA. Se não houver um, pare e avise
-antes de rodar qualquer consulta — o Bash deste agente consegue executar escrita.
+antes de rodar qualquer consulta — o Bash deste agente consegue executar escrita. Confira as permissões
+do login antes (ex.: `SHOW GRANTS` no MySQL, `fn_my_permissions` no SQL Server, `\du` no Postgres) e PARE
+se houver INSERT, UPDATE, DELETE ou DDL.
 
 Resposta final (curta, neste formato):
 - AFIRMAÇÃO → CONFERE / NÃO CONFERE (valor certo, unidade, recorte).

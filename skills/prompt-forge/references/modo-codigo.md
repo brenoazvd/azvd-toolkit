@@ -16,7 +16,7 @@ Perguntas (uma por vez, extraia antes o que já veio):
 
 Defaults automáticos (preencha sozinho):
 - Modelo → categoria **forte** para execução (bloco `b11-roteamento-modelos.md`).
-- Crítica separada → um segundo agente/modelo **mais forte** revisa o diff (a própria IA que codou
+- Crítica separada → um segundo agente (`critico`, modelo **forte**, contexto separado) revisa o diff (a própria IA que codou
   não julga o próprio trabalho).
 - Autonomia → da abertura (não re-perguntar).
 - Paralelismo → se o bug/feature quebra em arquivos/módulos independentes, distribua um sub-agente

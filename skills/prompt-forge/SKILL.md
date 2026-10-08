@@ -19,8 +19,8 @@ slots curtos; a skill identifica o **Modo** do pedido, abre o roteiro dele e ent
 2. **Extraia antes de perguntar.** Preencha com o que já veio no pedido os slots da abertura e do Modo.
    Abertura (pergunte **só o que faltar**):
    - agente-alvo (qual CLI/host vai rodar o prompt);
-   - categoria de modelo — sugira pela tarefa (bloco B11): leve para explorar, forte para executar,
-     mais forte para revisar — e pergunte qual ele prefere. **Nunca cite nome de modelo/provedor**; o
+   - categoria de modelo — sugira pela tarefa (bloco B11): leve para explorar, forte para executar
+     e revisar, mais forte só para julgar o conjunto — e pergunte qual ele prefere. **Nunca cite nome de modelo/provedor**; o
      usuário escolhe o nome;
    - autonomia (executa tudo / executa e reporta / só analisa).
 3. **Siga o roteiro do Modo**, uma pergunta por vez.
@@ -78,8 +78,8 @@ qualquer escolha segura puder estar errada num ponto crítico, não entregue: re
 
 - **Autocontido:** o agente não viu esta conversa — embuta os fatos. Não referencie caminhos fora do
   repo do agente (ou passe-os com `--add-dir`).
-- **Componha com blocos do `prompt-blocks`** quando houver bloco aplicável (B1 LEIA PRIMEIRO, B2 PARE
-  E REPORTE, B3 JÁ VERIFICADO, B7 resumo…). Abra o arquivo e cole o texto real.
+- **Componha com blocos do `prompt-blocks`** quando houver bloco aplicável (B1 LEIA PRIMEIRO antes de agir, B2 PARE
+  E REPORTE, B3 JÁ VERIFICADO sobre trabalho já feito, B7 resumo no fim…). Abra o arquivo e cole o texto real.
 - **Papéis de sub-agente:** se o prompt pede construtor, crítico, juiz ou conferidor, use os agentes do
   toolkit (`agents/`) pelo nome em vez de descrever o papel de novo — ver `orchestrator`.
 

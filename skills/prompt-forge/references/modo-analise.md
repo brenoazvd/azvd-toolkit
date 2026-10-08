@@ -15,7 +15,7 @@ Perguntas (uma por vez, extraia antes):
 Defaults automáticos:
 - Crítica separada → **modelo leve analisa → modelo forte revisa → você confere** (o analista não
   valida o próprio achado).
-- Modelo → **leve** para exploração, **mais forte** para a revisão (bloco `b11` — usado pela
+- Modelo → **leve** para exploração, **forte** para a revisão (bloco `b11` — usado pela
   entrevista para configurar o pipeline, NÃO colado no corpo do prompt do analista).
 - Paralelismo → se houver 2-3 hipóteses independentes, um sub-agente por hipótese, todos correndo
   antes da revisão. Loop → `[LOOP_VERB]` até a causa raiz ter evidência real (não "acho que é isso").

@@ -8,7 +8,7 @@ disable-model-invocation: true
 # Skill Router — qual skill resolve isso
 
 Papel único: dado um pedido, **apontar** a skill (ou agente) que resolve. Não executa, não encadeia —
-encadear é do `orchestrator`. Só roda quando chamado (`/skill-router` ou "qual skill uso?").
+encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 
 ## Ordem de busca
 
