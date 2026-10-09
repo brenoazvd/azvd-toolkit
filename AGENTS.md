@@ -6,7 +6,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 
 ## O que é este repo
 
-6 skills adaptativas que qualquer agente (Claude Code, agy, Codex, Cursor, Hermes) pode usar, e 7 sub-agentes (`agents/`) para o Claude Code:
+6 skills adaptativas que qualquer agente (Claude Code, agy, Codex, Cursor, Hermes) pode usar, e 8 sub-agentes (`agents/`) para o Claude Code:
 
 | Skill | Função |
 |---|---|
@@ -19,6 +19,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 
 | Agente (`agents/`) | Papel | Categoria de modelo · esforço |
 |---|---|---|
+| `verificador-previo` | antes de construir: precisa existir? já existe? premissas, critério de aceite | forte · high |
 | `construtor` | implementa um item com escopo fechado | forte · high |
 | `critico` | nota com régua + defeitos, sem consertar | forte · max |
 | `juiz` | A/B cego nas duas ordens ou julgamento do conjunto | mais forte · medium |

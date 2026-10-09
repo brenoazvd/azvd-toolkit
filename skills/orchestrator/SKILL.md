@@ -14,7 +14,7 @@ Papel: planejar **como** a tarefa é dividida e **quem** faz cada parte. Não ex
 |---|---|
 | um prompt autocontido para outra IA | `prompt-forge` — e pare aí |
 | multi-etapa, multi-repo ou N frentes | `graph-engineering` (task graph) → `prompt-forge` (um prompt por ticket) |
-| construir algo com qualidade verificada | time: `construtor` + `critico` (+ `juiz` se houver versões a comparar) |
+| construir algo com qualidade verificada | time: `verificador-previo` + `construtor` + `critico` (+ `juiz` se houver versões a comparar) |
 | conferir números, telas de sistema de terceiros (só olhar) ou queries antes de afirmar algo | `conferidor-dados` / `conferidor-tela` / `revisor-query` |
 | testar a sua aplicação usando de verdade (fluxos, erros, acessibilidade, visual, marcas de IA) | `testador-web` |
 | registrar uma lição da sessão | `self-learning` |
@@ -48,6 +48,7 @@ Regras de custo:
 
 | Agente | Faz | Nunca faz |
 |---|---|---|
+| `verificador-previo` | antes de construir: precisa existir, já existe, premissas, critério de aceite | construir; decidir gosto; escolher entre leituras ambíguas |
 | `construtor` | implementa um item com escopo fechado | julgar o próprio trabalho; mexer fora do escopo |
 | `critico` | nota com régua fixa + defeitos acionáveis | consertar; elogiar sem prova |
 | `juiz` | compara versões em A/B cego (ordem trocada) ou julga o conjunto | decidir com uma ordem só |
@@ -56,7 +57,7 @@ Regras de custo:
 | `testador-web` | usa a sua aplicação de verdade: fluxos, erros, dados, larguras, acessibilidade, visual e marcas de IA, com prova | gravar em produção; consertar código; dar nota; rodar 2 no mesmo navegador em paralelo |
 | `revisor-query` | plano de execução, índice e resultado antes × depois | aprovar sem medir |
 
-Loop padrão de qualidade: **construtor → testador-web (se for web) → crítico → (corrige) → testador-web → crítico … até passar ou bater o teto**
+Loop padrão de qualidade: **verificador-previo (item não trivial) → construtor → testador-web (se for web) → crítico → (corrige) → testador-web → crítico … até passar ou bater o teto**
 (INCONCLUSIVO do testador não conta como passou; se for falta de login ou ambiente, pergunte ao usuário
 em vez de girar outra rodada);
 o `juiz` entra quando há duas versões ou a cada N itens para ver o conjunto.

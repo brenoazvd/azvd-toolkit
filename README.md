@@ -1,6 +1,6 @@
 # azvd-toolkit
 
-Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 7 agentes que funcionam em qualquer
+Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 8 agentes que funcionam em qualquer
 ecossistema multi-agente, dos comerciais (Claude Code, Codex, Cursor) aos open source (Kiro,
 OpenClaw, Antigravity/agy, Hermes), entre outros. Elas cobrem **orquestração**, **prompt
 engineering**, **graph engineering** e **auto-aprendizado**, e foram validadas em campo (não são
@@ -19,13 +19,14 @@ teoria).
 | `graph-engineering` | **Knowledge graphs** (pipeline de 9 etapas) + **task graphs** (orquestração multi-agente: fan-out, diamond, gate humano) | `/graph-engineering` |
 | `self-learning` | **A skill que se adapta**: colhe lições da sessão e as transforma em blocos/linhas/rotas novas nas outras skills | `/self-learning` |
 
-## Os 7 agentes (Claude Code)
+## Os 8 agentes (Claude Code)
 
 Sub-agentes em `agents/`, cada um com papel, modelo, esforço e teto de turnos definidos — nenhum herda
 o modelo da sessão por omissão (é isso que faz o custo disparar em times de agentes).
 
 | Agente | Faz | Modelo · esforço |
 |---|---|---|
+| `verificador-previo` | antes de construir: precisa existir? já existe? premissas, critério de aceite | forte · high |
 | `construtor` | implementa um item com escopo fechado; nunca julga o próprio trabalho | forte · high |
 | `critico` | nota com régua fixa + defeitos acionáveis; não conserta | forte · max |
 | `juiz` | A/B cego (julga nas duas ordens) ou o conjunto inteiro; usado com pouca frequência | mais forte · medium |

@@ -25,6 +25,7 @@ encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 | tarefa que precisa de várias skills ou de sub-agentes (construir + criticar + julgar) | `orchestrator` |
 | mapear código/docs em grafo, ou desenhar task graph | `graph-engineering` |
 | "aprendi algo", "lembra disso", lição da sessão | `self-learning` |
+| conferir um pedido/plano antes de construir (precisa? já existe? critério de aceite) | agente `verificador-previo` |
 | implementar um item com escopo fechado | agente `construtor` |
 | avaliar uma entrega contra uma régua (nota + defeitos) | agente `critico` |
 | decidir entre versões / julgar o conjunto inteiro | agente `juiz` |
