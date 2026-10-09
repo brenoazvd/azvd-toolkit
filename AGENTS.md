@@ -6,7 +6,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 
 ## O que é este repo
 
-6 skills adaptativas que qualquer agente (Claude Code, agy, Codex, Cursor, Hermes) pode usar, e 6 sub-agentes (`agents/`) para o Claude Code:
+6 skills adaptativas que qualquer agente (Claude Code, agy, Codex, Cursor, Hermes) pode usar, e 7 sub-agentes (`agents/`) para o Claude Code:
 
 | Skill | Função |
 |---|---|
@@ -24,6 +24,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 | `juiz` | A/B cego nas duas ordens ou julgamento do conjunto | mais forte · medium |
 | `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | forte · high |
 | `conferidor-tela` | confere na tela de um sistema web, só olhando | forte · medium |
+| `testador-web` | testa a sua aplicação no navegador: fluxos, erros, dados, larguras, acessibilidade, visual e marcas de IA, com prova | forte · high |
 | `revisor-query` | plano, índice e resultado antes × depois de uma query | forte · high |
 
 ## Como as skills se organizam (arquitetura)

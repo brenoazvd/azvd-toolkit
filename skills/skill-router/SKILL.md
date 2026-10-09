@@ -29,7 +29,8 @@ encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 | avaliar uma entrega contra uma régua (nota + defeitos) | agente `critico` |
 | decidir entre versões / julgar o conjunto inteiro | agente `juiz` |
 | conferir número ou afirmação contra a fonte (banco, API, planilha) | agente `conferidor-dados` |
-| conferir algo numa tela de sistema web | agente `conferidor-tela` |
+| conferir algo numa tela de sistema de terceiros (só olhar) | agente `conferidor-tela` |
+| testar a sua aplicação: fluxos, erros, acessibilidade, visual, marcas de IA | agente `testador-web` |
 | revisar mudança de query SQL (plano, índice, resultado) | agente `revisor-query` |
 
 ## Regras

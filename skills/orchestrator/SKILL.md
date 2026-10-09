@@ -15,7 +15,8 @@ Papel: planejar **como** a tarefa é dividida e **quem** faz cada parte. Não ex
 | um prompt autocontido para outra IA | `prompt-forge` — e pare aí |
 | multi-etapa, multi-repo ou N frentes | `graph-engineering` (task graph) → `prompt-forge` (um prompt por ticket) |
 | construir algo com qualidade verificada | time: `construtor` + `critico` (+ `juiz` se houver versões a comparar) |
-| conferir números, telas ou queries antes de afirmar algo | `conferidor-dados` / `conferidor-tela` / `revisor-query` |
+| conferir números, telas de sistema de terceiros (só olhar) ou queries antes de afirmar algo | `conferidor-dados` / `conferidor-tela` / `revisor-query` |
+| testar a sua aplicação usando de verdade (fluxos, erros, acessibilidade, visual, marcas de IA) | `testador-web` |
 | registrar uma lição da sessão | `self-learning` |
 | intenção ambígua | **pergunte** — uma pergunta, A/B com recomendação |
 
@@ -35,7 +36,7 @@ Regras de custo:
 - **Todo agente tem modelo e esforço definidos** — nunca deixe herdar o modelo da sessão por omissão.
   Os agentes do toolkit já trazem isso no frontmatter; ajuste localmente se precisar (ver README).
 - **Busca e exploração ampla** → modelo leve. **Construir** e **conferir** (conferidores, `revisor-query`,
-  `critico`) → forte: conferência errada custa mais que o modelo. **Julgar o todo** → o mais forte, com
+  `testador-web`, `critico`) → forte: conferência errada custa mais que o modelo. **Julgar o todo** → o mais forte, com
   menos frequência (ex.: a cada N rodadas, não a cada item).
 - **Saída curta** pedida a cada agente (formato fixo, sem colar arquivos inteiros de volta).
 - **Teto de rodadas** em todo loop (ex.: 5). Bateu o teto sem passar → pare e reporte.
@@ -52,9 +53,12 @@ Regras de custo:
 | `juiz` | compara versões em A/B cego (ordem trocada) ou julga o conjunto | decidir com uma ordem só |
 | `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | escrever na fonte; arredondar a conclusão |
 | `conferidor-tela` | confere na tela do sistema, só olhando | clicar em ação que altera dado; abrir abas em paralelo |
+| `testador-web` | usa a sua aplicação de verdade: fluxos, erros, dados, larguras, acessibilidade, visual e marcas de IA, com prova | gravar em produção; consertar código; dar nota; rodar 2 no mesmo navegador em paralelo |
 | `revisor-query` | plano de execução, índice e resultado antes × depois | aprovar sem medir |
 
-Loop padrão de qualidade: **construtor → crítico → (corrige) → crítico … até passar ou bater o teto**;
+Loop padrão de qualidade: **construtor → testador-web (se for web) → crítico → (corrige) → testador-web → crítico … até passar ou bater o teto**
+(INCONCLUSIVO do testador não conta como passou; se for falta de login ou ambiente, pergunte ao usuário
+em vez de girar outra rodada);
 o `juiz` entra quando há duas versões ou a cada N itens para ver o conjunto.
 
 ## 4. Regras de parada

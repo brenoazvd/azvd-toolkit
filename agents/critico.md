@@ -1,6 +1,6 @@
 ---
 name: critico
-description: Avalia UMA entrega contra uma régua fixa e devolve nota + defeitos acionáveis, sem consertar. Use depois de cada rodada do agente construtor, antes de considerar o item pronto. Para conferir dado na fonte use conferidor-dados; para conferir tela de sistema, conferidor-tela; para query SQL, revisor-query.
+description: Avalia UMA entrega contra uma régua fixa e devolve nota + defeitos acionáveis, sem consertar. Use depois de cada rodada do agente construtor, antes de considerar o item pronto. Para conferir dado na fonte use conferidor-dados; para conferir tela de sistema, conferidor-tela; para query SQL, revisor-query; para testar a aplicação no navegador, testador-web.
 model: sonnet
 effort: max
 maxTurns: 40

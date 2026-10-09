@@ -1,6 +1,6 @@
 # azvd-toolkit
 
-Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 6 agentes que funcionam em qualquer
+Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 7 agentes que funcionam em qualquer
 ecossistema multi-agente, dos comerciais (Claude Code, Codex, Cursor) aos open source (Kiro,
 OpenClaw, Antigravity/agy, Hermes), entre outros. Elas cobrem **orquestração**, **prompt
 engineering**, **graph engineering** e **auto-aprendizado**, e foram validadas em campo (não são
@@ -19,7 +19,7 @@ teoria).
 | `graph-engineering` | **Knowledge graphs** (pipeline de 9 etapas) + **task graphs** (orquestração multi-agente: fan-out, diamond, gate humano) | `/graph-engineering` |
 | `self-learning` | **A skill que se adapta**: colhe lições da sessão e as transforma em blocos/linhas/rotas novas nas outras skills | `/self-learning` |
 
-## Os 6 agentes (Claude Code)
+## Os 7 agentes (Claude Code)
 
 Sub-agentes em `agents/`, cada um com papel, modelo, esforço e teto de turnos definidos — nenhum herda
 o modelo da sessão por omissão (é isso que faz o custo disparar em times de agentes).
@@ -31,6 +31,7 @@ o modelo da sessão por omissão (é isso que faz o custo disparar em times de a
 | `juiz` | A/B cego (julga nas duas ordens) ou o conjunto inteiro; usado com pouca frequência | mais forte · medium |
 | `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | forte · high |
 | `conferidor-tela` | confere numa tela de sistema web, só olhando | forte · medium |
+| `testador-web` | testa a sua aplicação no navegador: fluxos, erros, dados, larguras, acessibilidade, visual e marcas de IA, com prova | forte · high |
 | `revisor-query` | plano, índice e resultado antes × depois de uma query | forte · high |
 
 No Claude Code eles aparecem como `azvd-toolkit:<nome>`. **Quer outro modelo ou esforço?** Copie o
@@ -107,7 +108,8 @@ Depois, em qualquer agente, chame `/skill-router` e diga o que quer fazer. Simpl
 | Usar **blocos prontos** de prompt (PARE E REPORTE, teste de decisão...) | `/prompt-blocks` |
 | **Orquestrar** N agentes/CLIs/tickets (fan-out, gates) | `/orchestrator` ou `/graph-engineering` |
 | **Construir com qualidade verificada** (construtor + crítico + juiz) | `/orchestrator` |
-| **Conferir** um número, uma tela ou uma query antes de afirmar | agentes `conferidor-*` / `revisor-query` |
+| **Conferir** um número, uma tela de terceiros ou uma query antes de afirmar | agentes `conferidor-*` / `revisor-query` |
+| **Testar** a sua aplicação web no navegador (fluxos, erros, acessibilidade, visual, marcas de IA) | agente `testador-web` |
 | **Mapear** código/docs/conhecimento em um grafo, ou fazer task graph | `/graph-engineering` |
 | **Ensinar o toolkit**: colher uma lição nova e atualizar as skills | `/self-learning` |
 
