@@ -36,9 +36,14 @@ Regras de custo (run longo com loop: cole o bloco B13 · Orçamento e desperdíc
 orquestrador — custo = tentativas × turnos × paralelismo; o limite de cota reinicia todo agente que estava no meio):
 - **Todo agente tem modelo e esforço definidos** — nunca deixe herdar o modelo da sessão por omissão.
   Os agentes do toolkit já trazem isso no frontmatter; ajuste localmente se precisar (ver README).
-- **Busca e exploração ampla** → modelo leve. **Construir** e **conferir** (conferidores, `revisor-query`,
-  `testador-web`, `critico`) → forte: conferência errada custa mais que o modelo. **Julgar o todo** → o mais forte, com
-  menos frequência (ex.: a cada N rodadas, não a cada item).
+- **Para cada papel, responda as 5 perguntas do bloco B11 · Roteamento por tarefa** antes de disparar:
+  precisa de LLM ou basta script / modelo de decisão (triagem em lote, a partir de ~20 itens)? vale
+  sub-agente? qual categoria (leve/forte/mais forte)? qual nível de esforço? como testar antes de baixar?
+  Resumo: **mecânico e busca ampla** → leve (nível alto se a tarefa é longa ou tem regra estrita);
+  **construir** e **conferir** (conferidores, `revisor-query`, `testador-web`, `critico`) → forte: conferência
+  errada custa mais que o modelo; **julgar o todo** → o mais forte, com menos frequência (a cada N rodadas).
+- **Meça o gasto por papel** (bloco B13) e baixe nível ou modelo só depois de uma volta de teste que não piore
+  a nota nem traga falha nova.
 - **Saída curta** pedida a cada agente (formato fixo, sem colar arquivos inteiros de volta).
 - **Teto de rodadas** em todo loop (ex.: 5). Bateu o teto sem passar → pare e reporte.
 - Reaproveite: retome o agente que já tem o contexto em vez de abrir outro do zero.

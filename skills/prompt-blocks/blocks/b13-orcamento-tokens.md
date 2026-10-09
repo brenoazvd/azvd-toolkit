@@ -41,7 +41,11 @@ muda pouco; o que estoura a cota é volta repetida sem progresso e muita coisa e
    - durante: acompanhe o bloco atual (ex.: `npx ccusage@latest blocks --live`: ritmo de queima e
      previsão de quando acaba) e o total de tokens que cada workflow/volta reporta;
    - depois de cada volta: registre no STATUS os tokens dela e se ela foi APROVADA, PERDIDA (A/B ou
-     crítico não melhorou), DESFEITA (piorou) ou CORTADA (limite de uso no meio).
+     crítico não melhorou), DESFEITA (piorou) ou CORTADA (limite de uso no meio);
+   - a cada ~20 voltas: some o gasto POR PAPEL (construtor, crítico, captura, A/B, juiz), pelos rótulos
+     dos agentes (a tela de progresso do workflow mostra os tokens de cada agente; os transcripts dos
+     sub-agentes trazem o `usage`). O gasto se concentra num papel; ajuste esse primeiro, pelo bloco
+     B11 · Roteamento por tarefa (nível de esforço antes do modelo, sempre com uma volta de teste).
 3. Pare a volta que não progride: [N_SEM_PROGRESSO] voltas seguidas sem melhora no mesmo item (padrão 2)
    → o item vai para o fim da fila e a próxima volta dele precisa mudar a abordagem, não repetir.
 4. Perto do fim do bloco (pela previsão do passo 2): não dispare volta nova que não termina antes do
