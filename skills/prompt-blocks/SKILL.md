@@ -129,6 +129,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 | B9 · Memória do projeto | `blocks/b9-memoria-projeto.md` | agentes recorrentes (docs nunca stale) |
 | B10 · Checkpoint | `blocks/b10-checkpoint.md` | runs longos com retomada |
 | B11 · Roteamento de modelos | `blocks/b11-roteamento-modelos.md` | escolher "qual modelo" por tipo de tarefa (leve/forte/mais forte) |
+| B13 · Orçamento e desperdício de tokens | `blocks/b13-orcamento-tokens.md` | run longo com vários agentes em loop: paralelismo limitado, medição por volta e por bloco de cota, parada sem progresso, linha de desperdício |
 | B12 · Gauntlet Loop | `blocks/b12-gauntlet-loop.md` | criação/design de alta fidelidade contra referência NOMEADA (prompt final do tipo Criação/Design: fan-out + crítico harsh + blind A/B + humano é o brake) |
 | KG: blocos `/kg-*` (tutor, scope, schema, extract, relations, events, fuse, eval, rag) | `graph-engineering/references/workflows.md` | prompts prontos para colar do domínio de knowledge graph |
 

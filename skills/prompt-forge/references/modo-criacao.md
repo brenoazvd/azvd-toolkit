@@ -23,6 +23,8 @@ Perguntas do Modo Gauntlet Loop (só para os slots ainda em aberto):
 5. **Quais 2 áreas mais importam?** → `[AREA_1]`/`[AREA_2]`.
 
 Defaults automáticos (não pergunte, preencha sozinho):
+- Run longo (fan-out de vários itens com crítico e A/B) → anexe o bloco B13 (orçamento e desperdício de
+  tokens): no máximo 2 voltas simultâneas, medição por volta, parada sem progresso.
 - `[LOOK]` → derivado do tom da referência (ex.: `belo e fluido` para web/UI, `estilo AAA` para jogos).
 - `[CHECK]` → **UI/web:** `visualmente, via crítico de design disponível no host (ex.: skill impeccable no Claude Code) ou blind A/B manual se o host não tiver um`; **jogo/demo:** `visualmente (frame no jogo vs referência)`.
 - `[LOOP_VERB]` → **pergunte ao usuário** qual verbo/comando de iteração o CLI dele tem (ex.: `/loop` no Claude Code); se o host não tiver um comando nativo, use "repita o ciclo manualmente" — nunca assuma que `/loop` existe em todo lugar.

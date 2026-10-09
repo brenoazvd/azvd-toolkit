@@ -13,6 +13,8 @@ Perguntas (uma por vez):
 4. **Contrato entre agentes paralelos** → o que cada um entrega (formato/id), para não colidir.
 
 Defaults automáticos:
+- Run longo com agentes em loop → inclua o bloco B13 (orçamento e desperdício de tokens): paralelismo
+  limitado, medição por volta e por bloco de cota, parada sem progresso.
 - Use `graph-engineering` → `references/task-graphs.md` para desenhar o grafo (fan-out/diamond/
   human gate).
 - **Um prompt por ticket**, cada um montado com o Modo correspondente (um ticket de código vira

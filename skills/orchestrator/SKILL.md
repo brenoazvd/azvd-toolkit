@@ -32,7 +32,8 @@ Multi-agente custa muito mais que um agente só — use quando o valor justifica
 | comparar 2-4 opções, ou 2-4 itens independentes | **2-4 agentes** em paralelo |
 | construção grande (vários itens + crítica) | construtores em paralelo **com teto** (ex.: 3) + 1 crítico por item + juiz periódico |
 
-Regras de custo:
+Regras de custo (run longo com loop: cole o bloco B13 · Orçamento e desperdício de tokens no prompt do
+orquestrador — custo = tentativas × turnos × paralelismo; o limite de cota reinicia todo agente que estava no meio):
 - **Todo agente tem modelo e esforço definidos** — nunca deixe herdar o modelo da sessão por omissão.
   Os agentes do toolkit já trazem isso no frontmatter; ajuste localmente se precisar (ver README).
 - **Busca e exploração ampla** → modelo leve. **Construir** e **conferir** (conferidores, `revisor-query`,

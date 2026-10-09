@@ -79,7 +79,7 @@ qualquer escolha segura puder estar errada num ponto crítico, não entregue: re
 - **Autocontido:** o agente não viu esta conversa — embuta os fatos. Não referencie caminhos fora do
   repo do agente (ou passe-os com `--add-dir`).
 - **Componha com blocos do `prompt-blocks`** quando houver bloco aplicável (B1 LEIA PRIMEIRO antes de agir, B2 PARE
-  E REPORTE, B3 JÁ VERIFICADO sobre trabalho já feito, B7 resumo no fim…). Abra o arquivo e cole o texto real.
+  E REPORTE, B3 JÁ VERIFICADO sobre trabalho já feito, B7 resumo no fim, B13 orçamento de tokens em run longo com agentes…). Abra o arquivo e cole o texto real.
 - **Papéis de sub-agente:** se o prompt pede construtor, crítico, juiz ou conferidor, use os agentes do
   toolkit (`agents/`) pelo nome em vez de descrever o papel de novo — ver `orchestrator`.
 
