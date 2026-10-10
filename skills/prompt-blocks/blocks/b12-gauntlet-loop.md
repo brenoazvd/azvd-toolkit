@@ -13,7 +13,7 @@ status: active
 generated:
   by: brenoazvd
   at: 2026-08-12
-stale_after: 2027-01-01
+stale_after: 2027-04-10
 sources:
   - Matt Shumer (@mattshumer_) — Gauntlet Loop / Claude-of-Duty (MIT)
   - github.com/duolahypercho/gauntlet-loop (skill derivada, MIT)
@@ -68,6 +68,8 @@ PODE parar"):
 - **O humano é o brake.** Nenhuma parada automática, nenhum "N ciclos limpos", nenhum "bom o
   suficiente". O agente só para quando o humano parar (ou um orçamento explícito bater).
 - **Nunca** perguntar "quer que eu continue?" após um ciclo — só seguir.
+- O humano é o brake da **parada**; o modelo e o nível de cada papel seguem o bloco B11 (custo menor nunca
+  abaixa a barra: baixar nível só com volta de teste que não piore).
 - Critério subjetivo **não** é aceite; o único juiz válido é o crítico separado comparando às
   cegas com `[REFERENCE]`.
 
@@ -77,6 +79,21 @@ PODE parar"):
 - Deve ser **realmente rígido/harsh** — sem versão suave, sem abaixar a barra.
 - Julga **frame no jogo / resultado real** contra a referência real — não a sua própria intenção.
 - Se não estiver em `[TIER]`, **continua** (não entrega como está).
+
+### Item novo no meio do loop (arranque antes do construtor)
+
+O loop presume que cada item já tem o que o construtor e o crítico leem (texto de origem, referência
+capturada, regra de visual). Item que entra depois do começo **não tem** — e o loop gira em falso: o
+crítico pune o texto novo por "não estar na origem", o A/B fica sem tira de referência e o item cai para o
+fim da fila depois de três perdas. Antes do primeiro construtor de um item novo:
+
+1. Escreva a especificação dele onde o construtor procura (ex.: a prova/interação no documento de decisões).
+2. Diga de onde vem o texto dele (fonte de fatos) e mude a regra do crítico para esse item, senão o texto
+   novo vira marcador ou falha.
+3. Escolha e capture o trecho de referência dele (o A/B precisa da tira).
+4. Diga como ele herda o visual da direção escolhida.
+5. Atualize o contrato, a montagem e o roteiro **entre voltas** (nunca com volta em andamento).
+6. Rode **um** item novo numa volta inteira; passou sem travar → libere os outros.
 
 ### O que NÃO fazer
 

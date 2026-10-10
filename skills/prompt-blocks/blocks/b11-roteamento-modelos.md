@@ -54,6 +54,9 @@ ROTEAMENTO POR TAREFA — responda as 5 perguntas para cada tarefa ou papel, nes
 1. PRECISA DE LLM?
    - Mecânico e determinístico (rodar script, mover, formatar, capturar, buscar por padrão exato) → o
      SCRIPT faz; um LLM leve só orquestra e confere. Achar algo pelo SENTIDO (onde está a regra X) → LLM leve.
+     Papel mecânico no modelo leve leva um ARQUIVO DE LIÇÕES: lê antes de começar, conserta sozinho até 2
+     vezes e anota "sintoma → causa → o que resolveu" (todo conserto, inclusive o primeiro; timeout conta como
+     falha); não resolveu → refaz no forte em nível baixo (reserva).
    - Decisão fechada sobre MUITOS itens (classificar, filtrar, ranquear, sim/não, dar nota a cada item), a partir de
      20 itens ou ~20 mil caracteres → MODELO DE DECISÃO (classificador que devolve escolha + probabilidade),
      não LLM. Um script monta os itens a partir dos arquivos (o LLM não digita item por item) e só o
@@ -110,10 +113,21 @@ ROTEAMENTO POR TAREFA — responda as 5 perguntas para cada tarefa ou papel, nes
    - Meça antes: gasto POR PAPEL (some os tokens de cada agente pelo rótulo). Ataque o papel que mais gasta.
    - Baixar modelo ou nível = teste antes (inclusive descer do máximo para o padrão): rode UMA volta com a
      configuração nova no mesmo item e compare nota e falhas com a volta anterior. Não piorou → vira
-     padrão. Piorou → volta atrás e registre. ("Padrão" de cada papel = o nível da pergunta 4.)
+     padrão. Piorou → volta atrás e registre. ("Padrão" de cada papel = o nível da pergunta 4.) Mudou duas
+     coisas juntas (ex.: nível e o que o crítico vê)? O teste vale para o pacote; o julgamento periódico do
+     conjunto confere depois e, se achar o que o papel deixou passar, ele volta ao antigo.
    - Compare custo por TAREFA CONCLUÍDA, não por token: o barato que precisa de mais voltas sai caro.
+   - Régua de um modelo de decisão: classificação humana feita sem regra escrita NÃO serve de gabarito.
+     Meça contra um LLM forte com as mesmas regras + uma amostra conferida à mão. Se o LLM forte também
+     discorda do gabarito humano, o problema é o gabarito, não o modelo.
    - Não troque modelo nem nível no meio de uma execução (perde o cache); troque entre voltas.
    - A cada lançamento de modelo, reveja a tabela: preços e diferenças mudam (fontes oficiais no topo).
+
+ATUALIZAÇÃO (para o bloco não envelhecer em silêncio):
+- Antes de aplicar, olhe a data `updated.at` do topo. Passou de 60 dias, ou saiu modelo novo desde então?
+  Releia as fontes oficiais listadas em `sources` (níveis de esforço, custo, sub-agentes, recursos do host),
+  ajuste a tabela e os níveis se algo mudou e atualize a data. Recurso novo do host entra na seção acima.
+- O nível que cada papel usa de verdade (medido) fica no bloco local/ do usuário, com a data da medição.
 
 USE O QUE O HOST JÁ FAZ ANTES DE INVENTAR (recursos nativos, que se atualizam com o host):
 - Modelo padrão de sub-agente: o host costuma ter uma variável que define o modelo de todo sub-agente
@@ -140,7 +154,8 @@ se uma triagem em lote vai para LLM ou para um modelo de decisão, e sempre que 
 do consumo (relia dezenas de prints por passo), o construtor com 18%, a escolha A/B com 8% e a captura
 com 5%. A captura passou para o modelo leve em nível ALTO (é longa e tem regra que não pode falhar, com um
 arquivo de lições para consertar sozinha), a escolha A/B baixou para nível médio e o nível do crítico foi
-testado numa volta antes de trocar; nada disso mexeu na régua; o modelo mais forte ficou só na primeira versão de itens novos e no julgamento
+testado numa volta antes de trocar (em nível alto, vendo só as tiras montadas: nota igual ou melhor,
+achou regressões reais e custou cerca de 1/3); nada disso mexeu na régua; o modelo mais forte ficou só na primeira versão de itens novos e no julgamento
 do conjunto. Padrão anterior mantido: a tarefa define o modelo (leve analisa → forte revisa → humano
 confere). Referência de roteamento como infra:
 [awesome-model-routing](https://github.com/yenanjing/awesome-model-routing).
