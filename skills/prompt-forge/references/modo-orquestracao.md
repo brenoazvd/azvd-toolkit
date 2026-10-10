@@ -1,6 +1,6 @@
 # Modo Orquestração
 
-> Blocos citados (B1-B12) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
+> Blocos citados (B1-B13) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
 
 Para pedidos **multi-agente/multi-etapa** (dashboard multi-aba, ETL, N agentes), **não** monte um
 prompt gigante (buga a IA). Monte um **task graph** e **um prompt por ticket**.

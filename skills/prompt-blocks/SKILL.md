@@ -14,7 +14,7 @@ blocos de prompt validados em campo — um bloco = um arquivo `.md`, no **estilo
 
 | O bloco é... | Vai para | Exemplo |
 |---|---|---|
-| **Portável** — ajuda qualquer dev que não te conhece | `blocks/` (público, versionado, padrão) | B1-B12 |
+| **Portável** — ajuda qualquer dev que não te conhece | `blocks/` (público, versionado, padrão) | B1-B13 |
 | **Só seu** — CLIs, modelo, preferências, tokens | `blocks/local/` (gitignored, não sobe) | seu `meus-clis.md`, config do roteador |
 
 Regra de decisão: **um bloco vai para `blocks/` se ajuda um dev que não conhece você; vai para
@@ -128,7 +128,7 @@ Corpo: **texto pronto para colar** (com `<placeholders>` marcados) + **Quando** 
 | B8 · Entrevista A/B | `blocks/b8-entrevista-ab.md` | skills interativas |
 | B9 · Memória do projeto | `blocks/b9-memoria-projeto.md` | agentes recorrentes (docs nunca stale) |
 | B10 · Checkpoint | `blocks/b10-checkpoint.md` | runs longos com retomada |
-| B11 · Roteamento de modelos | `blocks/b11-roteamento-modelos.md` | escolher "qual modelo" por tipo de tarefa (leve/forte/mais forte) |
+| B11 · Roteamento por tarefa | `blocks/b11-roteamento-modelos.md` | para cada tarefa/papel: LLM ou modelo de decisão (lote ≥ 20 itens), vale sub-agente, categoria de modelo (leve/forte/mais forte), nível de esforço e como baixar sem perder qualidade; recursos nativos do host |
 | B13 · Orçamento e desperdício de tokens | `blocks/b13-orcamento-tokens.md` | run longo com vários agentes em loop: paralelismo limitado, medição por volta e por bloco de cota, parada sem progresso, linha de desperdício |
 | B12 · Gauntlet Loop | `blocks/b12-gauntlet-loop.md` | criação/design de alta fidelidade contra referência NOMEADA (prompt final do tipo Criação/Design: fan-out + crítico harsh + blind A/B + humano é o brake) |
 | KG: blocos `/kg-*` (tutor, scope, schema, extract, relations, events, fuse, eval, rag) | `graph-engineering/references/workflows.md` | prompts prontos para colar do domínio de knowledge graph |

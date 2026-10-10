@@ -33,6 +33,9 @@ encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 | conferir algo numa tela de sistema de terceiros (só olhar) | agente `conferidor-tela` |
 | testar a sua aplicação: fluxos, erros, acessibilidade, visual, marcas de IA | agente `testador-web` |
 | revisar mudança de query SQL (plano, índice, resultado) | agente `revisor-query` |
+| qual modelo e nível de esforço usar em cada agente/papel; vale sub-agente?; reduzir custo de tokens | `orchestrator` §2 → bloco `prompt-blocks/blocks/b11-roteamento-modelos.md` (e `b13-orcamento-tokens.md` para medir) |
+| classificar, filtrar ou ranquear muitos itens (≥ 20) gastando pouco | bloco `b11-roteamento-modelos.md`, pergunta 1 (modelo de decisão + revisão por LLM) |
+| acrescentar item novo num loop de construção que já roda | bloco `b12-gauntlet-loop.md`, seção "Item novo no meio do loop" |
 
 ## Regras
 

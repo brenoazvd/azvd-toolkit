@@ -78,24 +78,29 @@ ROTEAMENTO POR TAREFA — responda as 5 perguntas para cada tarefa ou papel, nes
    - Não, quando a tarefa é uma cadeia só, cabe num contexto e não tem cauda de custo: faça direto.
      Tarefa pequena (corrigir um texto, um ajuste pontual) nunca vira orquestração.
 
-3. QUAL CATEGORIA DE MODELO?
-   ┌───────────────────────────────────────────────┬──────────────────────┬─────────────────────┐
-   │ Papel                                         │ Categoria            │ Fallback            │
-   ├───────────────────────────────────────────────┼──────────────────────┼─────────────────────┤
-   │ Mecânico (rodar script, capturar, mover,      │ leve                 │ forte, nível baixo  │
-   │ formatar, buscar e ler muito)                 │                      │                     │
-   │ Construir / programar                         │ forte                │ forte, nível maior  │
-   │ Primeira versão de algo sem modelo pronto     │ mais forte (só nela) │ forte               │
-   │ Criticar / conferir (contexto separado)       │ forte                │ forte, nível maior  │
-   │ Escolha binária às cegas (A/B)                │ forte                │ forte, nível maior  │
-   │ Julgar o conjunto                             │ mais forte, raro     │ forte               │
-   │ Planejar                                      │ médio/forte          │ mais forte          │
-   │ Escrever o texto final (a partir da decisão)  │ forte                │ mais forte          │
-   │ Revisar o que o modelo de decisão marcou como │ forte                │ humano              │
-   │ confiança baixa                               │                      │                     │
-   │ Ajuste pontual (um texto, um erro)            │ o agente principal,  │ —                   │
-   │                                               │ sem time             │                     │
-   └───────────────────────────────────────────────┴──────────────────────┴─────────────────────┘
+3. QUAL CATEGORIA DE MODELO E QUAL NÍVEL? (tabela de consulta; a pergunta 4 explica os níveis)
+   ┌───────────────────────────────────────────────┬──────────────────────┬──────────┬─────────────────────┐
+   │ Papel                                         │ Categoria            │ Nível    │ Fallback            │
+   ├───────────────────────────────────────────────┼──────────────────────┼──────────┼─────────────────────┤
+   │ Mecânico (rodar script, capturar, mover,      │ leve                 │ médio;   │ forte, nível baixo  │
+   │ formatar, buscar e ler muito)                 │                      │ alto se  │                     │
+   │                                               │                      │ longo ou │                     │
+   │                                               │                      │ estrito  │                     │
+   │ Construir / programar                         │ forte                │ alto     │ forte, nível maior  │
+   │ Primeira versão de algo sem modelo pronto     │ mais forte (só nela) │ médio    │ forte               │
+   │ Criticar / conferir (contexto separado)       │ forte                │ alto     │ forte, nível maior  │
+   │ Escolha binária às cegas (A/B de uma volta)   │ forte                │ médio    │ forte, nível maior  │
+   │ Julgar o conjunto                             │ mais forte, raro     │ médio    │ forte               │
+   │ Planejar                                      │ médio/forte          │ alto     │ mais forte          │
+   │ Escrever o texto final (a partir da decisão)  │ forte                │ alto     │ mais forte          │
+   │ Revisar o que o modelo de decisão marcou como │ forte                │ alto     │ humano              │
+   │ confiança baixa                               │                      │          │                     │
+   │ Ajuste pontual (um texto, um erro)            │ o agente principal,  │ o da     │ —                   │
+   │                                               │ sem time             │ sessão   │                     │
+   └───────────────────────────────────────────────┴──────────────────────┴──────────┴─────────────────────┘
+   - Agente com modelo fixo no arquivo (ex.: um construtor forte) e a linha pede outra categoria (primeira
+     versão no mais forte, A/B no forte quando o agente de julgamento é o mais forte)? Troque SÓ naquela
+     chamada, pelo parâmetro de modelo do host; não precisa de cópia local do agente.
 
 4. QUAL NÍVEL DE ESFORÇO? (o nível costuma mover a conta mais que o modelo — ajuste ele primeiro)
    - Leve: médio por padrão; ALTO quando a tarefa é longa (dezenas de arquivos ou passos) ou tem regra que não pode falhar (ex.: nunca

@@ -1,6 +1,6 @@
 # Modo Criação/Design (Gauntlet Loop)
 
-> Blocos citados (B1-B12) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
+> Blocos citados (B1-B13) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
 
 Para pedidos de **criação**, o prompt **não é montado a mão** — é gerado pela sub-entrevista. Mas
 primeiro **descubra se há referência**:

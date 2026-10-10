@@ -1,6 +1,6 @@
 # Modo Análise/Diagnóstico
 
-> Blocos citados (B1-B12) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
+> Blocos citados (B1-B13) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
 
 Para pedidos de **análise** ("por que o KPI erra?", review de diff, investigação), o prompt é uma
 **investigação guiada** — nunca um "me explica isso" aberto.

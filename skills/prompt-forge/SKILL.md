@@ -24,7 +24,7 @@ slots curtos; a skill identifica o **Modo** do pedido, abre o roteiro dele e ent
      usuário escolhe o nome;
    - autonomia (executa tudo / executa e reporta / só analisa).
 3. **Siga o roteiro do Modo**, uma pergunta por vez.
-4. **Monte o prompt com os blocos reais.** Os blocos citados nos Modos (B1-B12) ficam em
+4. **Monte o prompt com os blocos reais.** Os blocos citados nos Modos (B1-B13) ficam em
    `../prompt-blocks/blocks/`; leia o catálogo `../prompt-blocks/SKILL.md`, cheque `blocks/` **e**
    `blocks/local/` (blocos pessoais do usuário) e cole o texto real — não reescreva de memória.
 5. **Entregue** em um bloco de código, pronto para colar no agente escolhido (ex.: `claude -p

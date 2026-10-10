@@ -1,6 +1,6 @@
 # Modo Código
 
-> Blocos citados (B1-B12) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
+> Blocos citados (B1-B13) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
 
 Para pedidos de **código** (endpoint, componente, bugfix, refactor), o prompt final é um **contrato
 cirúrgico** — nunca um "faça isso e veja no que dá".

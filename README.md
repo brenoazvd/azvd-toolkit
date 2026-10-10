@@ -28,7 +28,7 @@ o modelo da sessão por omissão (é isso que faz o custo disparar em times de a
 |---|---|---|
 | `verificador-previo` | antes de construir: precisa existir? já existe? premissas, critério de aceite | forte · high |
 | `construtor` | implementa um item com escopo fechado; nunca julga o próprio trabalho | forte · high |
-| `critico` | nota com régua fixa + defeitos acionáveis; não conserta | forte · max |
+| `critico` | nota com régua fixa + defeitos acionáveis; não conserta | forte · high |
 | `juiz` | A/B cego (julga nas duas ordens) ou o conjunto inteiro; usado com pouca frequência | mais forte · medium |
 | `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | forte · high |
 | `conferidor-tela` | confere numa tela de sistema web, só olhando | forte · medium |

@@ -1,6 +1,6 @@
 # Modo Texto/Conteúdo
 
-> Blocos citados (B1-B12) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
+> Blocos citados (B1-B13) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
 
 Para pedidos de **texto** (artigo, email, resumo, thread), o prompt é um **brief de conteúdo** com
 formato explícito.

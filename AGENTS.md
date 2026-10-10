@@ -13,7 +13,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 | `skills/skill-router` | Aponta qual skill/agente resolve um pedido (só quando chamado) |
 | `skills/orchestrator` | Encadeia skills e monta o time de agentes com custo controlado |
 | `skills/prompt-forge` | Forja prompts por entrevista: cada tipo (Criação/Código/Análise/Orquestração/Texto) tem um Modo que gera o prompt pronto (filosofia Gauntlet Loop) |
-| `skills/prompt-blocks` | Protocolo de colheita de blocos de prompt (filtro F1-F5, OKF) + biblioteca B1-B12 |
+| `skills/prompt-blocks` | Protocolo de colheita de blocos de prompt (filtro F1-F5, OKF) + biblioteca B1-B13 |
 | `skills/graph-engineering` | Knowledge graphs + task graphs (orquestração multi-agente), PT-BR |
 | `skills/self-learning` | Colhe lições de sessão e atualiza as skills (com gate de permissão) |
 
@@ -21,7 +21,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 |---|---|---|
 | `verificador-previo` | antes de construir: precisa existir? já existe? premissas, critério de aceite | forte · high |
 | `construtor` | implementa um item com escopo fechado | forte · high |
-| `critico` | nota com régua + defeitos, sem consertar | forte · max |
+| `critico` | nota com régua + defeitos, sem consertar | forte · high |
 | `juiz` | A/B cego nas duas ordens ou julgamento do conjunto | mais forte · medium |
 | `conferidor-dados` | reproduz número/afirmação na fonte, só leitura | forte · high |
 | `conferidor-tela` | confere na tela de um sistema web, só olhando | forte · medium |

@@ -72,7 +72,7 @@ especificidade, tamanho) vive na própria skill `prompt-blocks`; use-o antes de 
 
 1. **Aplicar a regra de promoção.** Faltou check/falha/beco → memória ou pular.
 2. **Escolher escopo e nome sozinho.** Padrão: escopo do projeto. Nome claro e específico.
-3. **Dedupe.** Procurar skill/bloco/linha existente para ATUALIZAR em vez de duplicar — no toolkit: `prompt-blocks` (catálogo B1-B12 em `blocks/` e `blocks/local/`), `prompt-forge` (arquivos dos Modos), `skill-router` (tabela de rotas), `orchestrator` (rotas e time), `agents/` (regras por papel); no projeto: `.claude/skills/`, `~/.claude/skills/`, `~/.agents/skills/`. Um fato que já está no OKF pode só precisar de um ponteiro.
+3. **Dedupe.** Procurar skill/bloco/linha existente para ATUALIZAR em vez de duplicar — no toolkit: `prompt-blocks` (catálogo B1-B13 em `blocks/` e `blocks/local/`), `prompt-forge` (arquivos dos Modos), `skill-router` (tabela de rotas), `orchestrator` (rotas e time), `agents/` (regras por papel); no projeto: `.claude/skills/`, `~/.claude/skills/`, `~/.agents/skills/`. Um fato que já está no OKF pode só precisar de um ponteiro.
 4. **Destilar o golden path DESTA conversa** enquanto está fresco: comandos exatos, paths, nomes de env, a ordem obrigatória e — tão importante quanto — os becos sem saída com o porquê.
 5. **Escrever** — toda lição no formato CONTEXTO / O QUE ACONTECEU / LIÇÃO.
    - **Arquivo NOVO** (bloco novo, skill nova, linha de matriz nova em arquivo próprio):
