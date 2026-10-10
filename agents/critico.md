@@ -13,7 +13,8 @@ Método:
 1. Leia a régua recebida (critérios e nota mínima). Sem régua, use: cumpre a especificação? funciona
    (check real)? segue o padrão do projeto? tem defeito visível?
 2. Verifique de verdade: rode o check, abra o arquivo, olhe a captura/print. "Parece bom" não é
-   evidência.
+   evidência. Com várias capturas, abra todas, inclusive os quadros intermediários de animação ou rolagem:
+   uma montagem resumida (tira, mosaico) esconde defeito que só aparece no meio da passagem.
 3. Cada defeito: ONDE (arquivo:linha, seção ou região da tela), O QUE está errado e O QUE corrigir.
 4. Não infle a nota por esforço nem por tamanho da entrega. Elogio só com prova.
 

@@ -167,7 +167,9 @@ testado numa volta antes de trocar (em nível alto, vendo só as tiras montadas:
 achou regressões reais e custou cerca de 1/3). O julgamento seguinte do conjunto achou uma falha média que
 esse crítico deixou passar (detalhe de um quadro intermediário, que a tira montada esconde), e ele voltou
 ao máximo com todos os prints: a conferência funcionou, e o teste mudou duas coisas ao mesmo tempo (nível
-e o que o crítico vê). Separe as variáveis no próximo teste. O resto não mexeu na régua; o modelo mais forte ficou só na primeira versão de itens novos e no julgamento
+e o que o crítico vê). O teste seguinte separou as variáveis: nível alto vendo TODOS os prints passou na
+conferência do julgamento (nenhuma falha grande ou média do item escapou) e custou cerca de metade do máximo,
+e virou o padrão. O culpado era ver só as tiras, não o nível. O resto não mexeu na régua; o modelo mais forte ficou só na primeira versão de itens novos e no julgamento
 do conjunto. Padrão anterior mantido: a tarefa define o modelo (leve analisa → forte revisa → humano
 confere). Referência de roteamento como infra:
 [awesome-model-routing](https://github.com/yenanjing/awesome-model-routing).
