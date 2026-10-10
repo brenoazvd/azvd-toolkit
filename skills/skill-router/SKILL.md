@@ -1,22 +1,29 @@
 ---
 name: skill-router
-description: "Chamada só via /skill-router, quando o usuário pergunta QUAL skill resolve um pedido ('qual skill uso pra isso?', 'tem skill pra X?'). Procura primeiro nas skills e agentes do azvd-toolkit e depois nas skills instaladas no ambiente, e aponta a melhor — não executa a tarefa."
+description: "Chamada só via /skill-router, quando o usuário pergunta QUAL skill resolve um pedido ('qual skill uso pra isso?', 'tem skill pra X?'). Quebra o pedido em partes e aponta, para cada parte, a skill do azvd-toolkit, a skill instalada no ambiente ou o tipo de artefato do host que resolve — não executa a tarefa."
 trigger: /skill-router
 disable-model-invocation: true
 ---
 
 # Skill Router — qual skill resolve isso
 
-Papel único: dado um pedido, **apontar** a skill (ou agente) que resolve. Não executa, não encadeia —
+Papel único: dado um pedido, **apontar** o que resolve cada parte dele. Não executa, não encadeia —
 encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 
-## Ordem de busca
+## Método
 
-1. **Skills e agentes do azvd-toolkit** (tabela abaixo). Achou → aponte e pare.
-2. **Skills instaladas no ambiente.** Use a lista de skills que o host expõe na sessão; se não houver,
-   liste os diretórios de skills do host (ex.: `~/.claude/skills/`, `~/.agents/skills/`, a pasta de
-   plugins do agente em uso). Escolha pela `description` de cada uma.
-3. **Nada encaixa** → diga isso e pergunte ao usuário. Nunca invente skill.
+0. **Quebre o pedido em partes.** Um pedido raramente é uma coisa só: "pesquisa de preço + proposta
+   visual + contra-argumentos" são três partes (pesquisar, montar a peça, argumentar). Uma skill para
+   o pedido inteiro costuma ser a mais óbvia, não a certa.
+1. **Para cada parte, busque nesta ordem**, e pare só *naquela parte*:
+   1. **Skills e agentes do azvd-toolkit** (tabela abaixo).
+   2. **Skills instaladas no ambiente.** Use a lista que o host expõe na sessão; se não houver, liste os
+      diretórios de skills do host (ex.: `~/.claude/skills/`, `~/.agents/skills/`, a pasta de plugins do
+      agente em uso). Procure por **palavra da parte** (pesquisa, web, slide, gráfico, planilha, PDF,
+      texto, revisão…) nas `description`, não pela primeira que parecer servir.
+   3. **Tipos de artefato do host** (no Claude: Slides, Dashboard, Docs, Design). Não são skills, mas
+      costumam ser o melhor caminho quando a parte é "visual", "apresentação", "deck" ou "relatório".
+2. **Parte sem nada que encaixe** → diga "sem skill: faço direto" naquela linha. Nunca invente skill.
 
 | Pedido | Aponte para |
 |---|---|
@@ -41,7 +48,10 @@ encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 
 - **Dedupe:** se a mesma skill existe no toolkit e no ambiente, use a do toolkit (é a fonte).
 - **Instalar algo novo** (`npx skills add`, `git clone`): só com permissão do usuário. Listar é seguro.
-- **Resposta curta:** a skill ou agente, uma linha de porquê, e como chamar.
+- **Resposta em tabela curta**, uma linha por parte: `parte → skill/agente/artefato → por quê`. Nada de
+  "nenhuma skill do toolkit cobre isso" sozinho: diga o que resolve fora do toolkit.
+- **Chamado junto com uma tarefa** (`faça X /skill-router`): entregue a tabela em poucas linhas e siga a
+  tarefa usando o que apontou. O router não trava a tarefa nem a troca por uma escolha só.
 
 ## Skills relacionadas
 
