@@ -160,7 +160,10 @@ do consumo (relia dezenas de prints por passo), o construtor com 18%, a escolha 
 com 5%. A captura passou para o modelo leve em nível ALTO (é longa e tem regra que não pode falhar, com um
 arquivo de lições para consertar sozinha), a escolha A/B baixou para nível médio e o nível do crítico foi
 testado numa volta antes de trocar (em nível alto, vendo só as tiras montadas: nota igual ou melhor,
-achou regressões reais e custou cerca de 1/3); nada disso mexeu na régua; o modelo mais forte ficou só na primeira versão de itens novos e no julgamento
+achou regressões reais e custou cerca de 1/3). O julgamento seguinte do conjunto achou uma falha média que
+esse crítico deixou passar (detalhe de um quadro intermediário, que a tira montada esconde), e ele voltou
+ao máximo com todos os prints: a conferência funcionou, e o teste mudou duas coisas ao mesmo tempo (nível
+e o que o crítico vê). Separe as variáveis no próximo teste. O resto não mexeu na régua; o modelo mais forte ficou só na primeira versão de itens novos e no julgamento
 do conjunto. Padrão anterior mantido: a tarefa define o modelo (leve analisa → forte revisa → humano
 confere). Referência de roteamento como infra:
 [awesome-model-routing](https://github.com/yenanjing/awesome-model-routing).
