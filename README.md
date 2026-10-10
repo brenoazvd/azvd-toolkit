@@ -1,6 +1,6 @@
 # azvd-toolkit
 
-Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 8 agentes que funcionam em qualquer
+Toolkit open-source de **skills para IA** (MIT) — 6 skills adaptativas + 9 agentes que funcionam em qualquer
 ecossistema multi-agente, dos comerciais (Claude Code, Codex, Cursor) aos open source (Kiro,
 OpenClaw, Antigravity/agy, Hermes), entre outros. Elas cobrem **orquestração**, **prompt
 engineering**, **graph engineering** e **auto-aprendizado**, e foram validadas em campo (não são
@@ -19,7 +19,7 @@ teoria).
 | `graph-engineering` | **Knowledge graphs** (pipeline de 9 etapas) + **task graphs** (orquestração multi-agente: fan-out, diamond, gate humano) | `/graph-engineering` |
 | `self-learning` | **A skill que se adapta**: colhe lições da sessão e as transforma em blocos/linhas/rotas novas nas outras skills | `/self-learning` |
 
-## Os 8 agentes (Claude Code)
+## Os 9 agentes (Claude Code)
 
 Sub-agentes em `agents/`, cada um com papel, modelo, esforço e teto de turnos definidos — nenhum herda
 o modelo da sessão por omissão (é isso que faz o custo disparar em times de agentes).
@@ -34,6 +34,7 @@ o modelo da sessão por omissão (é isso que faz o custo disparar em times de a
 | `conferidor-tela` | confere numa tela de sistema web, só olhando | forte · medium |
 | `testador-web` | testa a sua aplicação no navegador: fluxos, erros, dados, larguras, acessibilidade, visual e marcas de IA, com prova | forte · high |
 | `revisor-query` | plano, índice e resultado antes × depois de uma query | forte · high |
+| `triador` | classifica, filtra ou ranqueia muitos itens (≥ 20) contra rótulos fechados, com máscara de dado pessoal e lista de revisão | leve · high |
 
 No Claude Code eles aparecem como `azvd-toolkit:<nome>`. **Quer outro modelo ou esforço?** Copie o
 arquivo para `~/.claude/agents/<nome>.md` e edite o frontmatter — a cópia local tem precedência sobre o

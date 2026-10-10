@@ -60,7 +60,8 @@ ROTEAMENTO POR TAREFA — responda as 5 perguntas para cada tarefa ou papel, nes
    - Decisão fechada sobre MUITOS itens (classificar, filtrar, ranquear, sim/não, dar nota a cada item), a partir de
      20 itens ou ~20 mil caracteres → MODELO DE DECISÃO (classificador que devolve escolha + probabilidade),
      não LLM. Um script monta os itens a partir dos arquivos (o LLM não digita item por item) e só o
-     resumo volta ao contexto. Confiança baixa → LLM forte revisa; se continuar baixa, humano.
+     resumo volta ao contexto (o agente `triador` faz isso). Confiança baixa → LLM forte revisa; se continuar
+     baixa, humano.
    - Dado pessoal (nome, documento, contato, saúde) NUNCA vai a serviço externo — e o serviço do modelo de
      decisão É externo, salvo se rodar local. Tire a coluna e confira o texto livre (nome citado no meio do
      comentário) antes, por script local ou modelo local, nunca mandando o texto a outro serviço para

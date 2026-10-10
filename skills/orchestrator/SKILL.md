@@ -65,6 +65,7 @@ orquestrador — custo = tentativas × turnos × paralelismo; o limite de cota r
 | `conferidor-tela` | confere na tela do sistema, só olhando | clicar em ação que altera dado; abrir abas em paralelo |
 | `testador-web` | usa a sua aplicação de verdade: fluxos, erros, dados, larguras, acessibilidade, visual e marcas de IA, com prova | gravar em produção; consertar código; dar nota; rodar 2 no mesmo navegador em paralelo |
 | `revisor-query` | plano de execução, índice e resultado antes × depois | aprovar sem medir |
+| `triador` | classifica muitos itens (≥ 20) contra rótulos fechados, com máscara e lista de revisão; usa o modelo de decisão do usuário se houver | escrever o texto final; mandar dado pessoal sem máscara; decidir caso de confiança baixa |
 
 Loop padrão de qualidade: **verificador-previo (item não trivial) → construtor → testador-web (se for web) → crítico → (corrige) → testador-web → crítico … até passar ou bater o teto**
 (INCONCLUSIVO do testador não conta como passou; se for falta de login ou ambiente, pergunte ao usuário
