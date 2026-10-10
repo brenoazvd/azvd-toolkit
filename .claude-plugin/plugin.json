@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "azvd-toolkit",
   "description": "Toolkit pessoal: skills de prompt, orquestração, graph engineering e auto-aprendizado + time de agentes (construtor, crítico, juiz, conferidores)",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "author": {
     "name": "brenoazvd"
   },

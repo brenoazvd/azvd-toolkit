@@ -28,8 +28,10 @@ Como classificar:
 1. Modelo de decisão configurado? O bloco pessoal do usuário (`skills/prompt-blocks/blocks/local/`) diz
    qual é, como chamar e onde está a chave (variável de ambiente, nunca em arquivo). Use-o: uma chamada por
    item ou por pequeno grupo, em paralelo moderado, guardando escolha e confiança.
-2. Sem modelo de decisão: classifique você mesmo em lotes de ~50 itens, saída estruturada
-   (id → rótulo → confiança 0-1), sem explicar item por item.
+2. Sem modelo de decisão: classifique você mesmo em lotes de ~50 itens, saída com formato fixo (esquema:
+   id → rótulo, só os rótulos da lista → confiança 0-1), sem explicar item por item.
+   Rodando pela API (não pela assinatura) e o lote pode esperar? Use a API de lotes do provedor: o mesmo
+   pedido sai pela metade do preço, com resposta em até um dia.
 3. Regra fixa por cima, se o pedido trouxer (ex.: texto vazio ou só pontuação → rótulo "sem conteúdo").
 4. Confiança abaixo de 0,6 → vai para a lista de REVISÃO, não para o resultado final.
 

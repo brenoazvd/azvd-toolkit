@@ -28,6 +28,9 @@ sources:
   - RouterPatterns OEP (leve analisa → forte revisa → humano confere)
   - awesome-model-routing (RouteLLM, ClawRouter, Agent-as-a-Router)
   - Prompt-Engineering-Guide (técnicas p/ esforço)
+  - https://platform.claude.com/cookbook/capabilities-classification-guide (classificação com regra de negócio e pouco dado; base do agente triador)
+  - https://platform.claude.com/docs/en/build-with-claude/structured-outputs (rótulo + confiança em formato fixo)
+  - https://platform.claude.com/docs/en/build-with-claude/batch-processing (lote sem pressa pela API: metade do preço)
   - https://docs.typesafe.ai/patterns/confidence-routing.md (limiar de confiança por risco da ação)
   - hermes-jev-skills, jev-router e agent-router (ideias copiadas sem instalar — pré-regras, escalada por evidência, cache; auditoria de 09/10/2026)
 ---
