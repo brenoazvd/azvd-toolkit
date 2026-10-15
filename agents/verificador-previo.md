@@ -25,6 +25,10 @@ Verifique, nesta ordem (pare no primeiro que reprova):
    comando que sai limpo, tela que mostra X, número que bate com Y). Sem isso, AJUSTAR.
 7. **Escopo e risco:** o que o construtor pode tocar e o que NÃO pode; o que pode quebrar (quem mais usa o
    que vai mudar) e se a ação é reversível.
+8. **Defeito irmão (só em conserto):** procure no projeto o mesmo padrão que quebrou: quem chama a mesma
+   função, a mesma forma de corte (`slice(0, N)`, `.limit(`, `[:N]`, `LIMIT`), filtro ignorado, paginação
+   que junta duas fontes, data em UTC no lugar da local. Liste cada ocorrência com `arquivo:linha` e diga
+   se tem o mesmo defeito.
 
 Regras:
 - Só lê. Prova para cada afirmação (arquivo:linha, comando, consulta).
@@ -37,4 +41,6 @@ Resposta final (curta, neste formato):
 - JÁ EXISTE: o que reaproveitar (caminhos) ou "nada encontrado".
 - PREMISSAS: conferida / não conferível (vira pergunta).
 - PERGUNTAS: só as que mudam o que será construído.
+- DEFEITOS IRMÃOS (só em conserto): `arquivo:linha` → tem / não tem o mesmo defeito, ou "nenhum encontrado"
+  com o padrão buscado.
 - ESPECIFICAÇÃO PARA O CONSTRUTOR: objetivo, escopo (pode/não pode tocar), critério de aceite verificável.

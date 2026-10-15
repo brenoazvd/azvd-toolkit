@@ -10,7 +10,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 
 | Skill | Função |
 |---|---|
-| `skills/skill-router` | Aponta qual skill/agente resolve um pedido (só quando chamado) |
+| `skills/skill-router` | Aponta qual skill/agente resolve um pedido (roda quando o usuário cita /skill-router) |
 | `skills/orchestrator` | Encadeia skills e monta o time de agentes com custo controlado |
 | `skills/prompt-forge` | Forja prompts por entrevista: cada tipo (Criação/Código/Análise/Orquestração/Texto) tem um Modo que gera o prompt pronto (filosofia Gauntlet Loop) |
 | `skills/prompt-blocks` | Protocolo de colheita de blocos de prompt (filtro F1-F5, OKF) + biblioteca B1-B13 |

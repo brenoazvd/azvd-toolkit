@@ -45,7 +45,9 @@ Itens 1-4 podem gerar FALHA. Itens 5-8 geram AVISO, salvo se a tarefa os tornar 
    número e moeda do idioma). Conferir número contra banco é do conferidor-dados.
 4. **Plataforma:** larguras 1440, 768 e 390 px. Nada corta ou sobrepõe; rolagem lateral medida
    (`document.documentElement.scrollWidth > clientWidth`), não no olho. Segundo navegador se o projeto
-   exigir.
+   exigir. **Tema claro e escuro** pelo controle do próprio sistema (botão de tema); emular
+   `prefers-color-scheme` só vale se o sistema seguir a preferência do navegador. Prova com captura em
+   **tamanho real** (captura reduzida esconde defeito).
 5. **Acessibilidade:** axe, se o projeto já tiver (ex.: `@axe-core/playwright`) — pega só 30-40% dos
    problemas. Complete à mão: só teclado, foco visível e em ordem lógica, texto alternativo que faz
    sentido, contraste medido (≥ 4,5:1 para texto normal), não estimado.

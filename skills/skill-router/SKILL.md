@@ -1,14 +1,14 @@
 ---
 name: skill-router
-description: "Chamada só via /skill-router, quando o usuário pergunta QUAL skill resolve um pedido ('qual skill uso pra isso?', 'tem skill pra X?'). Quebra o pedido em partes e aponta, para cada parte, a skill do azvd-toolkit, a skill instalada no ambiente ou o tipo de artefato do host que resolve — não executa a tarefa."
+description: "Use SOMENTE quando a mensagem do usuário contiver /skill-router (em qualquer posição: início, meio ou fim) ou quando ele perguntar QUAL skill resolve um pedido ('qual skill uso pra isso?', 'tem skill pra X?'). Quebra o pedido em partes e aponta, para cada parte, a skill do azvd-toolkit, a skill instalada no ambiente ou o tipo de artefato do host que resolve — não executa a tarefa."
 trigger: /skill-router
-disable-model-invocation: true
 ---
 
 # Skill Router — qual skill resolve isso
 
 Papel único: dado um pedido, **apontar** o que resolve cada parte dele. Não executa, não encadeia —
-encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
+encadear é do `orchestrator`. Só roda quando o usuário cita `/skill-router`, em qualquer parte da mensagem; não se dispara sozinha em
+outros pedidos.
 
 ## Método
 
@@ -32,6 +32,7 @@ encadear é do `orchestrator`. Só roda quando chamado via `/skill-router`.
 | tarefa que precisa de várias skills ou de sub-agentes (construir + criticar + julgar) | `orchestrator` |
 | mapear código/docs em grafo, ou desenhar task graph | `graph-engineering` |
 | "aprendi algo", "lembra disso", lição da sessão | `self-learning` |
+| bug relatado ("está bugando", "não aparece", "veio errado", "não funciona") | `conferidor-dados` (reproduzir na fonte) → `verificador-previo` (com varredura de **defeito irmão**) → `construtor` → `testador-web` na tela do relato **e nas vizinhas** → `critico` |
 | conferir um pedido/plano antes de construir (precisa? já existe? critério de aceite) | agente `verificador-previo` |
 | implementar um item com escopo fechado | agente `construtor` |
 | avaliar uma entrega contra uma régua (nota + defeitos) | agente `critico` |

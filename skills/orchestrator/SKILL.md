@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: "Use quando uma tarefa precisa de MAIS DE UMA peça: encadear skills do azvd-toolkit (prompt-forge, graph-engineering, prompt-blocks, self-learning) ou montar um time de sub-agentes (construtor, crítico, juiz, conferidores) com custo controlado (qual modelo e nível de esforço em cada papel, se vale sub-agente, como medir e baixar o gasto de tokens). Para um prompt único use prompt-forge; para 'qual skill uso?' o usuário chama /skill-router (manual). Em dúvida de intenção, pergunta em vez de chutar."
+description: "Use quando uma tarefa precisa de MAIS DE UMA peça: encadear skills do azvd-toolkit (prompt-forge, graph-engineering, prompt-blocks, self-learning) ou montar um time de sub-agentes (construtor, crítico, juiz, conferidores) com custo controlado (qual modelo e nível de esforço em cada papel, se vale sub-agente, como medir e baixar o gasto de tokens). Para um prompt único use prompt-forge; para 'qual skill uso?' o usuário cita /skill-router. Em dúvida de intenção, pergunta em vez de chutar."
 trigger: /orchestrator
 ---
 
@@ -14,6 +14,7 @@ Papel: planejar **como** a tarefa é dividida e **quem** faz cada parte. Não ex
 |---|---|
 | um prompt autocontido para outra IA | `prompt-forge` — e pare aí |
 | multi-etapa, multi-repo ou N frentes | `graph-engineering` (task graph) → `prompt-forge` (um prompt por ticket) |
+| consertar bug relatado ("está bugando", "não aparece", "veio errado", "não funciona") | `conferidor-dados` (reproduzir na fonte) → `verificador-previo` (com varredura de **defeito irmão**) → `construtor` → `testador-web` na tela do relato **e nas vizinhas** → `critico` |
 | construir algo com qualidade verificada | time: `verificador-previo` + `construtor` + `critico` (+ `juiz` se houver versões a comparar) |
 | conferir números, telas de sistema de terceiros (só olhar) ou queries antes de afirmar algo | `conferidor-dados` / `conferidor-tela` / `revisor-query` |
 | testar a sua aplicação usando de verdade (fluxos, erros, acessibilidade, visual, marcas de IA) | `testador-web` |
@@ -68,6 +69,10 @@ orquestrador — custo = tentativas × turnos × paralelismo; o limite de cota r
 | `triador` | classifica muitos itens (≥ 20) contra rótulos fechados, com máscara e lista de revisão; usa o modelo de decisão do usuário se houver | escrever o texto final; mandar dado pessoal sem máscara; decidir caso de confiança baixa |
 
 Loop padrão de qualidade: **verificador-previo (item não trivial) → construtor → testador-web (se for web) → crítico → (corrige) → testador-web → crítico … até passar ou bater o teto**
+
+Loop de conserto (bug relatado): **conferidor-dados reproduz o defeito na fonte → verificador-previo com
+varredura de defeito irmão → construtor → testador-web na tela do relato e nas vizinhas → crítico**.
+Conserto não é "pronto" sem o testador-web, mesmo quando o ajuste parece pequeno.
 (INCONCLUSIVO do testador não conta como passou; se for falta de login ou ambiente, pergunte ao usuário
 em vez de girar outra rodada);
 o `juiz` entra quando há duas versões ou a cada N itens para ver o conjunto.
@@ -88,6 +93,6 @@ Encaminhamento novo descoberto (pedido → skill/agente)? Adicione na tabela da 
 
 ## Skills relacionadas
 
-- `skill-router` — "qual skill resolve isso?" (só aponta; manual, o usuário chama /skill-router).
+- `skill-router` — "qual skill resolve isso?" (só aponta; roda quando o usuário cita /skill-router).
 - `prompt-forge`, `graph-engineering`, `prompt-blocks`, `self-learning` — as peças que este encadeia.
 - `impeccable` (global, só Claude Code) — crítico de UI quando a construção é interface.
