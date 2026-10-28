@@ -33,6 +33,7 @@ outros pedidos.
 | mapear código/docs em grafo, ou desenhar task graph | `graph-engineering` |
 | "aprendi algo", "lembra disso", lição da sessão | `self-learning` |
 | bug relatado ("está bugando", "não aparece", "veio errado", "não funciona") | `conferidor-dados` (reproduzir na fonte) → `verificador-previo` (com varredura de **defeito irmão**) → `construtor` → `testador-web` na tela do relato **e nas vizinhas** → `critico` |
+| vídeo, gravação de reunião ou áudio para entender/analisar | skill de vídeo do ambiente (ex.: `watch`) com **transcrição do áudio + frames**, cruzando os dois. Resumo de terceiros (ata, notas do Gemini) é apoio, não fonte; não pule a transcrição por conta própria |
 | conferir um pedido/plano antes de construir (precisa? já existe? critério de aceite) | agente `verificador-previo` |
 | implementar um item com escopo fechado | agente `construtor` |
 | avaliar uma entrega contra uma régua (nota + defeitos) | agente `critico` |
@@ -48,6 +49,9 @@ outros pedidos.
 ## Regras
 
 - **Dedupe:** se a mesma skill existe no toolkit e no ambiente, use a do toolkit (é a fonte).
+- **Vídeo ou áudio no pedido:** a parte "entender o conteúdo" sempre leva transcrição + frames. Se a skill de
+  vídeo falhar numa das metades, conserte ou contorne (ex.: extrair frames direto com `ffmpeg`); não entregue
+  só a metade.
 - **Instalar algo novo** (`npx skills add`, `git clone`): só com permissão do usuário. Listar é seguro.
 - **Resposta em tabela curta**, uma linha por parte: `parte → skill/agente/artefato → por quê`. Nada de
   "nenhuma skill do toolkit cobre isso" sozinho: diga o que resolve fora do toolkit.
