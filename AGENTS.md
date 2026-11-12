@@ -37,7 +37,8 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 - `skills/prompt-blocks/blocks/` — blocos de prompt em arquivos `.md` (1 bloco = 1 arquivo), estilo OKF.
 - `skills/prompt-blocks/blocks/local/` — **blocos pessoais do usuário, GITIGNORED, não versionado**.
 - `.claude-plugin/` — manifests do marketplace do Claude (só para instalação por marketplace; não é o conteúdo).
-- `.agents/CLAUDE.md`, `AGENTS.md` (este), `CONTEXT.md` — contexto/instruções de agente.
+- `AGENTS.md` (este), `CONTEXT.md` — contexto/instruções de agente.
+- `hooks/hooks.json`: no início de toda sessão imprime o resumo de custo do B11 (trecho entre `<!-- resumo-sessao: ... -->` e `<!-- /resumo-sessao -->`). Mudou a regra de custo? Mude ali.
 - `RULES.md` — regras operacionais do mantenedor (sync, permissões) — **não confundir com este**.
 - `sync.sh` — propaga habilidades do repo para as 4 IAs (Hermes, agy, claude, dir universal).
 
@@ -57,6 +58,9 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 5. **Blocos novos exigem permissão** — mesmo em `blocks/` quanto em `blocks/local/`. Editar
    conteúdo de bloco existente é automático.
 6. **(Opcional, padrão do repo)** frontmatter em estilo OKF v0.2 quando for criar arquivo novo.
+7. **Skill ou agente ajustado: teste antes e depois num caso real** (o mesmo pedido, 3 vezes com a versão
+   velha e 3 com a nova, por exemplo `claude -p` com e sem `--plugin-dir`) e anote o resultado no commit. Mais longo
+   e não melhor = desfaça.
 
 ## Fonte de verdade
 

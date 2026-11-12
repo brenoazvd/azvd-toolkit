@@ -24,6 +24,10 @@ teoria).
 Sub-agentes em `agents/`, cada um com papel, modelo, esforço e teto de turnos definidos — nenhum herda
 o modelo da sessão por omissão (é isso que faz o custo disparar em times de agentes).
 
+No Claude Code, o plugin tem um hook de início de sessão (`hooks/hooks.json`) que imprime ~5 linhas da
+regra de custo do bloco B11 (trecho entre os marcadores `resumo-sessao`), para ela valer sem lembrete.
+Precisa de `sed` e `head` (bash); sem eles não imprime nada e não quebra a sessão.
+
 | Agente | Faz | Modelo · esforço |
 |---|---|---|
 | `verificador-previo` | antes de construir: precisa existir? já existe? premissas, critério de aceite | forte · high |

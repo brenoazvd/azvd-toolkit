@@ -37,6 +37,14 @@ sources:
 
 # B11 · Roteamento por tarefa (modelo, esforço, modelo de decisão e sub-agente)
 
+<!-- resumo-sessao: o hook SessionStart do plugin imprime só este trecho em toda sessão -->
+Regra de custo do azvd-toolkit (B11 e B13), vale sem lembrete em toda tarefa com sub-agente ou Workflow:
+- Antes do 1º sub-agente: precisa de LLM ou basta script? Vale sub-agente? Tarefa pequena: faça direto.
+- Todo sub-agente com modelo e esforço declarados; se o usuário nomeou o modelo ou o nível, use o dele. Construir, criticar e conferir: forte em alto. Mecânico: leve em médio, alto se longo ou com regra que não pode falhar. Julgar o conjunto: mais forte em médio, raro. Esforço máximo só com teste que prove ganho.
+- No máximo 2 workflows ou voltas ao mesmo tempo (padrão do B13). 2 voltas seguidas sem melhora no mesmo item: pare e mude a abordagem.
+- Detalhe: blocos B11 e B13 da skill prompt-blocks do azvd-toolkit.
+<!-- /resumo-sessao -->
+
 Texto pronto (cole no prompt do orquestrador, ou use para decidir cada papel de um time):
 
 ```

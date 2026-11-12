@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sed -n '/^<!-- resumo-sessao/,/^<!-- .resumo-sessao -->/{/^<!--/d;p;}' \"${CLAUDE_PLUGIN_ROOT}/skills/prompt-blocks/blocks/b11-roteamento-modelos.md\" | head -n 12 || true",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

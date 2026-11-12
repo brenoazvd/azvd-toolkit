@@ -34,6 +34,7 @@ outros pedidos.
 | "aprendi algo", "lembra disso", lição da sessão | `self-learning` |
 | bug relatado ("está bugando", "não aparece", "veio errado", "não funciona") | `conferidor-dados` (reproduzir na fonte) → `verificador-previo` (com varredura de **defeito irmão**) → `construtor` → `testador-web` na tela do relato **e nas vizinhas** → `critico` |
 | vídeo, gravação de reunião ou áudio para entender/analisar | skill de vídeo do ambiente (ex.: `watch`) com **transcrição do áudio + frames**, cruzando os dois. Resumo de terceiros (ata, notas do Gemini) é apoio, não fonte; não pule a transcrição por conta própria |
+| gerar vídeo de produto (demo, tutorial) | skill de vídeo do ambiente (ex.: `hyperframes`, se instalada), com conta de demonstração, nunca dado real de cliente; conferir os quadros antes de entregar |
 | conferir um pedido/plano antes de construir (precisa? já existe? critério de aceite) | agente `verificador-previo` |
 | implementar um item com escopo fechado | agente `construtor` |
 | avaliar uma entrega contra uma régua (nota + defeitos) | agente `critico` |

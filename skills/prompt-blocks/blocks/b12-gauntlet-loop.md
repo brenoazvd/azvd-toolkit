@@ -68,8 +68,8 @@ PODE parar"):
 - **O humano é o brake.** Nenhuma parada automática, nenhum "N ciclos limpos", nenhum "bom o
   suficiente". O agente só para quando o humano parar (ou um orçamento explícito bater).
 - **Nunca** perguntar "quer que eu continue?" após um ciclo — só seguir.
-- O humano é o brake da **parada**; o modelo e o nível de cada papel seguem o bloco B11 (custo menor nunca
-  abaixa a barra: baixar nível só com volta de teste que não piore).
+- O humano é o brake da **parada**; o modelo e o nível de cada papel seguem o bloco B11, e o paralelismo e
+  a volta sem progresso seguem o bloco B13 (custo menor nunca abaixa a barra: baixar nível só com volta de teste que não piore).
 - Critério subjetivo **não** é aceite; o único juiz válido é o crítico separado comparando às
   cegas com `[REFERENCE]`.
 

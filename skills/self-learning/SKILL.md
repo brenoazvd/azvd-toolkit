@@ -26,7 +26,7 @@ estilo detectado; blocos novos sempre para `blocks/` do prompt-blocks (portávei
    - **Fato específico do projeto** que o agente não sabia de antemão (onde moram creds/env, comando não-óbvio, sequência obrigatória, gotcha que contraria o óbvio);
    - **Fluxo operacional que vai recorrer** (deploy, alcançar o banco, verificar em produção, rodar migração);
    - Usuário sinaliza: *"lembra disso"*, *"salva isso como regra"*, *"não me faz explicar de novo"*.
-2. **Capturar sem pedir** — age no sinal imediatamente, escolhe escopo/nome sozinho, **avisa depois** (o usuário pode editar/apagar).
+2. **Capturar sem pedir** — age no sinal imediatamente, escolhe escopo/nome sozinho, **avisa depois** (o usuário pode editar/apagar). Arquivo novo é a exceção: pede permissão antes (passo 5).
 3. **Reutilizar** — na próxima sessão a regra/skill carrega sozinha (descrição bate com o pedido ou arquivo de instruções é sempre lido).
 
 ## Triagem: para onde vai a lição?
