@@ -60,7 +60,8 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 6. **(Opcional, padrão do repo)** frontmatter em estilo OKF v0.2 quando for criar arquivo novo.
 7. **Skill ou agente ajustado: teste antes e depois num caso real** (o mesmo pedido, 3 vezes com a versão
    velha e 3 com a nova, por exemplo `claude -p` com e sem `--plugin-dir`) e anote o resultado no commit. Mais longo
-   e não melhor = desfaça.
+   e não melhor = desfaça. Mudança só de texto que não muda comportamento (contagem, link, erro de digitação)
+   dispensa o teste.
 
 ## Fonte de verdade
 
