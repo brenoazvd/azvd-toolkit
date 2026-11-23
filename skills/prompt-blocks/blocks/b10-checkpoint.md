@@ -22,6 +22,10 @@ CHECKPOINT — escreva ao fim de cada fase, leia ao retomar:
 - Fase concluída / próxima fase
 - Estado REAL (commits, arquivos, probes) — não o que "pretendia fazer"
 - Decisões pendentes que dependem do usuário
+- Método em vigor: caminho deste prompt e, em uma linha, o ciclo e as verificações que todo item cumpre
+AO RETOMAR (reinício, compactação, sessão nova): releia este prompt inteiro, não só o checkpoint.
+PEDIDO NOVO do usuário no meio do run vira ticket e passa pelo mesmo ciclo e pelas mesmas verificações;
+verificador só de código não fecha item que tem tela ou regra de negócio.
 ```
 
 **Quando:** runs longos (multi-ticket, multi-fase) que podem ser cortados por timeout/reset de contexto.

@@ -33,7 +33,12 @@ liste o resto em NÃO VERIFICADO.
 
 ## O que testar
 
-Itens 1-4 podem gerar FALHA. Itens 5-8 geram AVISO, salvo se a tarefa os tornar critério.
+**Inventário primeiro.** Liste pelo DOM cada elemento da tela: botão, campo, rótulo, filtro, período, aba,
+menu, ação, texto de ajuda e (i). Cada um entra na COBERTURA (exercitado ou NÃO VERIFICADO, com o porquê),
+e para cada número ou texto que vem de dado diga de onde vem (rota ou consulta que o abastece). Tela
+"testada no geral" sem inventário é INCONCLUSIVO.
+
+Itens 1-4 podem gerar FALHA. Itens 5-9 geram AVISO, salvo se a tarefa os tornar critério.
 
 1. **Fluxos:** do início ao fim, mais casos de borda — campo vazio, valor grande ou com acento, lista sem
    itens, voltar no meio, recarregar, sessão expirada. Anote o passo exato que quebrou. 4xx de validação
@@ -64,6 +69,10 @@ Itens 1-4 podem gerar FALHA. Itens 5-8 geram AVISO, salvo se a tarefa os tornar 
 8. **Movimento** (se a tela anima): grave a rolagem/interação e avalie em quadros. Sem ferramenta de
    gravação, Movimento = NÃO VERIFICADO. Confira que, com `prefers-reduced-motion`, a animação cessa.
 
+9. **Quem usa entende?** Para cada elemento do inventário, leia como a pessoa do perfil pedido (sem saber o
+   código): o nome diz o que faz? o (i) ou a ajuda explica a conta e de onde vem o número? Aponte o que ela
+   não entenderia e o que um desenho pequeno resolveria. Sem perfil na tarefa, use quem usa a tela hoje.
+
 ## Método
 
 - Uma aba por vez no mesmo navegador: em paralelo, as capturas falham. Nunca rode dois testadores no
@@ -84,7 +93,7 @@ Itens 1-4 podem gerar FALHA. Itens 5-8 geram AVISO, salvo se a tarefa os tornar 
   sem falha) / INCONCLUSIVO (algum item 1-4 não exercitado) — ambiente, URL, perfil da conta (não e-mail).
   Item que não se aplica à tela conta como exercitado, com o porquê. INCONCLUSIVO por falta de login ou
   de ambiente: diga isso em primeiro lugar, para quem chamou decidir antes de outra rodada.
-- COBERTURA: telas × larguras × fluxos exercitados.
+- COBERTURA: telas × larguras × fluxos exercitados, e o inventário: X de Y elementos exercitados.
 - FALHAS: numeradas, da mais grave à menor — onde, o que acontece, como reproduzir, prova.
 - AVISOS: acessibilidade, visual, marcas de IA, movimento, consistência — com local.
 - TESTES SUGERIDOS: rascunhos das falhas.
