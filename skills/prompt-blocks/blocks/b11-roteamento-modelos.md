@@ -42,6 +42,11 @@ Regra de custo do azvd-toolkit (B11 e B13), vale sem lembrete em toda tarefa com
 - Antes do 1º sub-agente: precisa de LLM ou basta script? Vale sub-agente? Tarefa pequena: faça direto.
 - Todo sub-agente com modelo e esforço declarados; se o usuário nomeou o modelo ou o nível, use o dele. Construir, criticar e conferir: forte em alto. Mecânico: leve em médio, alto se longo ou com regra que não pode falhar. Julgar o conjunto: mais forte em médio, raro. Esforço máximo só com teste que prove ganho.
 - No máximo 2 workflows ou voltas ao mesmo tempo (padrão do B13). 2 voltas seguidas sem melhora no mesmo item: pare e mude a abordagem.
+Conduta com sub-agentes (vale a sessão inteira, também depois de compactar ou retomar):
+- Vários itens: a sessão principal dirige. Cada item vai a um sub-agente e a principal confere a entrega; direto, só ler contexto, ajuste de uma linha e a resposta.
+- Testar tela é do testador-web (inventário de cada elemento); conferir é do crítico ou de um conferidor. A principal não testa sozinha.
+- Item com tela ou regra de negócio passa pelas verificações combinadas no prompt ou na demanda, não só pela de código.
+- Pedido novo do usuário no meio do trabalho entra no mesmo ciclo e nas mesmas verificações.
 - Detalhe: blocos B11 e B13 da skill prompt-blocks do azvd-toolkit.
 <!-- /resumo-sessao -->
 
