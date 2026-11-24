@@ -3,10 +3,12 @@
 > Blocos citados (B1-B14) ficam em `../../prompt-blocks/blocks/` (catálogo: `../../prompt-blocks/SKILL.md`; blocos pessoais em `blocks/local/`).
 
 Para pedidos **multi-agente/multi-etapa** (dashboard multi-aba, ETL, N frentes), o formato padrão é
-**UM prompt em prosa, na voz do usuário: 3 parágrafos curtos, alvo 150 a 350 palavras, teto ~450**. Molde de
+**UM prompt em prosa, na voz do usuário: 3 parágrafos curtos, alvo 120 a 250 palavras, teto ~300**. Molde de
 tom e tamanho: o bloco de código do `b12-gauntlet-loop.md` (~170 palavras). O agente executor vira o
 diretor: decide os itens sozinho e usa as skills que já tem. Frases imperativas, sem listas, sem títulos,
 sem seção PREMISSAS dentro do prompt: premissas e caminhos a trocar vão FORA do bloco, na resposta ao usuário.
+Limites (push, produção, apagar dado) também não entram: valem pelas regras globais do host; se o alvo não
+tiver essas regras, avise na resposta, fora do bloco.
 
 1. **O quê e a barra:** o que construir/resolver e a régua (referência real nomeada ou critério objetivo do
    domínio, ex.: "o número bate exato com o script de origem"), mais só os fatos que o agente não descobre
@@ -16,8 +18,7 @@ sem seção PREMISSAS dentro do prompt: premissas e caminhos a trocar vão FORA 
    pediu, ex.: visual, código, regra de negócio) e, se não passar, continua.
 3. **Orquestrador.** Esqueleto: "Você é o orquestrador e diretor-chefe. Não pare até o crítico ficar
    impressionado (comparando às cegas lado a lado, quando há referência) e um juiz aprovar o conjunto.
-   Registre o plano e o andamento em documento. Sem push, sem produção, sem apagar dado. Reporte no fim em
-   [FORMATO]. Distribua os sub-agentes pelas regras de custo (B11). [LOOP_VERB] até ficar perfeito[FECHO]."
+   Registre o plano e o andamento em documento. Reporte no fim em [FORMATO]. Distribua os sub-agentes pelas regras de custo (B11). [LOOP_VERB] até ficar perfeito[FECHO]."
    Sem usuário para o ok, a parada é esse critério; com usuário, apresente o plano antes e siga depois do ok.
 
 Perguntas (uma por vez):
