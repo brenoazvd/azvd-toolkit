@@ -38,7 +38,7 @@ Este é o **azvd-toolkit**: um toolkit open-source de skills para trabalhar com 
 - `skills/prompt-blocks/blocks/local/` — **blocos pessoais do usuário, GITIGNORED, não versionado**.
 - `.claude-plugin/` — manifests do marketplace do Claude (só para instalação por marketplace; não é o conteúdo).
 - `AGENTS.md` (este), `CONTEXT.md` — contexto/instruções de agente.
-- `hooks/hooks.json`: no início de toda sessão imprime o resumo de custo do B11 (trecho entre `<!-- resumo-sessao: ... -->` e `<!-- /resumo-sessao -->`). Mudou a regra de custo? Mude ali.
+- `hooks/hooks.json`: no início de toda sessão imprime o resumo de custo e conduta do B11 (trecho entre `<!-- resumo-sessao: ... -->` e `<!-- /resumo-sessao -->`) e, a cada mensagem, o lembrete curto (entre `<!-- lembrete-mensagem: ... -->` e `<!-- /lembrete-mensagem -->`). Mudou a regra? Mude ali.
 - `RULES.md` — regras operacionais do mantenedor (sync, permissões) — **não confundir com este**.
 - `sync.sh` — propaga habilidades do repo para as 4 IAs (Hermes, agy, claude, dir universal).
 

@@ -10,6 +10,17 @@
           }
         ]
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sed -n '/^<!-- lembrete-mensagem/,/^<!-- .lembrete-mensagem -->/{/^<!--/d;p;}' \"${CLAUDE_PLUGIN_ROOT}/skills/prompt-blocks/blocks/b11-roteamento-modelos.md\" | head -n 5 || true",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   }
 }

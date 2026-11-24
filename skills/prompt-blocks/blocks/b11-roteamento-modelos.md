@@ -50,6 +50,10 @@ Conduta com sub-agentes (vale a sessão inteira, também depois de compactar ou 
 - Detalhe: blocos B11 e B13 da skill prompt-blocks do azvd-toolkit.
 <!-- /resumo-sessao -->
 
+<!-- lembrete-mensagem: o hook UserPromptSubmit do plugin imprime só este trecho a cada mensagem -->
+Lembrete do azvd-toolkit para esta mensagem: se ela tem vários itens, a principal dirige e confere, e cada item vai a um sub-agente com modelo e esforço declarados (tarefa pequena: faça direto). Testar tela é do testador-web, com inventário de cada elemento; conferir é do crítico ou de um conferidor. As verificações combinadas antes valem também para este pedido.
+<!-- /lembrete-mensagem -->
+
 Texto pronto (cole no prompt do orquestrador, ou use para decidir cada papel de um time):
 
 ```
