@@ -23,9 +23,13 @@ Verifique, nesta ordem (pare no primeiro que reprova):
    leituras e pergunte.
 6. **Critério de aceite:** escreva como saber que ficou pronto, de forma verificável (teste que passa,
    comando que sai limpo, tela que mostra X, número que bate com Y). Sem isso, AJUSTAR.
-7. **Escopo e risco:** o que o construtor pode tocar e o que NÃO pode; o que pode quebrar (quem mais usa o
+7. **Olhar do negócio (barra AAA):** pense como o analista que conhece o negócio. O que falta para isso
+   ficar perfeito para quem usa, não só funcionar (regra, caso de borda, coerência com o resto do
+   produto)? Liste as melhorias óbvias. Mudança grande (tela, tabela, fluxo ou regra nova) ou que muda o
+   combinado vira PERGUNTA ao usuário antes de construir; ajuste pequeno entra na especificação.
+8. **Escopo e risco:** o que o construtor pode tocar e o que NÃO pode; o que pode quebrar (quem mais usa o
    que vai mudar) e se a ação é reversível.
-8. **Defeito irmão (só em conserto):** procure no projeto o mesmo padrão que quebrou: quem chama a mesma
+9. **Defeito irmão (só em conserto):** procure no projeto o mesmo padrão que quebrou: quem chama a mesma
    função, a mesma forma de corte (`slice(0, N)`, `.limit(`, `[:N]`, `LIMIT`), filtro ignorado, paginação
    que junta duas fontes, data em UTC no lugar da local. Liste cada ocorrência com `arquivo:linha` e diga
    se tem o mesmo defeito.
@@ -40,7 +44,10 @@ Resposta final (curta, neste formato):
 - DECISÃO: SEGUIR / AJUSTAR / PARAR — uma linha de motivo.
 - JÁ EXISTE: o que reaproveitar (caminhos) ou "nada encontrado".
 - PREMISSAS: conferida / não conferível (vira pergunta).
-- PERGUNTAS: só as que mudam o que será construído.
+- PERGUNTAS: só as que mudam o que será construído (inclui a mudança grande do item 7). Cada uma com 2 a
+  4 opções fechadas (todas as viáveis daquele nível), a recomendada primeiro com o porquê, para a sessão
+  principal perguntar na caixa de seleção do host.
+- MELHORIAS PARA FICAR PERFEITO: as do item 7 que entram sem perguntar, ou "nenhuma".
 - DEFEITOS IRMÃOS (só em conserto): `arquivo:linha` → tem / não tem o mesmo defeito, ou "nenhum encontrado"
   com o padrão buscado.
 - ESPECIFICAÇÃO PARA O CONSTRUTOR: objetivo, escopo (pode/não pode tocar), critério de aceite verificável.

@@ -47,11 +47,14 @@ Conduta com sub-agentes (vale a sessão inteira, também depois de compactar ou 
 - Testar tela é do testador-web (inventário de cada elemento); conferir é do crítico ou de um conferidor. A principal não testa sozinha.
 - Item com tela ou regra de negócio passa pelas verificações combinadas no prompt ou na demanda, não só pela de código.
 - Pedido novo do usuário no meio do trabalho entra no mesmo ciclo e nas mesmas verificações.
+- Barra AAA: pense como analista do negócio, o que falta para ficar perfeito para quem usa. Mudança grande (tela, tabela, fluxo ou regra nova) ou que muda o combinado: pergunte ao usuário antes, na caixa de seleção do host (AskUserQuestion no Claude Code) com todas as opções viáveis daquele nível e a recomendada primeiro; ajuste pequeno ou melhoria óbvia: faça e avise.
+- Na tabela do plano, cada agente aparece com categoria e esforço (ex.: construtor, forte, alto), para o usuário ver o custo.
+- Juiz do conjunto (mais forte, médio) a cada ~3 voltas do construtor e antes de dizer que a entrega está pronta.
 - Detalhe: blocos B11 e B13 da skill prompt-blocks do azvd-toolkit.
 <!-- /resumo-sessao -->
 
 <!-- lembrete-mensagem: o hook UserPromptSubmit do plugin imprime só este trecho a cada mensagem -->
-Lembrete do azvd-toolkit para esta mensagem: se ela tem vários itens, a principal dirige e confere, e cada item vai a um sub-agente com modelo e esforço declarados (tarefa pequena: faça direto). Testar tela é do testador-web, com inventário de cada elemento; conferir é do crítico ou de um conferidor. As verificações combinadas antes valem também para este pedido.
+Lembrete do azvd-toolkit para esta mensagem: se ela tem vários itens, a principal dirige e confere, e cada item vai a um sub-agente com modelo e esforço declarados (tarefa pequena: faça direto). Testar tela é do testador-web, com inventário de cada elemento; conferir é do crítico ou de um conferidor. As verificações combinadas antes valem também para este pedido. Barra AAA: veja o que o negócio precisa para ficar perfeito; mudança grande, pergunte antes na caixa de seleção, com as opções daquele nível. Plano mostra categoria e esforço de cada agente; juiz antes de dizer pronto.
 <!-- /lembrete-mensagem -->
 
 Texto pronto (cole no prompt do orquestrador, ou use para decidir cada papel de um time):

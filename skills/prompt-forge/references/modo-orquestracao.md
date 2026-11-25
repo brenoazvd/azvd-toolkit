@@ -10,7 +10,7 @@ sem seção PREMISSAS dentro do prompt: premissas e caminhos a trocar vão FORA 
 Limites (push, produção, apagar dado) também não entram: valem pelas regras globais do host; se o alvo não
 tiver essas regras, avise na resposta, fora do bloco.
 
-1. **O quê e a barra:** o que construir/resolver e a régua (referência real nomeada ou critério objetivo do
+1. **O quê e a barra:** o que construir/resolver e a régua (padrão AAA: referência real nomeada ou critério objetivo do
    domínio, ex.: "o número bate exato com o script de origem"), mais só os fatos que o agente não descobre
    sozinho, em 1 ou 2 frases.
 2. **Como:** distribua sub-agentes, um por item; o diretor decide os itens (o prompt não os lista); verbo de
@@ -19,7 +19,8 @@ tiver essas regras, avise na resposta, fora do bloco.
 3. **Orquestrador.** Esqueleto: "Você é o orquestrador e diretor-chefe. Não pare até o crítico ficar
    impressionado (comparando às cegas lado a lado, quando há referência) e um juiz aprovar o conjunto.
    Registre o plano e o andamento em documento. Reporte no fim em [FORMATO]. Distribua os sub-agentes pelas regras de custo (B11). [LOOP_VERB] até ficar perfeito[FECHO]."
-   Sem usuário para o ok, a parada é esse critério; com usuário, apresente o plano antes e siga depois do ok.
+   Sem usuário para o ok, a parada é esse critério; com usuário, apresente o plano antes e siga depois do ok,
+   e pergunte antes de qualquer mudança grande (tela, tabela, fluxo ou regra nova) que o plano não previa.
 
 Perguntas (uma por vez):
 
